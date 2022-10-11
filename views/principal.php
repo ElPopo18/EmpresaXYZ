@@ -18,7 +18,7 @@
         <div class="menu">
             <h2>Planifica tus reuniones</h2>
             <p>Organiza, crea, expresa tus ideas, expon tus puntos.</p>
-            <a class="registro" href="views/registro.php">Registrarse</a>
+            <a class="registro" href="index.php?n=registro">Registrarse</a>
             <a class="inicio" href="views/login.php">Iniciar Sesion</a>
         </div>
     </div>

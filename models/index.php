@@ -9,6 +9,35 @@ class Modelo{
         $this->Modelo=array();
         $this->db=new PDO('mysql:host=localhost;dbname=consorcio',"root","");
     }
+
+    public function insertar($tabla, $data){
+        $consulta="insert into ".$tabla." values(".$data.")";
+        $resultado=$this->db->query($consulta);
+        if($resultado){
+            return true;
+        }else{
+            return false;
+        }
+    }
+        // Login /registrar
+    public function validar_User_existente($tabla, $condicion,$condicion2){
+        $consul="select * from ".$tabla." where ".$condicion." OR ".$condicion2.";";
+        $resul=$this->db->query($consul);
+        if($resul){
+            return $resul->fetchAll(PDO::FETCH_ASSOC);
+        }else{
+            return false;
+        }
+    }
+    public function validar_User_existente2($tabla, $condicion){
+        $consul="select * from ".$tabla." where ".$condicion.";";
+        $resul=$this->db->query($consul);
+        if($resul){
+            return $resul->fetchAll(PDO::FETCH_ASSOC);
+        }else{
+            return false;
+        }
+    }
 }    
 ?>
 

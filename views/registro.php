@@ -1,5 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+require_once("layouts/header.php");
+?>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,14 +14,16 @@
         <h1 id="titulo">&iquest; Que desea registrar ?</h1>
         <div class="caja-borde">
             <div class="rectanguloS">
-                <img src="./img/reunion-de-la-junta.png">
-                <a href="./registro-socio.php" class="registro-socio">Un Socio</a>
+                <img src="views/img/reunion-de-la-junta.png">
+                <a href="index.php?n=registrosoc" class="registro-socio">Un Socio</a>
             </div>
             <div class="rectanguloE">
-                <img src="./img/oficina.png">
+                <img src="views/img/oficina.png">
                 <a href="./registro-empresa.php"class="registro-empresa">Una Empresa</a>
             </div>
         </div>
     </div>
-</body>
-</html>
+
+<?php
+require_once("layouts/footer.php");
+?>
