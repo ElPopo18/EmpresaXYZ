@@ -26,10 +26,9 @@ SET time_zone = "+00:00";
 --
 -- Estructura de tabla para la tabla `empresa`
 --
-
-CREATE TABLE 'empresa'  (
-  'id_empresa' int(25) NOT NULL,
-  'nombre_empresa' varchar(30) NOT NULL
+CREATE TABLE `empresa` (
+  `id` int(11) NOT NULL,
+  `nombre_empresa` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -38,11 +37,11 @@ CREATE TABLE 'empresa'  (
 -- Estructura de tabla para la tabla `socio`
 --
 
-CREATE TABLE 'socio'  (
-  'ced_socio' int(25) NOT NULL,
-  'nombre_socio' varchar(30) NOT NULL,
-  'apellido_socio' varchar(30) NOT NULL,
-  'usuario' varchar (35) NOT NULL
+CREATE TABLE `socio` (
+  `ced_socio` int(10) NOT NULL,
+  `nombre_soc` varchar(25) NOT NULL,
+  `apellido_soc` varchar(25) NOT NULL,
+  `username` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 -- --------------------------------------------------------
 
@@ -50,11 +49,11 @@ CREATE TABLE 'socio'  (
 -- Estructura de tabla para la tabla `punto`
 --
 
-CREATE TABLE 'punto'  (
-  'id_punto' int(65) NOT NULL,
-  'descripcion' varchar(250) NOT NULL,
-  'descision' varchar(25) NOT NULL,
-  'archivo' varchar(25)
+CREATE TABLE `punto`  (
+  `id_punto` int(65) NOT NULL,
+  `descripcion` varchar(250) NOT NULL,
+  `descision` varchar(25) NOT NULL,
+  `archivo` varchar(25)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 -- --------------------------------------------------------
 
@@ -62,10 +61,10 @@ CREATE TABLE 'punto'  (
 -- Estructura de tabla para la tabla `reunion`
 --
 
-CREATE TABLE 'reunion'  (
-  'id_reunion' int(25) NOT NULL,
-  'id_punto' int(30) NOT NULL,
-  'fecha' datetime  
+CREATE TABLE `reunion`  (
+  `id_reunion` int(25) NOT NULL,
+  `id_punto` int(30) NOT NULL,
+  `fecha` datetime  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -74,10 +73,10 @@ CREATE TABLE 'reunion'  (
 -- Estructura de tabla para la tabla `socio_has_punto`
 --
 
-CREATE TABLE 'socio_has_punto'  (
-  'id' int(25) NOT NULL,
-  'id_punto' int(30) NOT NULL,
-  'id_socio' int(30) NOT NULL
+CREATE TABLE `socio_has_punto`  (
+  `id` int(25) NOT NULL,
+  `id_punto` int(30) NOT NULL,
+  `id_socio` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -86,10 +85,10 @@ CREATE TABLE 'socio_has_punto'  (
 -- Estructura de tabla para la tabla `empresa_has_socio`
 --
 
-CREATE TABLE 'empresa_has_socio'  (
-  'id_empresoc' int(25) NOT NULL,
-  'id_empresa' int(25) NOT NULL,
-  'id_socio' int(30) NOT NULL
+CREATE TABLE `empresa_has_socio`  (
+  `id_empresoc` int(25) NOT NULL,
+  `id_empresa` int(25) NOT NULL,
+  `id_socio` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -111,35 +110,35 @@ ALTER TABLE `socio`
 --
 -- Indices de la tabla `punto`
 --
-ALTER TABLE 'punto'
-    ADD PRIMARY KEY ('id_punto'),
+ALTER TABLE `punto`
+    ADD PRIMARY KEY (`id_punto`),
 
 --
 -- Indices de la tabla `reunion`
 --
-ALTER TABLE 'reunion'
-    ADD PRIMARY KEY ('id_reunion'),
-    ADD KEY 'id_punto' ('id_punto');
+ALTER TABLE `reunion`
+    ADD PRIMARY KEY (`id_reunion`),
+    ADD KEY `id_punto` (`id_punto`);
 
 --
 -- Indices de la tabla `punto`
 --
-ALTER TABLE 'punto'
-    ADD PRIMARY KEY ('id_punto');
+ALTER TABLE `punto`
+    ADD PRIMARY KEY (`id_punto`);
 --
 -- Indices de la tabla `socio_has_punto`
 --
-ALTER TABLE 'socio_has_punto'
-    ADD PRIMARY KEY ('id'),
-    ADD KEY 'id_punto' ('id_punto'),
-    ADD KEY 'id_socio' ('id_socio');         
+ALTER TABLE `socio_has_punto`
+    ADD PRIMARY KEY (`id`),
+    ADD KEY `id_punto` (`id_punto`),
+    ADD KEY `id_socio` (`id_socio`);         
 --
 -- Indices de la tabla `empresa_has_socio`
 --
-ALTER TABLE 'empresa_has_socio'
-    ADD PRIMARY KEY ('id_empresoc'),
-    ADD KEY 'id_empresa' ('id_empresa'),
-    ADD KEY 'id_socio' ('id_socio'); 
+ALTER TABLE `empresa_has_socio`
+    ADD PRIMARY KEY (`id_empresoc`),
+    ADD KEY `id_empresa` (`id_empresa`),
+    ADD KEY `id_socio` (`id_socio`); 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
@@ -148,7 +147,7 @@ ALTER TABLE 'empresa_has_socio'
 -- AUTO_INCREMENT de la tabla `empresa`
 --
 ALTER TABLE `empresa`
-  MODIFY `id_empresa` int(25) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `punto`
@@ -202,6 +201,8 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
 
 
 
