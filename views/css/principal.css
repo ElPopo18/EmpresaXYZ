@@ -6,6 +6,7 @@
 #contenedor{
     min-height: 100vh;
     background: linear-gradient(180deg, #000000 0%, #1221AC 49.48%, #0075FF 100%);
+    width: 100%;
 }
 .titulo{
     display: block;
@@ -50,8 +51,10 @@ p{
     border-radius: 50px;
     font-family: 'Hammersmith One', sans-serif;
     font-size: 18px;
-    cursor: pointer;
     transition: all .5s;
+    line-height: 45px;
+    text-align: center;
+    text-decoration: none;
 }
 .registro:hover{
     background: rgba(0, 0, 0, .8);
@@ -70,8 +73,10 @@ p{
     border-radius: 50px;
     font-family: 'Hammersmith One', sans-serif;
     font-size: 18px;
-    cursor: pointer;
     transition: all .5s;
+    line-height: 45px;
+    text-align: center;
+    text-decoration: none;
 }
 .inicio:hover{
     background: rgba(0, 0, 0, .8);
