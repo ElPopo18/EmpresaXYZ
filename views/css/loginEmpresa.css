@@ -6,7 +6,7 @@
     font-family: 'Hammersmith One';
 }
 body{
-    background-image: url(../img/socios.jpg) !important;
+    background-image: url(../img/empresa.jpg) !important;
     min-height: 100vh;
     background-repeat: no-repeat;
     background-position: center;
@@ -110,8 +110,8 @@ body{
 .btn{
     position: absolute;
     background-color: #0c2176;
-    top: 10%;
-    left: 36%;
+    top: 26%;
+    left: 35%;
     width: 50px;
     height: 50px;
     border: none;

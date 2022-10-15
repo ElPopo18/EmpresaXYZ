@@ -8,12 +8,14 @@
     <title>Registro de empresa</title>
     <link rel="stylesheet" href="views/css/registro-empresa.css">
     <link rel="icon" href="./views/img/calendario.png">
+    <script src="https://kit.fontawesome.com/2a47b8bfbb.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <form class="form">
+    <a class="btn" href="index.php?n=registro"><i class="fa-solid fa-arrow-left"></i></a>
         <h2 class="titulo-form">Resgistra tu empresa</h2>
-        <p class="parrafo">&iquest; Ya tienes una empresa ? <a href="" class="form-link">Entra aqui para iniciar sesion</a></p>
+        <p class="parrafo">&iquest; Ya tienes una empresa ? <a href="index.php?n=inicioEmpresa" class="form-link">Entra aqui para iniciar sesion</a></p>
         <div class="form_container">
             <div class="form_grupo">
                 <input type="text" name="nombre_empresa" class="form_input" placeholder=" " required>

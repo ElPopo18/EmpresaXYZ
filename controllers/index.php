@@ -24,26 +24,44 @@ class ModeloController{
     static function registrosoc(){
         require_once("views/registrosoc.php");
     }
-            //  Guardar datos de usuario
-            static function guardaru(){
-                $ced_socio=$_REQUEST['ced_socio'];
-                $nombre_soc=$_REQUEST['nombre_soc'];
-                $apellido_soc=$_REQUEST['apellido_soc'];
-                $username=$_REQUEST['username'];
-                $password=$_REQUEST['password'];
-                $data="'".$ced_socio."','".$nombre_soc."','".$apellido_soc."','".$username."','".$password."'";
-                $usuario=new Modelo();
-                $condicion="ced_socio='".$ced_socio."' AND nombre_soc='".$nombre_soc."' AND apellido_soc='".$apellido_soc."' AND username='".$username."' AND
-                password='".$password."'";
-      
-                  if($usuario->validar_User_existente("socio","username='".$username."'","password='".$password."'")){
-                    header('location:'.ModeloController::registrosoc());
-                     echo "<script>alert('el nombre de usuario: $username o el correo: $password ya estan siendo utilizados');</script>";
-                  }else{
-                    $dato=$usuario->insertar("socio",$data);
-                     header('location:'.'index.php?n=iniciar.php');
-                  }
-             } 
+    //  Guardar datos de usuario
+    static function guardaru(){
+        $ced_socio=$_REQUEST['ced_socio'];
+        $nombre_soc=$_REQUEST['nombre_soc'];
+        $apellido_soc=$_REQUEST['apellido_soc'];
+        $username=$_REQUEST['username'];
+        $password=$_REQUEST['password'];
+        $data="'".$ced_socio."','".$nombre_soc."','".$apellido_soc."','".$username."','".$password."'";
+        $usuario=new Modelo();
+        $condicion="ced_socio='".$ced_socio."' AND nombre_soc='".$nombre_soc."' AND apellido_soc='".$apellido_soc."' AND username='".$username."' AND
+        password='".$password."'";
+
+            if($usuario->validar_User_existente("socio","username='".$username."'","password='".$password."'")){
+            header('location:'.ModeloController::registrosoc());
+                echo "<script>alert('el nombre de usuario: $username o el correo: $password ya estan siendo utilizados');</script>";
+            }else{
+            $dato=$usuario->insertar("socio",$data);
+                header('location:'.'index.php?n=iniciar.php');
+            }
+        } 
+    //va a la pagina de login socio
+    static function inicioSocio(){
+        require_once("views/loginSocio.php");
+    }
+    //iniciar sesion como socio
+    static function loginSocio(){
+        $usuario = $_REQUEST['username'];
+        $password = $_REQUEST['password'];
+        $datos = new Modelo();
+        $data = "username='".$usuario."' AND password='".$password."'";
+        $dato = $datos->login("socio",$data);
+        /*
+        if ($dato == true) {
+            $dat
+        }*/
+        
+    }        
+    //va a la pagina de registrar una empresa
     static function registro_empresa(){
         require_once("views/registro_empresa.php");
     }
@@ -64,6 +82,11 @@ class ModeloController{
             header('location:'.'index.php?n=iniciar.php');
         }
     }
-    //VA A LA PAGINA DE INICIO DE SESION
+    static function inicioEmpresa(){
+        require_once("views/loginEmpresa.php");
+    }
+    static function loginEmpresa(){
+    
+    }
 }
 ?>

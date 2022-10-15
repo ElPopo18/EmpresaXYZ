@@ -8,13 +8,15 @@
   <title>Registro de socio</title>
   <link rel="stylesheet" href="./views/css/registro-socios.css">
   <link rel="icon" href="./views/img/calendario.png">
+  <script src="https://kit.fontawesome.com/2a47b8bfbb.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
 
   <form class="form">
+  <a class="btn" href="index.php?n=registro"><i class="fa-solid fa-arrow-left"></i></a>
     <h2 class="titulo-form">Resgistrar Socio</h2>
-    <p class="parrafo">&iquest; Ya eres socio ? <a href="" class="form-link">Entra aqui para iniciar sesion</a></p>
+    <p class="parrafo">&iquest; Ya eres socio ? <a href="index.php?n=inicioSocio" class="form-link">Entra aqui para iniciar sesion</a></p>
     <div class="form_container">
       <div class="form_grupo">
         <input type="text" name="username" class="form_input" placeholder=" " required>

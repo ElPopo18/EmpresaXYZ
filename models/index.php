@@ -38,6 +38,16 @@ class Modelo{
             return false;
         }
     }
+    //login
+    public function login($tabla, $condicion){
+        $consul="select * from ".$tabla." where ".$condicion.";";
+        $resul=$this->db->query($consul);
+        if($resul){
+            return $resul->fetchAll(PDO::FETCH_ASSOC);
+        }else{
+            return false;
+        }
+    }
 }    
 ?>
 

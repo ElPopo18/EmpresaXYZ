@@ -4,7 +4,7 @@
     margin: 0;
 }
 body{
-    background-image: url(../img/socios.jpg);
+    background-image: url(../img/empresa.jpg) !important;
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
@@ -106,4 +106,27 @@ img{
 }
 .login-empresa:hover{
     background-color: #00104e;
+}
+.btn{
+    position: relative;
+    background-color: #0c2176;
+    top: 4%;
+    left: 3%;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 60px;
+    cursor: pointer;
+}
+.btn:hover{
+    background-color: #00104e;
+}
+i{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    color: #fff;
+    display: block;
+    font-size: 30px;
+    transform: translate(-50%,-50%);
 }

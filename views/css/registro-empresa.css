@@ -6,7 +6,7 @@
     font-family: 'Hammersmith One';
 }
 body{
-    background-image: url(../img/empresa.jpg) !important;
+    background-image: url(../img/socios.jpg) !important;
     min-height: 100vh;
     background-repeat: no-repeat;
     background-position: center;
@@ -105,4 +105,28 @@ body{
 }
 .form_input:focus ~ .form_line,.form_input:not(:placeholder-shown) ~ .form_line{
     transform: scale(1);
+}
+
+.btn{
+    position: absolute;
+    background-color: #0c2176;
+    top: 20%;
+    left: 35%;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 60px;
+    cursor: pointer;
+}
+.btn:hover{
+    background-color: #00104e;
+}
+i{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: #fff;
+    display: block;
+    font-size: 30px;
+    transform: translate(-50%,-50%);
 }
