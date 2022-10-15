@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Empresa XYZ</title>
-    <link rel="stylesheet" href="./views/css/principal.css">
-    <link rel="icon" href="./views/img/calendario.png">
+    <link rel="stylesheet" href="views/css/principal.css">
+    <link rel="icon" href="views/img/calendario.png">
 </head>
 
 <body>
@@ -19,7 +19,7 @@
             <h2>Planifica tus reuniones</h2>
             <p>Organiza, crea, expresa tus ideas, expon tus puntos.</p>
             <a class="registro" href="index.php?n=registro">Registrarse</a>
-            <a class="inicio" href="views/login.php">Iniciar Sesion</a>
+            <a class="inicio" href="index.php?n=login">Iniciar Sesion</a>
         </div>
     </div>
     <img src="https://images.unsplash.com/photo-1544654935-036f583c952a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjkzfHxjYWxlbmRhcmlvc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60">

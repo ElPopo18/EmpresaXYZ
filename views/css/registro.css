@@ -4,9 +4,7 @@
     margin: 0;
 }
 body{
-    /*background-image: url(./fondo.jpg);*/
-    /*background-image: url(./northfolk-Ok76F6yW2iA-unsplash.jpg);*/
-    background-image: url(./img/dylan-gillis-KdeqA3aTnBY-unsplash.jpg);
+    background-image: url(../img/dylan-gillis-KdeqA3aTnBY-unsplash.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;

@@ -6,8 +6,8 @@ require_once("layouts/header.php");
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
-    <link rel="stylesheet" href="./css/registro.css">
-    <link rel="icon" href="./css/calendario.png">
+    <link rel="stylesheet" href="css/registro.css">
+    <link rel="icon" href="views/img/calendario.png">
 </head>
 <body>
     <div id="contenedor">
@@ -19,11 +19,10 @@ require_once("layouts/header.php");
             </div>
             <div class="rectanguloE">
                 <img src="views/img/oficina.png">
-                <a href="./registro-empresa.php"class="registro-empresa">Una Empresa</a>
+                <a href="index.php?n=registro_empresa"class="registro-empresa">Una Empresa</a>
             </div>
         </div>
     </div>
-
 <?php
 require_once("layouts/footer.php");
 ?>
