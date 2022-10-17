@@ -13,7 +13,7 @@
 
 <body>
 
-<form class="form">
+  <form class="form">
     <div class="titulo-btn">
       <a class="btn" href="index.php?n=registro"><i class="fa-solid fa-arrow-left"></i></a>
       <h2 class="titulo-form">Resgistrar Socio</h2>
