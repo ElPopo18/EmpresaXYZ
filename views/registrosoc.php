@@ -6,16 +6,18 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Registro de socio</title>
-  <link rel="stylesheet" href="./views/css/registro-socios.css">
-  <link rel="icon" href="./views/img/calendario.png">
+  <link rel="stylesheet" href="views/css/registro-socios.css">
+  <link rel="icon" href="views/img/calendario.png">
   <script src="https://kit.fontawesome.com/2a47b8bfbb.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
 
-  <form class="form">
-  <a class="btn" href="index.php?n=registro"><i class="fa-solid fa-arrow-left"></i></a>
-    <h2 class="titulo-form">Resgistrar Socio</h2>
+<form class="form">
+    <div class="titulo-btn">
+      <a class="btn" href="index.php?n=registro"><i class="fa-solid fa-arrow-left"></i></a>
+      <h2 class="titulo-form">Resgistrar Socio</h2>
+    </div>
     <p class="parrafo">&iquest; Ya eres socio ? <a href="index.php?n=inicioSocio" class="form-link">Entra aqui para iniciar sesion</a></p>
     <div class="form_container">
       <div class="form_grupo">

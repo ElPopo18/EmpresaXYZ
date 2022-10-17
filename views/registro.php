@@ -11,17 +11,14 @@
 </head>
 <body>
     
-    <div id="contenedor">
-        <h1 id="titulo">&iquest; Que desea registrar ?</h1>
-        <div class="caja-borde">
-            <a class="btn" href="index.php?n=principal"><i class="fa-solid fa-arrow-left"></i></a>
-            <div class="rectanguloS">
-                <img src="views/img/reunion-de-la-junta.png">
-                <a href="index.php?n=registrosoc" class="registro-socio">Un Socio</a>
-            </div>
-            <div class="rectanguloE">
-                <img src="views/img/oficina.png">
-                <a href="index.php?n=registro_empresa"class="registro-empresa">Una Empresa</a>
+    <div id="contenedor-general">
+        <div class="contenedor">
+            <h1 id="titulo"><a class="btn" href="index.php?n=principal"><i class="fa-solid fa-arrow-left"></i></a>&iquest; Que desea registrar ?</h1>
+            <div class="rectangulos">
+                <img src="views/img/reunion-de-la-junta.png" class="socio-img">
+                <a href="index.php?n=registrosoc" class="registro">Un Socio</a>
+                <img src="views/img/oficina.png" class="empresa-img">
+                <a href="index.php?n=registro_empresa"class="registro">Una Empresa</a>
             </div>
         </div>
 </body>
