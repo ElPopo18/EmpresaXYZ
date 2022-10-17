@@ -15,9 +15,9 @@
         <h1 id="titulo"> <a class="btn" href="index.php?n=principal"><i class="fa-solid fa-arrow-left"></i></a>&iquest; Iniciar Sesion como ?</h1>
         <div class="rectangulos">
             <img src="views/img/reunion-de-la-junta.png" class="socio-img">
-            <a href="index.php?n=inicioSocio" class="login">Un Socio</a>
+            <a href="index.php?n=paginaLoginSocio" class="login">Un Socio</a>
             <img src="views/img/oficina.png" class="empresa-img">
-            <a href="index.php?n=inicioEmpresa" class="login">Una Empresa</a>
+            <a href="index.php?n=paginaLoginEmpresa" class="login">Una Empresa</a>
         </div>
     </div>
 </div>

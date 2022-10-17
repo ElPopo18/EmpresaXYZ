@@ -16,11 +16,15 @@ class ModeloController{
         require_once("views/registro.php");
     }
     // va a la pagina de registrar socio
-    static function registrosoc(){
-        require_once("views/registrosoc.php");
+    static function paginaRegistroSocio(){
+        require_once("views/registroSocio.php");
+    }
+    //va a la pagina de registrar una empresa
+    static function paginaRegistroEmpresa(){
+        require_once("views/registroEmpresa.php");
     }
     //  Guardar datos de un usuario socio
-    static function guardaru(){
+    static function registroSocio(){
         $ced_socio=$_REQUEST['ced_socio'];
         $nombre_soc=$_REQUEST['nombre_soc'];
         $apellido_soc=$_REQUEST['apellido_soc'];
@@ -31,18 +35,14 @@ class ModeloController{
         $condicion="ced_socio='".$ced_socio."' AND nombre_soc='".$nombre_soc."' AND apellido_soc='".$apellido_soc."' AND username='".$username."' AND
         password='".$password."'";
 
-            if($usuario->validar_User_existente("socio","username='".$username."'","password='".$password."'")){
-            header('location:'.ModeloController::registrosoc());
+            if($usuario->validarUsuarioExistente("socio","username='".$username."'","password='".$password."'")){
+            header('location:'.ModeloController::paginaRegistroSocio());
                 echo "<script>alert('el nombre de usuario: $username o el correo: $password ya estan siendo utilizados');</script>";
             }else{
             $dato=$usuario->insertar("socio",$data);
-                header('location:'.'index.php?n=inicio');
+                header('location:'.'index.php?n=inicioSocio');
             }
     } 
-    //va a la pagina de registrar una empresa
-    static function registro_empresa(){
-        require_once("views/registro_empresa.php");
-    }
     //registrar una empresa
     static function registroEmpresa(){
         $rif = $_REQUEST['rif'];
@@ -51,13 +51,13 @@ class ModeloController{
         $data = "'".$rif."','".$nombre_empresa."','".$password."'";
         $empresa = new Modelo();
         $condicion = "rif='".$rif."' AND nombre_empresa='".$nombre_empresa."' AND password='".$password."'";
-        if ($empresa->validar_User_existente("empresa","nombre_empresa='".$nombre_empresa."'","password='".$password."'")) {
-            header('location:'.ModeloController::registro_empresa());
+        if ($empresa->validarUsuarioExistente("empresa","nombre_empresa='".$nombre_empresa."'","password='".$password."'")) {
+            header('location:'.ModeloController::registroEmpresa());
             echo "<script>alert('el nombre de la empresa: $empresa ya esta siendo utilizados');</script>";
         }
         else {
             $dato = $empresa->insertar("empresa",$data);
-            header('location:'.'index.php?n=inicio');
+            header('location:'.'index.php?n=inicioAdmin');
         }
     }
     //todo apartir de aqui es funciones de Login
@@ -66,11 +66,11 @@ class ModeloController{
         require_once("views/login.php");
     }
     //va a la pagina de login socio
-    static function inicioSocio(){
+    static function paginaLoginSocio(){
         require_once("views/loginSocio.php");
     }
     //va a la pagina de login empresa
-    static function inicioEmpresa(){
+    static function paginaLoginEmpresa(){
         require_once("views/loginEmpresa.php");
     }
     //iniciar sesion como socio
@@ -79,13 +79,12 @@ class ModeloController{
         $password = $_REQUEST['password'];
         $datos = new Modelo();
         $data = "username ='".$usuario."' and password ='".$password."'";
-        $dato = $datos->login("socio",$data);
-
-        if ($dato == true) {
-            header('Location:'.'index.php?n=inicio');
+        $dato = $datos->validarUsuarioExistente("socio",$data);
+        if ($dato ) {
+            header('Location:'.'index.php?n=inicioSocio');
         }
         else{
-            header('location:'.'index.php?n=inicioSocio');
+            header('location:'.'index.php?n=paginaLoginSocio');
         }
 
     }        
@@ -95,18 +94,20 @@ class ModeloController{
         $password = $_REQUEST['password'];
         $datos = new Modelo();
         $data = "nombre_empresa ='".$empresa."' and password ='".$password."'";
-        $dato = $datos->login("empresa",$data);
+        $dato = $datos->validarUsuarioExistente("empresa",$data);
 
         if ($dato == true) {
-            header('Location:'.'index.php?n=inicio');
+            header('Location:'.'index.php?n=inicioAdmin');
         }
         else{
-            header('location:'.'index.php?n=inicioEmpresa');
+            header('location:'.'index.php?n=paginaLoginEmpresa');
         }
     }
-
     //todo interfaz
-    static function inicio(){
-        require_once("views/index.php");
+    static function inicioAdmin(){
+        require_once("views/admin/index.php");
+    }
+    static function inicioSocio(){
+        require_once("views/socio/index.php");
     }
 }

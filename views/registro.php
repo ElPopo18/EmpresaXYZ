@@ -17,9 +17,9 @@
             <h1 id="titulo"><a class="btn" href="index.php?n=principal"><i class="fa-solid fa-arrow-left"></i></a>&iquest; Que desea registrar ?</h1>
             <div class="rectangulos">
                 <img src="views/img/reunion-de-la-junta.png" class="socio-img">
-                <a href="index.php?n=registrosoc" class="registro">Un Socio</a>
+                <a href="index.php?n=paginaRegistroSocio" class="registro">Un Socio</a>
                 <img src="views/img/oficina.png" class="empresa-img">
-                <a href="index.php?n=registro_empresa" class="registro">Una Empresa</a>
+                <a href="index.php?n=paginaRegistroEmpresa" class="registro">Una Empresa</a>
             </div>
         </div>
 </body>

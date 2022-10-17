@@ -17,7 +17,7 @@
       <a class="btn" href="index.php?n=login"><i class="fa-solid fa-arrow-left"></i></a>
       <h2 class="titulo-form">Iniciar como Empresa</h2>
     </div>
-    <p class="parrafo">&iquest; Aun no tienes una empresa ? <a href="index.php?n=registro_empresa" class="form-link">Entra aqui para Registrarte</a></p>
+    <p class="parrafo">&iquest; Aun no tienes una empresa ? <a href="index.php?n=paginaRegistroEmpresa" class="form-link">Entra aqui para Registrarte</a></p>
     <div class="form_container">
       <div class="form_grupo">
         <input type="text" name="nombre_empresa" class="form_input" placeholder=" " required>

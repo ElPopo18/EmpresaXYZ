@@ -12,12 +12,12 @@
 </head>
 
 <body>
-  <form class="form">
+  <form class="form" autocomplete="off">
     <div class="titulo-btn">
       <a class="btn" href="index.php?n=login"><i class="fa-solid fa-arrow-left"></i></a>
       <h2 class="titulo-form">Iniciar como Socio</h2>
     </div>
-    <p class="parrafo">&iquest; Aun no eres socio ? <a href="index.php?n=registrosoc" class="form-link">Entra aqui para Registrarte</a></p>
+    <p class="parrafo">&iquest; Aun no eres socio ? <a href="index.php?n=paginaRegistroSocio" class="form-link">Entra aqui para Registrarte</a></p>
     <div class="form_container">
       <div class="form_grupo">
         <input type="text" name="username" class="form_input" placeholder=" " required>

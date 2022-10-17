@@ -18,7 +18,7 @@
       <a class="btn" href="index.php?n=registro"><i class="fa-solid fa-arrow-left"></i></a>
       <h2 class="titulo-form">Resgistrar Socio</h2>
     </div>
-    <p class="parrafo">&iquest; Ya eres socio ? <a href="index.php?n=inicioSocio" class="form-link">Entra aqui para iniciar sesion</a></p>
+    <p class="parrafo">&iquest; Ya eres socio ? <a href="index.php?n=paginaLoginSocio" class="form-link">Entra aqui para iniciar sesion</a></p>
     <div class="form_container">
       <div class="form_grupo">
         <input type="text" name="username" class="form_input" placeholder=" " required>
@@ -46,7 +46,7 @@
         <span class="form_line"></span>
       </div>
       <input type="submit" class="form_submit" value="Registrar">
-      <input type="hidden" name="n" value="guardaru">
+      <input type="hidden" name="n" value="registroSocio">
     </div>
   </form>
 </body>

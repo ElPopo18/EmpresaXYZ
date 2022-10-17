@@ -20,7 +20,8 @@ class Modelo{
         }
     }
         // Login /registrar
-    public function validar_User_existente($tabla, $condicion,$condicion2){
+    /*
+    public function validarUsuarioExistente($tabla, $condicion,$condicion2){
         $consul="select * from ".$tabla." where ".$condicion." OR ".$condicion2.";";
         $resul=$this->db->query($consul);
         if($resul){
@@ -29,17 +30,9 @@ class Modelo{
             return false;
         }
     }
-    public function validar_User_existente2($tabla, $condicion){
-        $consul="select * from ".$tabla." where ".$condicion.";";
-        $resul=$this->db->query($consul);
-        if($resul){
-            return $resul->fetchAll(PDO::FETCH_ASSOC);
-        }else{
-            return false;
-        }
-    }
-    //login
-    public function login($tabla, $condicion){
+    */
+    
+    public function validarUsuarioExistente($tabla, $condicion){
         $consul="select * from ".$tabla." where ".$condicion.";";
         $resul=$this->db->query($consul);
         if($resul){

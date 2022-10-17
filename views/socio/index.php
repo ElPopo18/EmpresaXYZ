@@ -1,6 +1,3 @@
-<?php 
-require "config/conexion.php";
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +7,6 @@ require "config/conexion.php";
     <title>Document</title>
 </head>
 <body>
-    <h1>BIENVENIDO</h1>
+    SOCIO
 </body>
 </html>
