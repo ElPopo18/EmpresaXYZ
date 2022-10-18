@@ -10,5 +10,3 @@ if(isset($_GET['n'])){
 else{
     ModeloController::principal();
     }
-?>
-

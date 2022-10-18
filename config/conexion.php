@@ -7,4 +7,3 @@
     if ($conexion->connect_errno) {
         die("La conexion a fallado". $conexion->connect_errno);
     }
-?>
