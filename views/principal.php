@@ -20,8 +20,8 @@
                 <div class="menu">
                     <h2>Planifica tus reuniones</h2>
                     <p>Organiza, crea, expresa tus ideas, expon tus puntos.</p>
-                    <a class="registro" href="index.php?n=registro">Registrarse</a>
-                    <a class="inicio" href="index.php?n=login">Iniciar Sesion</a>
+                    <a class="registro" href="index.php?n=paginaRegistro">Registrarse</a>
+                    <a class="inicio" href="index.php?n=paginaLogin">Iniciar Sesion</a>
                 </div>
             </div>
         </div>
