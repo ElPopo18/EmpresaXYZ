@@ -17,15 +17,13 @@
 }
 .titulo {
   width: 400px;
-  top: -2rem;
   font-size: 2rem;
   color: #0c2176;
   font-family: "Hammersmith One", sans-serif;
   margin-bottom: 3rem;
   background-color: #e5e5f7;
   opacity: 0.9;
-  background-image: radial-gradient(#0c2176 0.5px, transparent 0.5px),
-    radial-gradient(#0c2176 0.5px, #e5e5f7 0.5px);
+  background-image: radial-gradient(#0c2176 0.5px, transparent 0.5px),radial-gradient(#0c2176 0.5px, #e5e5f7 0.5px);
   background-size: 20px 20px;
   background-position: 0 0, 10px 10px;
   border-radius: 10px;
