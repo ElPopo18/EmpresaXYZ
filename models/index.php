@@ -33,7 +33,7 @@ class Modelo
             return false;
         }
     }
-    //cargo socio
+    /*cargo socio
     public function cargoSocio($username)
     {
         $consul = "SELECT cargo FROM socio WHERE username = '$username' AND cargo = 'Socio'";
@@ -43,7 +43,7 @@ class Modelo
         } else {
             return false;
         }
-    }
+    }*/
     //cargo admin
     public function cargoAdmin($username)
     {

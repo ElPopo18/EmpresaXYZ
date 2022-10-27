@@ -36,7 +36,7 @@ class ModeloController
             header('location:' . ModeloController::paginaRegistro());
         } else {
             $dato = $usuario->insertar("socio", $data);
-            header('location:' . 'index.php?n=inicioSocio');
+            header('location:' . 'index.php?n=inicioAdmin');
         }
     }
     //todo apartir de aqui es funciones de Login
@@ -53,23 +53,27 @@ class ModeloController
         $datos = new Modelo();
         $data = "username ='" . $username . "' and ced_socio ='" . $ced_socio . "'";
         $dato = $datos->validarUsuarioExistente("socio", $data);
-        $cargoSocio = $datos->cargoSocio($username);
         $cargoAdmin = $datos->cargoAdmin($username);
+        /*
         if ($dato == true && $cargoSocio == true) {
             require_once("views/socio/index.php");
-        } elseif ($dato == true && $cargoAdmin == true) {
-            require_once("views/admin-socio/index.php");
+        }*/
+        if ($dato == true && $cargoAdmin == true) {
+            require_once("views/admin/index.php");
         } else {
             header('location:' . ModeloController::paginaLogin());
         }
     }
     //todo interfaz
+    
     static function inicioAdmin()
     {
-        require_once("views/admin-socio/index.php");
+        require_once("views/admin/index.php");
     }
+    /*
     static function inicioSocio()
     {
         require_once("views/socio/index.php");
     }
+    */
 }
