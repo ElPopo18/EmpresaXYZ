@@ -52,36 +52,6 @@ $username = $_GET['username'];
                         <img src="https://via.placeholder.com/250x180">
                     </div>
                 </article>
-                <article class="proyects">
-                    <div class="image-wrap">
-                        <img src="https://via.placeholder.com/250x180">
-                    </div>
-                </article>
-                <article class="proyects">
-                    <div class="image-wrap">
-                        <img src="https://via.placeholder.com/250x180">
-                    </div>
-                </article>
-                <article class="proyects">
-                    <div class="image-wrap">
-                        <img src="https://via.placeholder.com/250x180">
-                    </div>
-                </article>
-                <article class="proyects">
-                    <div class="image-wrap">
-                        <img src="https://via.placeholder.com/250x180">
-                    </div>
-                </article>
-                <article class="proyects">
-                    <div class="image-wrap">
-                        <img src="https://via.placeholder.com/250x180">
-                    </div>
-                </article>
-                <article class="proyects">
-                    <div class="image-wrap">
-                        <img src="https://via.placeholder.com/250x180">
-                    </div>
-                </article>
             </div>
         </div>
     </div>

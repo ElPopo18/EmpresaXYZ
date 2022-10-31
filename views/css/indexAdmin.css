@@ -75,6 +75,7 @@
     background-color: #00106b;
     padding: 30px;
 }
+/*? inicio barra superior*/
 #navbar{
     flex-basis: 6%;
     background-color: #00106b;
@@ -130,12 +131,17 @@
     position: relative;
     top: 5px;
 }
+
+/*? fin barra superior*/
+
+/*? inicio contenido de la pagina*/
 .contenido__pagina{
     background-color: #fff;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
     flex-basis: 94%;
+    width: 70%;
 }
 
 .proyects{
@@ -148,3 +154,5 @@
 .proyects img{ 
     width: 100%;
 }
+
+/*? fin contenido de la pagina*/
