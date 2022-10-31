@@ -56,7 +56,7 @@ session_start();
                             <li>No se que mas digan</li>
                         </ul>
                     </div>
-                    <a href="" class="registro__btn">Un Socio</a>
+                    <a href="index.php?n=paginaRegistroSocio" class="registro__btn">Un Socio</a>
                 </article>
                 <article class="registro">
                     <div class="registro__titulos">
@@ -70,7 +70,7 @@ session_start();
                             <li></li>
                         </ul>
                     </div>
-                    <a href="" class="registro__btn">Una Empresa</a>
+                    <a href="index.php?n=paginaRegistroEmpresa" class="registro__btn">Una Empresa</a>
                 </article>
             </div>
         </div>

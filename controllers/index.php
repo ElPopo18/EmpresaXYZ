@@ -14,13 +14,18 @@ class ModeloController
         require_once("views/principal.php");
     }
     //todo apartir de aqui es funciones de registro
-    // va a la pagina de registrar
-    static function paginaRegistro()
+    // va a la pagina de registrar socio
+    static function paginaRegistroSocio()
     {
-        require_once("views/registro.php");
+        require_once("views/registroSocio.php");
+    }
+    //va a la pagina de registrar una empresa
+    static function paginaRegistroEmpresa()
+    {
+        require_once("views/registroEmpresa.php");
     }
     //  Guardar datos de un usuario socio
-    static function registro()
+    static function registroSocio()
     {
         $ced_socio = $_REQUEST['ced_socio'];
         $nombre_soc = $_REQUEST['nombre_soc'];
@@ -33,13 +38,28 @@ class ModeloController
         cargo='" . $cargo . "'";
 
         if ($usuario->validarUsuarioExistente("socio", "username='" . $username . "'", "cargo='" . $cargo . "'")) {
-            header('location:' . ModeloController::paginaRegistro());
+            header('location:' . ModeloController::paginaRegistroSocio());
         } else {
             $dato = $usuario->insertar("socio", $data);
-            header('location:' . 'index.php?n=inicioAdmin');
+            header('location:' . 'index.php?n=dashboard');
         }
     }
-    
+    //registrar una empresa
+    static function registroEmpresa()
+    {
+        $rif = $_REQUEST['rif'];
+        $nombre_empresa = $_REQUEST['nombre_empresa'];
+        $data = "'" . $rif . "','" . $nombre_empresa . "'";
+        $empresa = new Modelo();
+        $condicion = "rif='" . $rif . "' AND nombre_empresa='" . $nombre_empresa . "'";
+        if ($empresa->validarUsuarioExistente("empresa", "nombre_empresa='" . $nombre_empresa . "'")) {
+            header('location:' . ModeloController::paginaRegistroEmpresa());
+            echo "<script>alert('el nombre de la empresa: $empresa ya esta siendo utilizados');</script>";
+        } else {
+            $dato = $empresa->insertar("empresa", $data);
+            header('location:' . 'index.php?n=dashboard');
+        }
+    }
     //todo apartir de aqui es funciones de Login
     //va a la pagina de login
     static function paginaLogin()
@@ -66,11 +86,6 @@ class ModeloController
         }
     }
     //todo interfaz
-    
-    static function inicioAdmin()
-    {
-        require_once("views/admin/index.php");
-    }
     /*
     static function inicioSocio()
     {
@@ -78,11 +93,13 @@ class ModeloController
     }
     */
     //ir al inicio
-    static function dashboard(){
+    static function dashboard()
+    {
         require_once("views/admin/index.php");
     }
     //ir al calendario
-    static function calendario(){
+    static function calendario()
+    {
         require_once("views/calendario.php");
     }
 }

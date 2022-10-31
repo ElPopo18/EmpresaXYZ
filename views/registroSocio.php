@@ -6,19 +6,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Registro de socio</title>
-  <link rel="stylesheet" href="css/registro.css">
+  <link rel="stylesheet" href="views/css/registroSocio.css">
   <link rel="icon" href="views/img/calendario.png">
-  <script src="https://kit.fontawesome.com/2a47b8bfbb.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/1c51e264f0.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
 
   <form class="form">
     <div class="titulo-btn">
-      <a class="btn" href="index.php?n=principal"><i class="fa-solid fa-arrow-left"></i></a>
+      <a class="btn" href="index.php?n=dashboard"><i class="fa-solid fa-arrow-left"></i></a>
       <h2 class="titulo-form">Resgistrar Socio</h2>
     </div>
-    <!--<p class="parrafo">&iquest; Ya eres socio ? <a href="index.php?n=paginaLogin" class="form-link">Entra aqui para iniciar sesion</a></p>-->
+    <!--<p class="parrafo">&iquest; Ya eres socio ? <a href="index.php?n=paginaLoginSocio" class="form-link">Entra aqui para iniciar sesion</a></p>-->
     <div class="form_container">
       <div class="form_grupo">
         <input type="text" name="username" class="form_input" placeholder=" " required>
@@ -52,7 +52,7 @@
         </span>
       </div>
       <input type="submit" class="form_submit" value="Registrar">
-      <input type="hidden" name="n" value="registro">
+      <input type="hidden" name="n" value="registroSocio">
     </div>
   </form>
 </body>
