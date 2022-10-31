@@ -67,7 +67,12 @@ session_start();
                     </div>
                     <div class="registro__lista">
                         <ul>
-                            <li></li>
+                            <li>Ver calendario de reuniones</li>
+                            <li>Crear reuniones</li>
+                            <li>Editar fechas de reuniones</li>
+                            <li>Eliminar Reuniones</li>
+                            <li>Registrar, eliminar Socios</li>
+                            <li>Registrar, eliminar Empresas</li>
                         </ul>
                     </div>
                     <a href="index.php?n=paginaRegistroEmpresa" class="registro__btn">Una Empresa</a>
