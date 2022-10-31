@@ -76,4 +76,12 @@ class ModeloController
         require_once("views/socio/index.php");
     }
     */
+    //ir al inicio
+    static function dashboard(){
+        require_once("views/admin/index.php");
+    }
+    //ir al calendario
+    static function calendario(){
+        require_once("views/calendario.php");
+    }
 }
