@@ -15,7 +15,7 @@
     <form class="form">
         <div class="titulo-btn">
             <a class="btn" href="index.php?n=dashboard"><i class="fa-solid fa-arrow-left"></i></a>
-            <h2 class="titulo-form">Resgistrar Empresa</h2>
+            <h2 class="titulo-form">Registrar Empresa</h2>
         </div>
         <!--<p class="parrafo">&iquest; Ya tienes una empresa ? <a href="index.php?n=paginaLoginEmpresa" class="form-link">Entra aqui para iniciar sesion</a></p>-->
         <div class="form_container">
