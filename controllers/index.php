@@ -39,6 +39,7 @@ class ModeloController
             header('location:' . 'index.php?n=inicioAdmin');
         }
     }
+    
     //todo apartir de aqui es funciones de Login
     //va a la pagina de login
     static function paginaLogin()
