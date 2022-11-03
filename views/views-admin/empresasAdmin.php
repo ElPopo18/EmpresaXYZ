@@ -48,28 +48,30 @@ if (empty($_SESSION['username'])) {
             </nav>
             <div class="contenido__pagina">
                 <h2 class="tabla__titulo">Empresas Registradas</h2>
-                <table border="1" class="tabla">
-                    <thead>
-                        <tr>
-                            <th>Rif de la empresa</th>
-                            <th>Nombre de la empresa</th>
-                            <th colspan="2">Opciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        while ($row = $resultado->fetch_array()) { ?>
+                <div class="tabla_scroll">
+                    <table border="1" class="tabla">
+                        <thead>
                             <tr>
-                                <td><?php echo $row['rif_empresa']; ?></td>
-                                <td><?php echo $row['nombre_empresa'] ?></td>
-                                <td class="tabla__link"> <a  href="editar-inventario.php?id=<?php echo $row['rif_empresa']; ?>" class="editar">Editar</td>
-                                <td class="tabla__link"> <a  href="eliminar-inventario.php?id=<?php echo $row['rif_empresa']; ?>" class="eliminar">Eliminar</td>
+                                <th>Rif de la empresa</th>
+                                <th>Nombre de la empresa</th>
+                                <th colspan="2">Opciones</th>
                             </tr>
-
-                        <?php         } ?>
-                    </tbody>
-                </table>
-                <a href="index.php?n=paginaRegistroEmpresa" class="registro__btn">&iquest; Desea registrar una Empresa ?</a>
+                        </thead>
+                        <tbody>
+                            <?php
+                            while ($row = $resultado->fetch_array()) { ?>
+                                <tr>
+                                    <td><?php echo $row['rif_empresa']; ?></td>
+                                    <td><?php echo $row['nombre_empresa'] ?></td>
+                                    <td class="tabla__link"> <a  href="editar-inventario.php?id=<?php echo $row['rif_empresa']; ?>" class="editar">Editar</td>
+                                    <td class="tabla__link"> <a  href="eliminar-inventario.php?id=<?php echo $row['rif_empresa']; ?>" class="eliminar">Eliminar</td>
+                                </tr>
+    
+                            <?php         } ?>
+                        </tbody>
+                    </table>
+                    <a href="index.php?n=paginaRegistroEmpresa" class="registro__btn">&iquest; Desea registrar una Empresa ?</a>
+                </div>
             </div>
         </div>
     </div>

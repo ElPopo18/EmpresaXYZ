@@ -47,28 +47,30 @@ if (empty($_SESSION['username'])) {
             </nav>
             <div class="contenido__pagina">
                 <h2 class="tabla__titulo">Socios de la Empresa <?php echo $_SESSION['empresa'] ?></h2>
-                <table border="1" class="tabla">
-                    <thead>
-                        <tr>
-                            <th>Usuario</th>
-                            <th>Nombre</th>
-                            <th>Apellido</th>
-                            <th>Cedula</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        while ($row = $resultado->fetch_array()) { ?>
+                <div class="tabla_scroll">
+                    <table border="1" class="tabla">
+                        <thead>
                             <tr>
-                                <td><?php echo $row['username']; ?></td>
-                                <td><?php echo $row['nombre_soc'] ?></td>
-                                <td><?php echo $row['apellido_soc'] ?></td>
-                                <td><?php echo $row['ced_socio'] ?></td>
+                                <th>Usuario</th>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Cedula</th>
                             </tr>
-
-                        <?php         } ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php
+                            while ($row = $resultado->fetch_array()) { ?>
+                                <tr>
+                                    <td><?php echo $row['username']; ?></td>
+                                    <td><?php echo $row['nombre_soc'] ?></td>
+                                    <td><?php echo $row['apellido_soc'] ?></td>
+                                    <td><?php echo $row['ced_socio'] ?></td>
+                                </tr>
+    
+                            <?php         } ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 </body>
 
