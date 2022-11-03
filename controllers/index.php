@@ -17,12 +17,12 @@ class ModeloController
     // va a la pagina de registrar socio
     static function paginaRegistroSocio()
     {
-        require_once("views/registroSocio.php");
+        require_once("views/admin/registroSocio.php");
     }
     //va a la pagina de registrar una empresa
     static function paginaRegistroEmpresa()
     {
-        require_once("views/registroEmpresa.php");
+        require_once("views/admin/registroEmpresa.php");
     }
     //  Guardar datos de un usuario socio
     static function registroSocio()
@@ -101,5 +101,17 @@ class ModeloController
     static function calendario()
     {
         require_once("views/calendario.php");
+    }
+    //reuniones
+    static function reuniones(){
+        require_once("views/reuniones.php");
+    }
+    //empresas
+    static function empresas(){
+        require_once("views/empresas.php");
+    }
+    //reuniones
+    static function socios(){
+        require_once("views/socios.php");
     }
 }

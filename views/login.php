@@ -8,11 +8,11 @@
   <title>Inicio de socio</title>
   <link rel="icon" href="views/img/calendario.png">
   <link rel="stylesheet" href="views/css/login.css">
-  <script src="https://kit.fontawesome.com/2a47b8bfbb.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/1c51e264f0.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-  <form class="form" autocomplete="off">
+  <form class="form" action="">
     <div class="titulo-btn">
       <a class="btn" href="index.php?n=principal"><i class="fa-solid fa-arrow-left"></i></a>
       <h2 class="titulo-form">Iniciar Sesion</h2>
