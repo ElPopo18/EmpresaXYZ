@@ -1,6 +1,4 @@
 <?php
-    $server = "localhost";
-    $user = "root";
-    $pass = "";
-    $db = "consorcio";
-    $conexion = new mysqli($server,$user,$pass,$db);
+    $conexion = new mysqli("localhost","root","","consorcio");
+    $conexion->set_charset("utf8");
+
