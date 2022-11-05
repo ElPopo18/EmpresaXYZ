@@ -18,7 +18,7 @@ if (empty($_SESSION['username'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Empresas</title>
     <link rel="icon" href="views/img/calendario.png">
-    <link rel="stylesheet" href="views/css/empresaAdmin.css">
+    <link rel="stylesheet" href="views/views-admin/css/empresaAdmin.css">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
 </head>
@@ -61,10 +61,10 @@ if (empty($_SESSION['username'])) {
                             <?php
                             while ($row = $resultado->fetch_array()) { ?>
                                 <tr>
-                                    <td><?php echo $row['rif_empresa']; ?></td>
+                                    <td><?php echo $row['id_empresa']; ?></td>
                                     <td><?php echo $row['nombre_empresa'] ?></td>
-                                    <td class="tabla__link"> <a  href="editar-inventario.php?id=<?php echo $row['rif_empresa']; ?>" class="editar">Editar</td>
-                                    <td class="tabla__link"> <a  href="eliminar-inventario.php?id=<?php echo $row['rif_empresa']; ?>" class="eliminar">Eliminar</td>
+                                    <td class="tabla__link"> <a  class="editar">Editar</td>
+                                    <td class="tabla__link"> <a  class="eliminar">Eliminar</td>
                                 </tr>
     
                             <?php         } ?>

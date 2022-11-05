@@ -18,7 +18,7 @@ if (empty($_SESSION['username'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Socios</title>
     <link rel="icon" href="views/img/calendario.png">
-    <link rel="stylesheet" href="views/css/sociosAdmin.css">
+    <link rel="stylesheet" href="views/views-admin/css/sociosAdmin.css">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
 </head>
@@ -48,35 +48,37 @@ if (empty($_SESSION['username'])) {
             </nav>
             <div class="contenido__pagina">
                 <h2 class="tabla__titulo">Socios Registrados</h2>
-                <table border="1" class="tabla">
-                    <thead>
-                        <tr>
-                            <th>Usuario</th>
-                            <th>Nombre</th>
-                            <th>Apellido</th>
-                            <th>Cedula</th>
-                            <th>Empresa</th>
-                            <th>Cargo</th>
-                            <th colspan="2">Opciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        while ($row = $resultado->fetch_array()) { ?>
+                <div class="tabla_scroll">
+                    <table border="1" class="tabla">
+                        <thead>
                             <tr>
-                                <td><?php echo $row['username']; ?></td>
-                                <td><?php echo $row['nombre_soc'] ?></td>
-                                <td><?php echo $row['apellido_soc'] ?></td>
-                                <td><?php echo $row['ced_socio'] ?></td>
-                                <td><?php echo $row['nombre_empresa']?></td>
-                                <td><?php echo $row['cargo'] ?></td>
-                                <td class="tabla__link"> <a  href="editar-inventario.php?id=<?php echo $row['ced_socio']; ?>" class="editar">Editar</td>
-                                <td class="tabla__link"> <a  href="eliminar-inventario.php?id=<?php echo $row['ced_socio']; ?>" class="eliminar">Eliminar</td>
+                                <th>Usuario</th>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Cedula</th>
+                                <th>Empresa</th>
+                                <th>Cargo</th>
+                                <th colspan="2">Opciones</th>
                             </tr>
-
-                        <?php         } ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php
+                            while ($row = $resultado->fetch_array()) { ?>
+                                <tr>
+                                    <td><?php echo $row['username']; ?></td>
+                                    <td><?php echo $row['nombre_soc'] ?></td>
+                                    <td><?php echo $row['apellido_soc'] ?></td>
+                                    <td><?php echo $row['ced_socio'] ?></td>
+                                    <td><?php echo $row['nombre_empresa']?></td>
+                                    <td><?php echo $row['cargo'] ?></td>
+                                    <td class="tabla__link"> <a  href="editar-inventario.php?id=<?php echo $row['ced_socio']; ?>" class="editar">Editar</td>
+                                    <td class="tabla__link"> <a  href="eliminar-inventario.php?id=<?php echo $row['ced_socio']; ?>" class="eliminar">Eliminar</td>
+                                </tr>
+    
+                            <?php         } ?>
+                        </tbody>
+                    </table>
+                </div>
                 <a href="index.php?n=paginaRegistroSocio" class="registro__btn">&iquest; Desea registrar un Socio ?</a>
             </div>
         </div>

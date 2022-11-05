@@ -61,6 +61,7 @@ class ModeloController
             header('location:' . 'index.php?n=inicioAdmin');
         }
     }
+    //
     //va a la pagina de login
     static function paginaLogin()
     {
@@ -85,7 +86,7 @@ class ModeloController
     }
     static function calendarioAdmin()
     {
-        require_once("views/views-admin/calendarioAdmin.php");
+        require_once("views/views-admin/calendario2.php");
     }
     //todo fin interfaz del admin
 

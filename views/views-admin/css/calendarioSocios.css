@@ -1,0 +1,210 @@
+@import url("https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap");
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: "Hammersmith One";
+}
+
+#container{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+}
+/*? inicio header*/
+#header{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 18%;
+    background-color: #02082d;
+}
+
+.titulo{
+    display: flex;
+    align-items: center;
+    color: #fff;
+    font-size: 25px;
+    margin-top: 20%;
+    margin-bottom: 50px;
+}
+.logo{
+    position: relative;
+    width: 40px;
+    height: 40px;
+    margin-right: 12px;
+}
+
+.lateral{
+    /*margin-top: 20%;*/
+    width: 80%;
+}
+
+.lateral ul{
+    list-style: none;
+}
+
+.lateral ul li{
+    padding-bottom: 20px;
+
+}
+
+.lateral a{
+    display: block;
+    padding: 20px;
+    text-align: center;
+    font-size: 20px;
+    color: #fff;
+    transition: all 300ms;
+    cursor: pointer;
+    text-decoration: none;
+    border-left: 5px solid transparent;
+    
+}
+.lateral a:hover{
+    border-left: 5px solid #c7C7C7;
+    background-color: #233077;
+}
+
+
+/*? fin header*/
+
+#contenido{
+    display: flex;
+    flex-direction: column;
+    background-color: #00106b;
+    padding: 30px;
+    width: 82%;
+}
+
+/*? inicio barra superior*/
+#navbar{
+    flex-basis: 6%;
+    background-color: #00106b;
+    margin-top: 1%;
+    margin-bottom: 30px;
+}
+
+#navbar > ul{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+    list-style: none;
+    font-size: 20px;
+}
+#navbar img{
+    border-radius: 60px;
+    width: 50px;
+    height: 50px;
+}
+#navbar a{
+    color: #fff;
+    padding: 10px;
+    text-decoration: none;
+    transition: all 300ms;
+
+}
+#navbar a:hover{
+    border-radius: 10px;
+    background-color: #4f5ca3;
+}
+
+#navbar li{
+    color: #fff;
+}
+.ajustar{
+    display: contents;
+}
+
+.username{
+    font-size: 18px;
+    font-family: arial;
+}
+.cargo{
+    font-size: 12px;
+}
+.margin-right{
+    margin-right: 15px;
+}
+#navbar img{
+    margin-right: 15px;
+}
+#navbar i{
+    position: relative;
+    top: 5px;
+}
+
+/*? fin barra superior*/
+
+/*? inicio contenido de la pagina*/
+.contenido__pagina{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    flex-basis: 94%;
+    opacity: 0.9;
+    background-image: radial-gradient(#0c2176 0.5px, transparent 0.5px),radial-gradient(#0c2176 0.5px, #e5e5f7 0.5px);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+    border-radius: 10px;
+}
+
+.registro{
+    flex-basis: 40%;
+    margin: 40px;
+    border: 1px solid #ccc;
+    opacity: 0.9;
+    background-image: radial-gradient(#0c2176 0.5px, transparent 0.5px),radial-gradient(#0c2176 0.5px, #e5e5f7 0.5px);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+    border-radius: 10px;
+}
+
+.registro__titulos{
+    color: #0c2176;
+    font-size: 25px;
+    font-family: "Hammersmith One";
+    text-align: center;
+    padding: 30px 0px;
+}
+h3{
+    text-align: center;
+    color: #0c2176;
+    margin-bottom: 30px;
+}
+
+.registro__lista{
+    font-size: 19px;
+    margin: 0px 16%;
+    color:#0c2176;
+    margin-bottom: 30px;
+}
+
+.registro__btn__container {
+    height: 40px;
+    width: 150px;
+
+}
+
+.registro__btn{
+    display: block;
+    background-color: #00106b;
+    margin: 30px auto;
+    text-align: center;
+    border-radius: 10px;
+    transition: all 0.3s;
+    height: 40px;
+    width: 150px;
+    line-height: 40px;
+    color: #fff;
+    text-decoration: none;
+}
+.registro__btn:hover {
+    background-color: #02082d;
+}
+
+/*? fin contenido de la pagina*/

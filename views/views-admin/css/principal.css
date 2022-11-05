@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap");
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  font-family: "Hammersmith One";
+}
+#contenedor-general {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #000000 0%, #1221ac 49.48%, #0075ff 100%);
+  width: 100%;
+}
+.contenedor-divisor {
+  width: 58%;
+  min-height: 100vh;
+}
+.contenedor {
+  padding: 7rem;
+}
+.titulo {
+  width: 420px;
+  font-size: 2rem;
+  color: #0c2176;
+  font-family: "Hammersmith One";
+  margin-bottom: 3rem;
+  background-color: #e5e5f7;
+  opacity: 0.9;
+  background-image: radial-gradient(#0c2176 0.5px, transparent 0.5px),radial-gradient(#0c2176 0.5px, #e5e5f7 0.5px);
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
+  border-radius: 10px;
+  padding: 10px;
+}
+h2 {
+  color: #fff;
+  width: 340px;
+  font-size: 55px;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  font-family: "Hammersmith One", sans-serif;
+}
+p {
+  color: #fff;
+  width: 340px;
+  font-size: 20px;
+  margin-bottom: 1.5rem;
+  font-family: "Hammersmith One", sans-serif;
+}
+a {
+  position: relative;
+  display: inline-block;
+  margin-right: 1rem;
+  box-sizing: border-box;
+  width: 152px;
+  height: 45px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.63);
+  border: 1px solid #000000;
+  border-radius: 50px;
+  font-family: "Hammersmith One", sans-serif;
+  font-size: 18px;
+  transition: all 0.5s;
+  line-height: 45px;
+  text-align: center;
+  text-decoration: none;
+}
+a:hover {
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid #000000;
+}
+img {
+  position: absolute;
+  left: 58.1%;
+  top: 0px;
+  opacity: 0.5;
+  height: 100%;
+  width: 41.9%;
+}

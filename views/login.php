@@ -9,6 +9,7 @@
   <link rel="icon" href="views/img/calendario.png">
   <link rel="stylesheet" href="views/css/login.css">
   <script src="https://kit.fontawesome.com/1c51e264f0.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="/views/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -32,7 +33,6 @@
         <label for="password" class="form_label">Cedula:</label>
         <span class="form_line"></span>
       </div>
-      
       <input name="btn_ingresar" type="submit" class="form_submit" value="Iniciar Sesion">
     </div>
   </form>
