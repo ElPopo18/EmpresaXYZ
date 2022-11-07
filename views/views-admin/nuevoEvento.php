@@ -1,7 +1,6 @@
 
 <?php
-    $conexion = new mysqli("localhost","root","","consorcio");
-    $conexion->set_charset("utf8");
+require("config.php");
 $nombre_empresa = ucwords($_REQUEST['nombre_empresa']);
 $evento = ucwords($_REQUEST['evento']);
 $f_inicio = $_REQUEST['fecha_inicio'];

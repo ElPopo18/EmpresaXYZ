@@ -3,7 +3,7 @@
 date_default_timezone_set("America/Bogota");
 setlocale(LC_ALL,"es_ES");
 
-include('./config/conexion.php');
+require("config.php");
                         
 $nombre_empresa = $_POST['nombre_empresa'];
 $evento = ucwords($_REQUEST['evento']);
