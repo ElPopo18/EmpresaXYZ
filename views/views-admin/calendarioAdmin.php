@@ -10,7 +10,7 @@ $resulEventos = mysqli_query($conexion, $SqlEventos);
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -22,11 +22,11 @@ $resulEventos = mysqli_query($conexion, $SqlEventos);
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
     <!--calendario-->
+    <link rel="stylesheet" type="text/css" href="views/views-admin/css/fullcalendar.min.css">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="views/views-admin/css/fullcalendar.min.css">
     <link rel="stylesheet" type="text/css" href="views/views-admin/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="views/views-admin/css/home.css">
+    <link rel="stylesheet" href="views/views-admin/css/home.css">
 </head>
 
 <body>
@@ -48,39 +48,28 @@ $resulEventos = mysqli_query($conexion, $SqlEventos);
                 <ul>
                     <li><a href="index.php?n=principal"><i class="fi fi-rr-settings"></i></a></li>
                     <li class="margin-right"><a href="controllers/controladorCerrarSesion.php"><i class="fi fi-sr-exit"></i></a></li>
-
                     <li class="ajustar"><img src="https://i.scdn.co/image/ab67616d00001e0249d694203245f241a1bcaa72"><span class="username"><?php echo $_SESSION['username'] ?><p class="cargo"><?php echo $_SESSION['cargo'] ?></p></span></li>
                 </ul>
             </nav>
             <div class="contenido__pagina">
-                <div class="mt-5"></div>
-
                 <div class="container">
-                    <div class="col msjs">
-                        <?php
-                        include('msjs.php');
-                        ?>
-                    </div>
+                        <div class="col msjs">
+                            <?php
+                            include('msjs.php');
+                            ?>
+                        </div>
                 </div>
-
-                <div id="calendar"></div>
-
-
+                <div id="calendar" style="color: #00106b;"></div>
                 <?php
                 include('modalNuevoEvento.php');
                 include('modalUpdateEvento.php');
                 ?>
-
-
-
                 <script src="js/jquery-3.0.0.min.js"> </script>
                 <script src="js/popper.min.js"></script>
                 <script src="js/bootstrap.min.js"></script>
-
                 <script type="text/javascript" src="js/moment.min.js"></script>
                 <script type="text/javascript" src="js/fullcalendar.min.js"></script>
                 <script src='locales/es.js'></script>
-
                 <script type="text/javascript">
                     $(document).ready(function() {
                         $("#calendar").fullCalendar({
@@ -196,9 +185,13 @@ $resulEventos = mysqli_query($conexion, $SqlEventos);
 
                     });
                 </script>
+
+
+
             </div>
         </div>
     </div>
+
 </body>
 
 </html>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-11-2022 a las 06:15:51
+-- Tiempo de generación: 07-11-2022 a las 05:35:50
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -37,19 +37,9 @@ CREATE TABLE `empresa` (
 --
 
 INSERT INTO `empresa` (`id_empresa`, `nombre_empresa`) VALUES
-(25, 'anibal');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `empresa_has_socio`
---
-
-CREATE TABLE `empresa_has_socio` (
-  `id_empresoc` int(25) NOT NULL,
-  `id_empresa` int(25) NOT NULL,
-  `id_socio` int(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+(0, 'xzc'),
+(25, 'anibal'),
+(532, 'ljfjdk');
 
 -- --------------------------------------------------------
 
@@ -59,6 +49,7 @@ CREATE TABLE `empresa_has_socio` (
 
 CREATE TABLE `eventos_tablas` (
   `id` int(25) NOT NULL,
+  `id_empresa` varchar(25) NOT NULL,
   `evento` varchar(20) NOT NULL,
   `color_evento` varchar(20) NOT NULL,
   `fecha_inicio` varchar(20) NOT NULL,
@@ -111,7 +102,11 @@ CREATE TABLE `socio` (
 --
 
 INSERT INTO `socio` (`ced_socio`, `nombre_soc`, `apellido_soc`, `username`, `cargo`, `nombre_empresa`) VALUES
-(27922803, 'admin', 'admin', 'admin', 'Administrador', '');
+(7, 'Aniba;', 'Lopez', 'Anibal', 'Socio', 'xzc'),
+(45, 'dfsf', 'dfs', 'kdash', 'Socio', 'xzc'),
+(65, 'cs', 'dsd', 'ds', 'Socio', 'xzc'),
+(27922803, 'admin', 'admin', 'admin', 'Administrador', ''),
+(28518451, 'Anibal', 'Lopez', 'Anibal Lopez', 'Administrador', 'xzc');
 
 -- --------------------------------------------------------
 
@@ -139,7 +134,8 @@ ALTER TABLE `empresa`
 -- Indices de la tabla `eventos_tablas`
 --
 ALTER TABLE `eventos_tablas`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_empresa` (`id_empresa`);
 
 --
 -- Indices de la tabla `punto`
