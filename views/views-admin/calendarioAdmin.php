@@ -26,7 +26,7 @@ $resulEventos = mysqli_query($conexion, $SqlEventos);
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="views/views-admin/css/bootstrap.min.css">
-    <link rel="stylesheet" href="views/views-admin/css/home.css">
+    <link rel="stylesheet" href="views/views-admin/css/estiloCalendario.css">
 </head>
 
 <body>
@@ -59,7 +59,7 @@ $resulEventos = mysqli_query($conexion, $SqlEventos);
                             ?>
                         </div>
                 </div>
-                <div id="calendar" style="color: #00106b;"></div>
+                <div id="calendar"></div>
                 <?php
                 include('modalNuevoEvento.php');
                 include('modalUpdateEvento.php');
