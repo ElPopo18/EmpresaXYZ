@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-11-2022 a las 05:35:50
+-- Tiempo de generación: 07-11-2022 a las 06:44:20
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -49,7 +49,7 @@ INSERT INTO `empresa` (`id_empresa`, `nombre_empresa`) VALUES
 
 CREATE TABLE `eventos_tablas` (
   `id` int(25) NOT NULL,
-  `id_empresa` varchar(25) NOT NULL,
+  `nombre_empresa` varchar(25) NOT NULL,
   `evento` varchar(20) NOT NULL,
   `color_evento` varchar(20) NOT NULL,
   `fecha_inicio` varchar(20) NOT NULL,
@@ -135,7 +135,8 @@ ALTER TABLE `empresa`
 --
 ALTER TABLE `eventos_tablas`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_empresa` (`id_empresa`);
+  ADD KEY `id_empresa` (`nombre_empresa`),
+  ADD KEY `nombre_empresa` (`nombre_empresa`);
 
 --
 -- Indices de la tabla `punto`

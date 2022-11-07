@@ -3,7 +3,7 @@ session_start();
 if (empty($_SESSION['username'])) {
     header('location: index.php?n=paginaLogin');
 }
-include('config/conexion.php');
+require("./config/conexion.php");
 
 $SqlEventos   = ("SELECT * FROM eventos_tablas");
 $resulEventos = mysqli_query($conexion, $SqlEventos);
@@ -53,11 +53,13 @@ $resulEventos = mysqli_query($conexion, $SqlEventos);
             </nav>
             <div class="contenido__pagina">
                 <div class="container">
+                    <div class="row">
                         <div class="col msjs">
                             <?php
                             include('msjs.php');
                             ?>
                         </div>
+                    </div>
                 </div>
                 <div id="calendar"></div>
                 <?php
@@ -102,7 +104,7 @@ $resulEventos = mysqli_query($conexion, $SqlEventos);
                             events: [
                                 <?php
                                 while ($dataEvento = mysqli_fetch_array($resulEventos)) { ?> {
-                                        _id: '<?php echo $dataEvento['id']; ?>',
+                                        nombre_empresa: '<?php echo $dataEvento['nombre_empresa'] ?>',
                                         title: '<?php echo $dataEvento['evento']; ?>',
                                         start: '<?php echo $dataEvento['fecha_inicio']; ?>',
                                         end: '<?php echo $dataEvento['fecha_fin']; ?>',
@@ -169,7 +171,6 @@ $resulEventos = mysqli_query($conexion, $SqlEventos);
                                 $('input[name=evento').val(event.title);
                                 $('input[name=fecha_inicio').val(event.start.format('DD-MM-YYYY'));
                                 $('input[name=fecha_fin').val(event.end.format("DD-MM-YYYY"));
-
                                 $("#modalUpdateEvento").modal();
                             },
 

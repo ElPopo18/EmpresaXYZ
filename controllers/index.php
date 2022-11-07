@@ -1,6 +1,4 @@
 <?php
-require 'models/index.php';
-
 class ModeloController
 {
     private $model;
@@ -34,10 +32,10 @@ class ModeloController
         $username = $_REQUEST['username'];
         $cargo = $_REQUEST['cargo'];
         $empresa = $_REQUEST['nombre_empresa'];
-        $data = "'" . $ced_socio . "','" . $nombre_soc . "','" . $apellido_soc . "','" . $username . "','" . $cargo . "','".$empresa."'";
+        $data = "'" . $ced_socio . "','" . $nombre_soc . "','" . $apellido_soc . "','" . $username . "','" . $cargo . "','" . $empresa . "'";
         $usuario = new Modelo();
         $condicion = "ced_socio='" . $ced_socio . "' AND nombre_soc='" . $nombre_soc . "' AND apellido_soc='" . $apellido_soc . "' AND username='" . $username . "' AND
-        cargo='" . $cargo . "' AND nombre_empresa='".$empresa."'";
+        cargo='" . $cargo . "' AND nombre_empresa='" . $empresa . "'";
 
         if ($usuario->validarUsuarioExistente("socio", "username='" . $username . "'", "cargo='" . $cargo . "'")) {
             header('location:' . 'index.php?n=paginaRegistroSocio');
@@ -61,7 +59,6 @@ class ModeloController
             header('location:' . 'index.php?n=inicioAdmin');
         }
     }
-    //
     //va a la pagina de login
     static function paginaLogin()
     {
@@ -73,15 +70,18 @@ class ModeloController
         require_once("views/views-admin/indexAdmin.php");
     }
     //empresas
-    static function empresasAdmin(){
+    static function empresasAdmin()
+    {
         require_once("views/views-admin/empresasAdmin.php");
     }
     //reuniones
-    static function reunionesAdmin(){
+    static function reunionesAdmin()
+    {
         require_once("views/views-admin/reunionesAdmin.php");
     }
     //reuniones
-    static function sociosAdmin(){
+    static function sociosAdmin()
+    {
         require_once("views/views-admin/sociosAdmin.php");
     }
     static function calendarioAdmin()
@@ -92,13 +92,16 @@ class ModeloController
 
     //todo interfaz del socio
 
-    static function calendarioSocio(){
+    static function calendarioSocio()
+    {
         require_once("views/views-socio/calendarioSocios.php");
     }
-    static function reunionesSocio(){
+    static function reunionesSocio()
+    {
         require_once("views/views-socio/reunionesSocios.php");
     }
-    static function sociosSocio(){
+    static function sociosSocio()
+    {
         require_once("views/views-socio/sociosSocios.php");
     }
     //todo fin interfaz del socio
