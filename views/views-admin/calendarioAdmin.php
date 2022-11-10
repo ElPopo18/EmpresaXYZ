@@ -5,8 +5,8 @@ if (empty($_SESSION['username'])) {
 }
 include("config.php");
 
-$SqlEventos   = ("SELECT * FROM reunion");
-$resulEventos = mysqli_query($conexion, $SqlEventos);
+$SqlReunions   = ("SELECT * FROM reunion");
+$resulReunions = mysqli_query($conexion, $SqlReunions);
 
 ?>
 <!DOCTYPE html>
@@ -91,7 +91,7 @@ $resulEventos = mysqli_query($conexion, $SqlEventos);
                             selectable: true,
                             selectHelper: false,
 
-                            //Nuevo Evento
+                            //Nuevo Reunion
                             select: function(start, end) {
                                 $("#exampleModal").modal();
                                 $("input[name=fecha_inicio]").val(start.format('DD-MM-YYYY'));
@@ -104,27 +104,27 @@ $resulEventos = mysqli_query($conexion, $SqlEventos);
 
                             events: [
                                 <?php
-                                while ($dataEvento = mysqli_fetch_array($resulEventos)) { ?> {
-                                        _id_reunion: '<?php echo $dataEvento['id_reunion'] ?>',
-                                        title: '<?php echo $dataEvento['nombre_empresa']; ?>',
-                                        start: '<?php echo $dataEvento['fecha_inicio']; ?>',
-                                        end: '<?php echo $dataEvento['fecha_fin']; ?>',
-                                        color: '<?php echo $dataEvento['color_reunion']; ?>'
+                                while ($dataReunion = mysqli_fetch_array($resulReunions)) { ?> {
+                                        _id_reunion: '<?php echo $dataReunion['id_reunion'] ?>',
+                                        title: '<?php echo $dataReunion['nombre_empresa']; ?>',
+                                        start: '<?php echo $dataReunion['fecha_inicio']; ?>',
+                                        end: '<?php echo $dataReunion['fecha_fin']; ?>',
+                                        color: '<?php echo $dataReunion['color_reunion']; ?>'
                                     },
                                 <?php } ?>
                             ],
 
 
-                            //Eliminar Evento
+                            //Eliminar Reunion
                             eventRender: function(event, element) {
                                 element
                                     .find(".fc-content")
                                     .prepend("<span id='btnCerrar'; class='closeon material-icons'>&#xe5cd;</span>");
 
-                                //Eliminar evento
+                                //Eliminar Reunion
                                 element.find(".closeon").on("click", function() {
 
-                                    var pregunta = confirm("Deseas Borrar este Evento?");
+                                    var pregunta = confirm("Deseas Borrar esta Reunion?");
                                     if (pregunta) {
 
                                         $("#calendar").fullCalendar("removeEvents", event._id_reunion);
@@ -149,7 +149,7 @@ $resulEventos = mysqli_query($conexion, $SqlEventos);
                             },
 
 
-                            //Moviendo Evento Drag - Drop
+                            //Moviendo Reunion Drag - Drop
                             eventDrop: function(event, delta) {
                                 var id_reunion = event._id_reunion;
                                 var start = (event.start.format('DD-MM-YYYY'));
@@ -164,7 +164,7 @@ $resulEventos = mysqli_query($conexion, $SqlEventos);
                                     }
                                 });
                             },
-                            //Modificar Evento del Calendario 
+                            //Modificar Reunion del Calendario 
                             eventClick: function(event) {
                                 var id_reunion = event._id_reunion;
                                 $('input[name=id_reunion').val(id_reunion);

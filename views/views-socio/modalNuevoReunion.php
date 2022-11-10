@@ -7,13 +7,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form name="formEvento" id="formEvento" action="views/views-admin/nuevoEvento.php" class="form-horizontal" method="POST">
-        <div class="form-group">
-          <label for="evento" class="col-sm-12 control-label">Nombre De La Reunion</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" name="evento" id="evento" placeholder="Nombre De La Reunion" required />
-          </div>
-        </div>
+      <form name="formEvento" id="formEvento" action="views/views-admin/nuevaReunion.php" class="form-horizontal" method="POST">
         <div class="form-group">
           <label for="nombre_empresa" class="col-sm-12 control-label">Nombre de la empresa</label>
           <div class="col-sm-10">
@@ -35,22 +29,22 @@
 
         <div class="col-md-12" id="grupoRadio">
 
-          <input type="radio" name="color_evento" id="orange" value="#FF5722" checked>
+          <input type="radio" name="color_reunion" id="orange" value="#FF5722" checked>
           <label for="orange" class="circu" style="background-color: #FF5722;"> </label>
 
-          <input type="radio" name="color_evento" id="amber" value="#FFC107">
+          <input type="radio" name="color_reunion" id="amber" value="#FFC107">
           <label for="amber" class="circu" style="background-color: #FFC107;"> </label>
 
-          <input type="radio" name="color_evento" id="lime" value="#8BC34A">
+          <input type="radio" name="color_reunion" id="lime" value="#8BC34A">
           <label for="lime" class="circu" style="background-color: #8BC34A;"> </label>
 
-          <input type="radio" name="color_evento" id="teal" value="#009688">
+          <input type="radio" name="color_reunion" id="teal" value="#009688">
           <label for="teal" class="circu" style="background-color: #009688;"> </label>
 
-          <input type="radio" name="color_evento" id="blue" value="#2196F3">
+          <input type="radio" name="color_reunion" id="blue" value="#2196F3">
           <label for="blue" class="circu" style="background-color: #2196F3;"> </label>
 
-          <input type="radio" name="color_evento" id="indigo" value="#9c27b0">
+          <input type="radio" name="color_reunion" id="indigo" value="#9c27b0">
           <label for="indigo" class="circu" style="background-color: #9c27b0;"> </label>
 
         </div>

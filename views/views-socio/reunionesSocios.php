@@ -3,6 +3,11 @@ session_start();
 if (empty($_SESSION['username'])) {
     header('location: index.php?n=paginaLogin');
 }
+$incluir = include('config/conexion.php');
+if ($incluir) {
+    $consulta = "SELECT *  FROM reunion WHERE nombre_empresa like '$_SESSION[empresa]'";
+    $resultado = mysqli_query($conexion, $consulta);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,6 +47,32 @@ if (empty($_SESSION['username'])) {
                 </ul>
             </nav>
             <div class="contenido__pagina">
+            <h2 class="tabla__titulo">Reuniones de la Empresa <?php echo $_SESSION['empresa'] ?></h2>
+                <div class="tabla_scroll">
+                    <table border="1" class="tabla">
+                        <thead>
+                            <tr>
+                            <th>Id</th>
+                                <th>Nombre Empresa</th>
+                                <th>color</th>
+                                <th>Fecha de inicio</th>
+                                <th>Fecha de fin</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            while ($row = $resultado->fetch_array()) { ?>
+                                <tr>
+                                <td><?php echo $row['id_reunion']; ?></td>
+                                    <td><?php echo $row['nombre_empresa'] ?></td>
+                                    <td><?php echo $row['color_reunion'] ?></td>
+                                    <td><?php echo $row['fecha_inicio'] ?></td>
+                                    <td><?php echo $row['fecha_fin']?></td>
+                                </tr>
+                            <?php         } ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 </body>
 

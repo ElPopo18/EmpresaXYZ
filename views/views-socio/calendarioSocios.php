@@ -3,25 +3,36 @@ session_start();
 if (empty($_SESSION['username'])) {
     header('location: index.php?n=paginaLogin');
 }
+
+$incluir = include('config/conexion.php');
+if ($incluir) {
+    /*? socios de la empresa*/
+    $consulta = "SELECT *  FROM socio WHERE nombre_empresa LIKE '$_SESSION[empresa]'";
+    $resultado = mysqli_query($conexion, $consulta);
+    
+    /*? calendario de la empresa*/
+    $SqlReunions   = ("SELECT * FROM reunion WHERE nombre_empresa LIKE '$_SESSION[empresa]'");
+    $resulReunions = mysqli_query($conexion, $SqlReunions);
+}
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendario Socio</title>
+    <title>Calendario de Reuniones</title>
     <link rel="icon" href="views/img/calendario.png">
     <link rel="stylesheet" href="views/views-socio/css/calendarioSocios.css">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
     <script defer src="js/activarPagina.js"></script>
     <!--calendario-->
+    <link rel="stylesheet" type="text/css" href="views/css/fullcalendar.min.css">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="views/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="views/css/fullcalendar.min.css">
     <link rel="stylesheet" href="views/css/estiloCalendario.css">
 </head>
 
@@ -31,7 +42,6 @@ if (empty($_SESSION['username'])) {
             <h1 class="titulo"><img src="views/img/calendario.png" class="logo">EmpresaXYZ</h1>
             <aside class="lateral">
                 <ul>
-                    <li><a href="#">Agregar puntos</a></li>
                     <li><a href="index.php?n=calendarioSocio" class="active">Calendario</a></li>
                     <li><a href="index.php?n=reunionesSocio">Reuniones</a></li>
                     <li><a href="index.php?n=sociosSocio">Socios</a></li>
@@ -40,6 +50,9 @@ if (empty($_SESSION['username'])) {
         </header>
         <div id="contenido">
             <nav id="navbar">
+                <div class="navbar__nombre__empresa">
+                    <h2 class="nombre_empresa">Calendario de la empresa <?php echo $_SESSION['empresa'];?></h2>
+                </div>
                 <ul>
                     <li><a href="index.php?n=principal"><i class="fi fi-rr-settings"></i></a></li>
                     <li class="margin-right"><a href="controllers/controladorCerrarSesion.php"><i class="fi fi-sr-exit"></i></a></li>
@@ -58,8 +71,8 @@ if (empty($_SESSION['username'])) {
                 </div>
                 <div id="calendar"></div>
                 <?php
-                include('modalNuevoEvento.php');
-                include('modalUpdateEvento.php');
+                include('modalNuevoReunion.php');
+                include('modalUpdateReunion.php');
                 ?>
                 <script src="js/jquery-3.0.0.min.js"> </script>
                 <script src="js/popper.min.js"></script>
@@ -85,7 +98,7 @@ if (empty($_SESSION['username'])) {
                             selectable: true,
                             selectHelper: false,
 
-                            //Nuevo Evento
+                            //Nuevo Reunion
                             select: function(start, end) {
                                 $("#exampleModal").modal();
                                 $("input[name=fecha_inicio]").val(start.format('DD-MM-YYYY'));
@@ -98,36 +111,36 @@ if (empty($_SESSION['username'])) {
 
                             events: [
                                 <?php
-                                while ($dataEvento = mysqli_fetch_array($resulEventos)) { ?> {
-                                        _nombre_empresa: '<?php echo $dataEvento['nombre_empresa'] ?>',
-                                        title: '<?php echo $dataEvento['evento']; ?>',
-                                        start: '<?php echo $dataEvento['fecha_inicio']; ?>',
-                                        end: '<?php echo $dataEvento['fecha_fin']; ?>',
-                                        color: '<?php echo $dataEvento['color_evento']; ?>'
+                                while ($dataReunion = mysqli_fetch_array($resulReunions)) { ?> {
+                                        _id_reunion: '<?php echo $dataReunion['id_reunion'] ?>',
+                                        title: '<?php echo $dataReunion['nombre_empresa']; ?>',
+                                        start: '<?php echo $dataReunion['fecha_inicio']; ?>',
+                                        end: '<?php echo $dataReunion['fecha_fin']; ?>',
+                                        color: '<?php echo $dataReunion['color_reunion']; ?>'
                                     },
                                 <?php } ?>
                             ],
 
 
-                            //Eliminar Evento
+                            //Eliminar Reunion
                             eventRender: function(event, element) {
                                 element
                                     .find(".fc-content")
                                     .prepend("<span id='btnCerrar'; class='closeon material-icons'>&#xe5cd;</span>");
 
-                                //Eliminar evento
+                                //Eliminar Reunion
                                 element.find(".closeon").on("click", function() {
 
-                                    var pregunta = confirm("Deseas Borrar este Evento?");
+                                    var pregunta = confirm("Deseas Borrar esta Reunion?");
                                     if (pregunta) {
 
-                                        $("#calendar").fullCalendar("removeEvents", event._nombre_empresa);
+                                        $("#calendar").fullCalendar("removeEvents", event._id_reunion);
 
                                         $.ajax({
                                             type: "POST",
-                                            url: './deleteEvento.php',
+                                            url: 'views/views-admin/deleteReunion.php',
                                             data: {
-                                                nombre_empresa: event._nombre_empresa
+                                                id_reunion: event._id_reunion
                                             },
                                             success: function(datos) {
                                                 $(".alert-danger").show();
@@ -143,33 +156,30 @@ if (empty($_SESSION['username'])) {
                             },
 
 
-                            //Moviendo Evento Drag - Drop
+                            //Moviendo Reunion Drag - Drop
                             eventDrop: function(event, delta) {
-                                var idEvento = event._id;
+                                var id_reunion = event._id_reunion;
                                 var start = (event.start.format('DD-MM-YYYY'));
                                 var end = (event.end.format("DD-MM-YYYY"));
 
                                 $.ajax({
-                                    url: 'drag_drop_evento.php',
-                                    data: 'start=' + start + '&end=' + end + '&idEvento=' + idEvento,
+                                    url: 'views/views-admin/drag_drop_Reunion.php',
+                                    data: 'start=' + start + '&end=' + end + '&id_reunion=' + id_reunion,
                                     type: "POST",
                                     success: function(response) {
                                         // $("#respuesta").html(response);
                                     }
                                 });
                             },
-
-                            //Modificar Evento del Calendario 
+                            //Modificar Reunion del Calendario 
                             eventClick: function(event) {
-                                var idEvento = event._id;
-                                $('input[name=idEvento').val(idEvento);
-                                $('input[name=evento').val(event.title);
+                                var id_reunion = event._id_reunion;
+                                $('input[name=id_reunion').val(id_reunion);
+                                $('input[name=nombre_empresa').val(event.title);
                                 $('input[name=fecha_inicio').val(event.start.format('DD-MM-YYYY'));
                                 $('input[name=fecha_fin').val(event.end.format("DD-MM-YYYY"));
                                 $("#modalUpdateEvento").modal();
                             },
-
-
                         });
                         //Oculta mensajes de Notificacion
                         setTimeout(function() {
@@ -181,6 +191,8 @@ if (empty($_SESSION['username'])) {
                 </script>
             </div>
         </div>
+    </div>
+
 </body>
 
 </html>

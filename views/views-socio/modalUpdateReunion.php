@@ -2,17 +2,17 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Actualizar mi Eventox</h5>
+        <h5 class="modal-title">Actualizar Reunion</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-  <form name="formEventoUpdate" id="formEventoUpdate" action="UpdateEvento.php" class="form-horizontal" method="POST">
-    <input type="hidden" class="form-control" name="idEvento" id="idEvento">
+  <form name="formEventoUpdate" id="formEventoUpdate" action="views/views-admin/UpdateReunion.php" class="form-horizontal" method="POST">
+    <input type="hidden" class="form-control" name="id_reunion" id="id_reunion">
     <div class="form-group">
-      <label for="evento" class="col-sm-12 control-label">Nombre del Evento</label>
+      <label for="evento" class="col-sm-12 control-label">Nombre de la empresa</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" name="evento" id="evento" placeholder="Nombre del Evento" required/>
+        <input type="text" class="form-control" name="nombre_empresa" id="nombre_empresa" placeholder="Nombre de la empresa" required/>
       </div>
     </div>
     <div class="form-group">
@@ -30,30 +30,29 @@
 
     <div class="col-md-12 activado">
  
-      <input type="radio" name="color_evento" id="orangeUpd" value="#FF5722" checked>
+      <input type="radio" name="color_reunion" id="orangeUpd" value="#FF5722" checked>
       <label for="orangeUpd" class="circu" style="background-color: #FF5722;"> </label>
 
-      <input type="radio" name="color_evento" id="amberUpd" value="#FFC107">  
+      <input type="radio" name="color_reunion" id="amberUpd" value="#FFC107">  
       <label for="amberUpd" class="circu" style="background-color: #FFC107;"> </label>
 
-      <input type="radio" name="color_evento" id="limeUpd" value="#8BC34A">  
+      <input type="radio" name="color_reunion" id="limeUpd" value="#8BC34A">  
       <label for="limeUpd" class="circu" style="background-color: #8BC34A;"> </label>
 
-      <input type="radio" name="color_evento" id="tealUpd" value="#009688">  
+      <input type="radio" name="color_reunion" id="tealUpd" value="#009688">  
       <label for="tealUpd" class="circu" style="background-color: #009688;"> </label>
 
-      <input type="radio" name="color_evento" id="blueUpd" value="#2196F3">  
+      <input type="radio" name="color_reunion" id="blueUpd" value="#2196F3">  
       <label for="blueUpd" class="circu" style="background-color: #2196F3;"> </label>
 
-      <input type="radio" name="color_evento" id="indigoUpd" value="#9c27b0">  
+      <input type="radio" name="color_reunion" id="indigoUpd" value="#9c27b0">  
       <label for="indigoUpd" class="circu" style="background-color: #9c27b0;"> </label>
 
     </div>
 
     
      <div class="modal-footer">
-        <button type="submit" class="btn btn-success">Guardar Cambios de mi Evento</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Salir</button>
+        <button type="submit" class="btn btn-success">Guardar Cambios</button>
       </div>
   </form>
       

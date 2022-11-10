@@ -66,7 +66,6 @@
     border-left: 5px solid #c7C7C7;
     background-color: #233077;
 }
-
 a:is(:link, :active, :visited).active{
     border-left: 5px solid #c7C7C7;
     background-color: #233077;
@@ -87,7 +86,7 @@ a:is(:link, :active, :visited).active{
     flex-basis: 6%;
     background-color: #00106b;
     margin-top: 1%;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
 }
 
 #navbar > ul{
@@ -146,50 +145,40 @@ a:is(:link, :active, :visited).active{
 
 /*? inicio contenido de la pagina*/
 .contenido__pagina{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    flex-basis: 94%;
-
-}
-
-.registro{
-    flex-basis: 40%;
-    margin: 40px;
-    border: 1px solid #ccc;
+    padding: 22px 50px 0px 50px;
     opacity: 0.9;
     background-image: radial-gradient(#0c2176 0.5px, transparent 0.5px),radial-gradient(#0c2176 0.5px, #e5e5f7 0.5px);
     background-size: 20px 20px;
     background-position: 0 0, 10px 10px;
     border-radius: 10px;
-}
-
-.registro__titulos{
     color: #0c2176;
-    font-size: 25px;
-    font-family: "Hammersmith One";
+    width: 100%;
+    max-height: 600px;
+}
+
+.tabla__titulo{
+    display: block;
     text-align: center;
-    padding: 30px 0px;
+    font-size: 2rem;
+    margin-bottom: 22px;
 }
-h3{
+.tabla_scroll{
+    overflow-y: scroll;
+}
+.tabla{
     text-align: center;
-    color: #0c2176;
-    margin-bottom: 30px;
+	color: #ffffff;
+	font-size: 18px;
+	background-color: rgba(4,0,0,0.4);
+	font-family: arial;
+    margin: auto;
+    width: 100%;
+    
 }
-
-.registro__lista{
-    font-size: 19px;
-    margin: 0px 16%;
-    color:#0c2176;
-    margin-bottom: 30px;
+th{
+	color: #ffffff;
+	padding: 20px;;
 }
-
-.registro__btn__container {
-    height: 40px;
-    width: 150px;
-
-}
-
 .registro__btn{
     display: block;
     background-color: #00106b;
@@ -198,13 +187,13 @@ h3{
     border-radius: 10px;
     transition: all 0.3s;
     height: 40px;
-    width: 150px;
+    width: 370px;
     line-height: 40px;
     color: #fff;
     text-decoration: none;
 }
+
 .registro__btn:hover {
     background-color: #02082d;
 }
-
 /*? fin contenido de la pagina*/

@@ -87,6 +87,8 @@ a:is(:link, :active, :visited).active{
     background-color: #00106b;
     margin-top: 1%;
     margin-bottom: 15px;
+    display: flex;
+justify-content: space-between;
 }
 
 #navbar > ul{
