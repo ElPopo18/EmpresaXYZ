@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="views/views-admin/css/indexAdmin.css">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <script defer src="js/activarPagina.js"></script>
 </head>
 
 <body>
@@ -24,7 +25,7 @@
             <h1 class="titulo"><img src="views/img/calendario.png" class="logo">EmpresaXYZ</h1>
             <aside class="lateral">
                 <ul>
-                <li><a href="index.php?n=inicioAdmin">Dashboard</a></li>
+                <li><a href="index.php?n=inicioAdmin" class="active">Dashboard</a></li>
                     <li><a href="index.php?n=calendarioAdmin">Calendario</a></li>
                     <li><a href="index.php?n=reunionesAdmin">Reuniones</a></li>
                     <li><a href="index.php?n=empresasAdmin">Empresas</a></li>

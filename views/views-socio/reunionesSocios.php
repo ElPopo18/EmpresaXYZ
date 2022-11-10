@@ -13,9 +13,10 @@ if (empty($_SESSION['username'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reuniones</title>
     <link rel="icon" href="views/img/calendario.png">
-    <link rel="stylesheet" href="views/css/reunionesSocios.css">
+    <link rel="stylesheet" href="views/views-socio/css/reunionesSocios.css">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <script defer src="js/activarPagina.js"></script>
 </head>
 
 <body>
@@ -26,7 +27,7 @@ if (empty($_SESSION['username'])) {
                 <ul>
                     <li><a href="#">Agregar puntos</a></li>
                     <li><a href="index.php?n=calendarioSocio">Calendario</a></li>
-                    <li><a href="index.php?n=reunionesSocio">Reuniones</a></li>
+                    <li><a href="index.php?n=reunionesSocio" class="active">Reuniones</a></li>
                     <li><a href="index.php?n=sociosSocio">Socios</a></li>
                 </ul>
             </aside>

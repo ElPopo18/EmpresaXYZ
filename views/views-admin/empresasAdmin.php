@@ -21,6 +21,7 @@ if (empty($_SESSION['username'])) {
     <link rel="stylesheet" href="views/views-admin/css/empresaAdmin.css">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <script defer src="js/activarPagina.js"></script>
 </head>
 
 <body>
@@ -32,7 +33,7 @@ if (empty($_SESSION['username'])) {
                 <li><a href="index.php?n=inicioAdmin">Dashboard</a></li>
                     <li><a href="index.php?n=calendarioAdmin">Calendario</a></li>
                     <li><a href="index.php?n=reunionesAdmin">Reuniones</a></li>
-                    <li><a href="index.php?n=empresasAdmin">Empresas</a></li>
+                    <li><a href="index.php?n=empresasAdmin" class="active">Empresas</a></li>
                     <li><a href="index.php?n=sociosAdmin">Socios</a></li>
                 </ul>
             </aside>

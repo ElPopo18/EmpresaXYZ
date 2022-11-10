@@ -9,7 +9,7 @@
   <link rel="icon" href="views/img/calendario.png">
   <link rel="stylesheet" href="views/css/login.css">
   <script src="https://kit.fontawesome.com/1c51e264f0.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" type="text/css" href="/views/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="views/css/bootstrap.min.css">
 </head>
 
 <body>

@@ -3,9 +3,9 @@ session_start();
 if (empty($_SESSION['username'])) {
     header('location: index.php?n=paginaLogin');
 }
-require("./config/conexion.php");
+include("config.php");
 
-$SqlEventos   = ("SELECT * FROM eventos_tablas");
+$SqlEventos   = ("SELECT * FROM reunion");
 $resulEventos = mysqli_query($conexion, $SqlEventos);
 
 ?>
@@ -21,12 +21,13 @@ $resulEventos = mysqli_query($conexion, $SqlEventos);
     <link rel="stylesheet" href="views/views-admin/css/calendarioAdmin.css">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <script defer src="js/activarPagina.js"></script>
     <!--calendario-->
-    <link rel="stylesheet" type="text/css" href="views/views-admin/css/fullcalendar.min.css">
+    <link rel="stylesheet" type="text/css" href="views/css/fullcalendar.min.css">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="views/views-admin/css/bootstrap.min.css">
-    <link rel="stylesheet" href="views/views-admin/css/estiloCalendario.css">
+    <link rel="stylesheet" type="text/css" href="views/css/bootstrap.min.css">
+    <link rel="stylesheet" href="views/css/estiloCalendario.css">
 </head>
 
 <body>
@@ -36,7 +37,7 @@ $resulEventos = mysqli_query($conexion, $SqlEventos);
             <aside class="lateral">
                 <ul>
                     <li><a href="index.php?n=inicioAdmin">Dashboard</a></li>
-                    <li><a href="index.php?n=calendarioAdmin">Calendario</a></li>
+                    <li><a href="index.php?n=calendarioAdmin" class="active">Calendario</a></li>
                     <li><a href="index.php?n=reunionesAdmin">Reuniones</a></li>
                     <li><a href="index.php?n=empresasAdmin">Empresas</a></li>
                     <li><a href="index.php?n=sociosAdmin">Socios</a></li>
@@ -63,8 +64,8 @@ $resulEventos = mysqli_query($conexion, $SqlEventos);
                 </div>
                 <div id="calendar"></div>
                 <?php
-                include('modalNuevoEvento.php');
-                include('modalUpdateEvento.php');
+                include('modalNuevoReunion.php');
+                include('modalUpdateReunion.php');
                 ?>
                 <script src="js/jquery-3.0.0.min.js"> </script>
                 <script src="js/popper.min.js"></script>
@@ -104,11 +105,11 @@ $resulEventos = mysqli_query($conexion, $SqlEventos);
                             events: [
                                 <?php
                                 while ($dataEvento = mysqli_fetch_array($resulEventos)) { ?> {
-                                        nombre_empresa: '<?php echo $dataEvento['nombre_empresa'] ?>',
-                                        title: '<?php echo $dataEvento['evento']; ?>',
+                                        _id_reunion: '<?php echo $dataEvento['id_reunion'] ?>',
+                                        title: '<?php echo $dataEvento['nombre_empresa']; ?>',
                                         start: '<?php echo $dataEvento['fecha_inicio']; ?>',
                                         end: '<?php echo $dataEvento['fecha_fin']; ?>',
-                                        color: '<?php echo $dataEvento['color_evento']; ?>'
+                                        color: '<?php echo $dataEvento['color_reunion']; ?>'
                                     },
                                 <?php } ?>
                             ],
@@ -126,13 +127,13 @@ $resulEventos = mysqli_query($conexion, $SqlEventos);
                                     var pregunta = confirm("Deseas Borrar este Evento?");
                                     if (pregunta) {
 
-                                        $("#calendar").fullCalendar("removeEvents", event._id);
+                                        $("#calendar").fullCalendar("removeEvents", event._id_reunion);
 
                                         $.ajax({
                                             type: "POST",
-                                            url: 'deleteEvento.php',
+                                            url: 'views/views-admin/deleteReunion.php',
                                             data: {
-                                                id: event._id
+                                                id_reunion: event._id_reunion
                                             },
                                             success: function(datos) {
                                                 $(".alert-danger").show();
@@ -150,34 +151,29 @@ $resulEventos = mysqli_query($conexion, $SqlEventos);
 
                             //Moviendo Evento Drag - Drop
                             eventDrop: function(event, delta) {
-                                var idEvento = event._id;
+                                var id_reunion = event._id_reunion;
                                 var start = (event.start.format('DD-MM-YYYY'));
                                 var end = (event.end.format("DD-MM-YYYY"));
 
                                 $.ajax({
-                                    url: 'drag_drop_evento.php',
-                                    data: 'start=' + start + '&end=' + end + '&idEvento=' + idEvento,
+                                    url: 'views/views-admin/drag_drop_Reunion.php',
+                                    data: 'start=' + start + '&end=' + end + '&id_reunion=' + id_reunion,
                                     type: "POST",
                                     success: function(response) {
                                         // $("#respuesta").html(response);
                                     }
                                 });
                             },
-
                             //Modificar Evento del Calendario 
                             eventClick: function(event) {
-                                var idEvento = event._id;
-                                $('input[name=idEvento').val(idEvento);
-                                $('input[name=evento').val(event.title);
+                                var id_reunion = event._id_reunion;
+                                $('input[name=id_reunion').val(id_reunion);
+                                $('input[name=nombre_empresa').val(event.title);
                                 $('input[name=fecha_inicio').val(event.start.format('DD-MM-YYYY'));
                                 $('input[name=fecha_fin').val(event.end.format("DD-MM-YYYY"));
                                 $("#modalUpdateEvento").modal();
                             },
-
-
                         });
-
-
                         //Oculta mensajes de Notificacion
                         setTimeout(function() {
                             $(".alert").slideUp(300);
@@ -186,9 +182,6 @@ $resulEventos = mysqli_query($conexion, $SqlEventos);
 
                     });
                 </script>
-
-
-
             </div>
         </div>
     </div>

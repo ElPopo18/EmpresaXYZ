@@ -2,7 +2,7 @@
 <?php
 if(isset($_REQUEST['n'])){ ?>
 <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
-  <strong>La reunion fue registrado correctamente.</strong> 
+  <strong>Felicitaciones!</strong> El evento fue registrado correctamente.
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -12,7 +12,7 @@ if(isset($_REQUEST['n'])){ ?>
 <?php
 if(isset($_REQUEST['na'])){ ?>
 <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
-  <strong>La reunion fue actualizado correctamente.</strong> 
+  <strong>Felicitaciones!</strong> El evento fue actualizado correctamente.
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -20,7 +20,7 @@ if(isset($_REQUEST['na'])){ ?>
 <?php } ?>
 
 <div class="alert alert-danger alert-dismissible fade show text-center" role="alert" style="display: none;">
-  <strong>La reunion fue borrado correctamente.</strong> 
+  <strong>Felicitaciones!</strong> El evento fue borrado correctamente.
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>

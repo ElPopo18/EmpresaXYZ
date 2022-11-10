@@ -13,12 +13,16 @@ if (empty($_SESSION['username'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendario Socio</title>
     <link rel="icon" href="views/img/calendario.png">
-    <link rel="stylesheet" href="views/css/calendarioSocios.css">
+    <link rel="stylesheet" href="views/views-socio/css/calendarioSocios.css">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
-    <!--bootstrap-->
-    <link href="views/css/bootstrap.min.css" rel="stylesheet">
-    <link href="views/css/main.css" rel="stylesheet">
+    <script defer src="js/activarPagina.js"></script>
+    <!--calendario-->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="views/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="views/css/fullcalendar.min.css">
+    <link rel="stylesheet" href="views/css/estiloCalendario.css">
 </head>
 
 <body>
@@ -28,7 +32,7 @@ if (empty($_SESSION['username'])) {
             <aside class="lateral">
                 <ul>
                     <li><a href="#">Agregar puntos</a></li>
-                    <li><a href="index.php?n=calendarioSocio">Calendario</a></li>
+                    <li><a href="index.php?n=calendarioSocio" class="active">Calendario</a></li>
                     <li><a href="index.php?n=reunionesSocio">Reuniones</a></li>
                     <li><a href="index.php?n=sociosSocio">Socios</a></li>
                 </ul>
@@ -39,63 +43,144 @@ if (empty($_SESSION['username'])) {
                 <ul>
                     <li><a href="index.php?n=principal"><i class="fi fi-rr-settings"></i></a></li>
                     <li class="margin-right"><a href="controllers/controladorCerrarSesion.php"><i class="fi fi-sr-exit"></i></a></li>
-
                     <li class="ajustar"><img src="https://i.scdn.co/image/ab67616d00001e0249d694203245f241a1bcaa72"><span class="username"><?php echo $_SESSION['username'] ?><p class="cargo"><?php echo $_SESSION['cargo'] ?></p></span></li>
                 </ul>
             </nav>
             <div class="contenido__pagina">
-                <div id='calendar'></div>
-            </div>
-            <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="Label" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header bg-info">
-                            <h5 class="modal-title" id="titulo">Registro de Eventos</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="container">
+                    <div class="row">
+                        <div class="col msjs">
+                            <?php
+                            include('msjs.php');
+                            ?>
                         </div>
-                        <form id="formulario" autocomplete="off">
-                            <div class="modal-body">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-floating mb-3">
-                                            <input type="hidden" id="id" name="id">
-                                            <input id="title" type="text" class="form-control" name="title">
-                                            <label for="title">Evento</label>
-                                        </div>
-                                         
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-floating mb-3">
-                                            <input class="form-control" id="start" type="date" name="start">
-                                            <label for="" class="form-label">Fecha</label>
-                                        </div>
-                                         
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-floating mb-3">
-                                            <input class="form-control" id="color" type="color" name="color">
-                                            <label for="color" class="form-label">Color</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                <button type="button" class="btn btn-danger" id="btnEliminar">Eliminar</button>
-                                <button type="submit" class="btn btn-primary" id="btnAccion">Guardar</button>
-                            </div>
-                        </form>
-                         
                     </div>
                 </div>
+                <div id="calendar"></div>
+                <?php
+                include('modalNuevoEvento.php');
+                include('modalUpdateEvento.php');
+                ?>
+                <script src="js/jquery-3.0.0.min.js"> </script>
+                <script src="js/popper.min.js"></script>
+                <script src="js/bootstrap.min.js"></script>
+                <script type="text/javascript" src="js/moment.min.js"></script>
+                <script type="text/javascript" src="js/fullcalendar.min.js"></script>
+                <script src='locales/es.js'></script>
+                <script type="text/javascript">
+                    $(document).ready(function() {
+                        $("#calendar").fullCalendar({
+                            header: {
+                                left: "prev,next today",
+                                center: "title",
+                                right: "month,agendaWeek,agendaDay"
+                            },
+
+                            locale: 'es',
+
+                            defaultView: "month",
+                            navLinks: true,
+                            editable: true,
+                            eventLimit: true,
+                            selectable: true,
+                            selectHelper: false,
+
+                            //Nuevo Evento
+                            select: function(start, end) {
+                                $("#exampleModal").modal();
+                                $("input[name=fecha_inicio]").val(start.format('DD-MM-YYYY'));
+
+                                var valorFechaFin = end.format("DD-MM-YYYY");
+                                var F_final = moment(valorFechaFin, "DD-MM-YYYY").subtract(1, 'days').format('DD-MM-YYYY'); //Le resto 1 dia
+                                $('input[name=fecha_fin').val(F_final);
+
+                            },
+
+                            events: [
+                                <?php
+                                while ($dataEvento = mysqli_fetch_array($resulEventos)) { ?> {
+                                        _nombre_empresa: '<?php echo $dataEvento['nombre_empresa'] ?>',
+                                        title: '<?php echo $dataEvento['evento']; ?>',
+                                        start: '<?php echo $dataEvento['fecha_inicio']; ?>',
+                                        end: '<?php echo $dataEvento['fecha_fin']; ?>',
+                                        color: '<?php echo $dataEvento['color_evento']; ?>'
+                                    },
+                                <?php } ?>
+                            ],
+
+
+                            //Eliminar Evento
+                            eventRender: function(event, element) {
+                                element
+                                    .find(".fc-content")
+                                    .prepend("<span id='btnCerrar'; class='closeon material-icons'>&#xe5cd;</span>");
+
+                                //Eliminar evento
+                                element.find(".closeon").on("click", function() {
+
+                                    var pregunta = confirm("Deseas Borrar este Evento?");
+                                    if (pregunta) {
+
+                                        $("#calendar").fullCalendar("removeEvents", event._nombre_empresa);
+
+                                        $.ajax({
+                                            type: "POST",
+                                            url: './deleteEvento.php',
+                                            data: {
+                                                nombre_empresa: event._nombre_empresa
+                                            },
+                                            success: function(datos) {
+                                                $(".alert-danger").show();
+
+                                                setTimeout(function() {
+                                                    $(".alert-danger").slideUp(500);
+                                                }, 3000);
+
+                                            }
+                                        });
+                                    }
+                                });
+                            },
+
+
+                            //Moviendo Evento Drag - Drop
+                            eventDrop: function(event, delta) {
+                                var idEvento = event._id;
+                                var start = (event.start.format('DD-MM-YYYY'));
+                                var end = (event.end.format("DD-MM-YYYY"));
+
+                                $.ajax({
+                                    url: 'drag_drop_evento.php',
+                                    data: 'start=' + start + '&end=' + end + '&idEvento=' + idEvento,
+                                    type: "POST",
+                                    success: function(response) {
+                                        // $("#respuesta").html(response);
+                                    }
+                                });
+                            },
+
+                            //Modificar Evento del Calendario 
+                            eventClick: function(event) {
+                                var idEvento = event._id;
+                                $('input[name=idEvento').val(idEvento);
+                                $('input[name=evento').val(event.title);
+                                $('input[name=fecha_inicio').val(event.start.format('DD-MM-YYYY'));
+                                $('input[name=fecha_fin').val(event.end.format("DD-MM-YYYY"));
+                                $("#modalUpdateEvento").modal();
+                            },
+
+
+                        });
+                        //Oculta mensajes de Notificacion
+                        setTimeout(function() {
+                            $(".alert").slideUp(300);
+                        }, 3000);
+
+
+                    });
+                </script>
             </div>
         </div>
-        <script src="js/bootstrap.bundle.min.js"></script>
-        <script src="js/main.js"></script>
-        <script src="js/moment.js"></script>
-        <script src="js/sweetalert2.all.min.js"></script>
-        <script src="js/es.js"></script>
-        <script src="js/app.js"></script>
 </body>
 
 </html>

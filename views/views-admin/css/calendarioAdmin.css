@@ -64,6 +64,11 @@
     background-color: #233077;
 }
 
+a:is(:link, :active, :visited).active{
+    border-left: 5px solid #c7C7C7;
+    background-color: #233077;
+}
+
 
 
 /*? fin header*/
