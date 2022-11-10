@@ -33,7 +33,7 @@ if ($incluir) {
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="views/css/bootstrap.min.css">
-    <link rel="stylesheet" href="views/css/estiloCalendario.css">
+    <link rel="stylesheet" href="views/views-socio/css/estiloCalendario.css">
 </head>
 
 <body>
@@ -71,8 +71,7 @@ if ($incluir) {
                 </div>
                 <div id="calendar"></div>
                 <?php
-                include('modalNuevoReunion.php');
-                include('modalUpdateReunion.php');
+                include('modalSubirArchivo.php');
                 ?>
                 <script src="js/jquery-3.0.0.min.js"> </script>
                 <script src="js/popper.min.js"></script>
