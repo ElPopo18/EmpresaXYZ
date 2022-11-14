@@ -62,7 +62,7 @@ if (empty($_SESSION['username'])) {
                                 <th colspan="2">Opciones</th>
                             </tr>
                         </thead>
-                        <tbody id="cont">
+                        <tbody id="resultado">
                         </tbody>
                     </table>
                     <a href="index.php?n=paginaRegistroEmpresa" class="registro__btn">&iquest; Desea registrar una
@@ -81,7 +81,7 @@ if (empty($_SESSION['username'])) {
                 data: {consulta: consulta},
             })
             .done(function(respuesta) {
-                $("#cont").html(respuesta);
+                $("#resultado").html(respuesta);
             })
             .fail(function() {
                 console.log("error");
