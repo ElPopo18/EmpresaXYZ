@@ -1,4 +1,5 @@
 <?php
+require 'models/index.php';
 class ModeloController
 {
     private $model;
@@ -11,7 +12,9 @@ class ModeloController
     {
         require_once("views/principal.php");
     }
-
+    static function inactividad(){
+        require_once("views/tiempoInactivo.php");
+    }
     //todo apartir de aqui es funciones de registro
     // va a la pagina de registrar socio
     static function paginaRegistroSocio()
@@ -47,11 +50,11 @@ class ModeloController
     //registrar una empresa
     static function registroEmpresa()
     {
-        $rif = $_REQUEST['rif'];
+        $id_empresa = $_REQUEST['id_empresa'];
         $nombre_empresa = $_REQUEST['nombre_empresa'];
-        $data = "'" . $rif . "','" . $nombre_empresa . "'";
+        $data = "'" . $id_empresa . "','" . $nombre_empresa . "'";
         $empresa = new Modelo();
-        $condicion = "rif='" . $rif . "' AND nombre_empresa='" . $nombre_empresa . "'";
+        $condicion = "id_empresa='" . $id_empresa . "' AND nombre_empresa='" . $nombre_empresa . "'";
         if ($empresa->validarUsuarioExistente("empresa", "nombre_empresa='" . $nombre_empresa . "'")) {
             header('location: index.php?n=paginaRegistroEmpresa');
         } else {
@@ -103,6 +106,9 @@ class ModeloController
     static function sociosSocio()
     {
         require_once("views/views-socio/sociosSocios.php");
+    }
+    static function puntos(){
+        require_once("views/views-socio/puntos.php");
     }
     //todo fin interfaz del socio
 }

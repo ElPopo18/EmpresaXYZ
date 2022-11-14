@@ -6,7 +6,9 @@
     color: #fff !important;
   }
   
-  
+  input{
+    display: none;
+  }
   #btnCerrar{
     color:crimson;
     padding: 5px;

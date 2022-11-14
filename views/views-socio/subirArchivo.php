@@ -16,23 +16,53 @@ if ($_POST['subir']) {
     if (in_array($extension, $permitidos)) {
         if (file_exists($_FILES['archivo']['tmp_name'])) {
             if (move_uploaded_file($_FILES['archivo']['tmp_name'], '../../documents/'.$_FILES['archivo']['name'])) {
-                $documento = $_FILES['archivo']['name'];
+                $descripcion = $_POST['descripcion'];
+                $archivo = $_FILES['archivo']['name'];
                 $nombre_empresa = $_SESSION['empresa'];
-                $id_reunion = 1;
-                $sql = $conexion->query("INSERT INTO puntos (
-                    documento,
+                $id_reunion = $_POST['id_reunion'];
+                $fecha_inicio = $_POST['fecha_inicio'];
+                $fecha_fin = $_POST['fecha_fin'];
+                $color = $_POST['color_reunion'];
+                $sql = $conexion->query("INSERT INTO punto (
+                    descripcion,
+                    archivo,
                     nombre_empresa,
-                    id_reunion)                 
+                    id_reunion,
+                    fecha_inicio,
+                    fecha_fin,
+                    color_reunion)                 
                     VALUES (
-                        '".$documento."',
+                        '".$descripcion."',
+                        '".$archivo."',
                         '".$nombre_empresa."',
-                        '".$id_reunion."'
+                        '".$id_reunion."',
+                        '".$fecha_inicio."',
+                        '".$fecha_fin."',
+                        '".$color."'
                     )");
+                $sql = $conexion->query("INSERT INTO puntos (
+                    descripcion,
+                    archivo,
+                    nombre_empresa,
+                    id_reunion,
+                    fecha_inicio,
+                    fecha_fin,
+                    color_reunion)                 
+                    VALUES (
+                        '".$descripcion."',
+                        '".$archivo."',
+                        '".$nombre_empresa."',
+                        '".$id_reunion."',
+                        '".$fecha_inicio."',
+                        '".$fecha_fin."',
+                        '".$color."'
+                    )");
+                    header('Location: ../../index.php?n=calendarioSocio');
             }
         }
     }
     else {
-        echo "archivo no permitido";
+        header('Location: ../../index.php?n=calendarioSocio');
     }
 }
 /*

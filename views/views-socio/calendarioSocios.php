@@ -6,13 +6,12 @@ if (empty($_SESSION['username'])) {
 
 $incluir = include('config/conexion.php');
 if ($incluir) {
-    /*? socios de la empresa*/
-    $consulta = "SELECT *  FROM socio WHERE nombre_empresa LIKE '$_SESSION[empresa]'";
-    $resultado = mysqli_query($conexion, $consulta);
-    
     /*? calendario de la empresa*/
     $SqlReunions   = ("SELECT * FROM reunion WHERE nombre_empresa LIKE '$_SESSION[empresa]'");
     $resulReunions = mysqli_query($conexion, $SqlReunions);
+
+    $SqlPuntos = ("SELECT * FROM punto WHERE nombre_empresa LIKE '$_SESSION[empresa]'");
+    $resulPuntos = mysqli_query($conexion, $SqlPuntos);
 }
 ?>
 <!DOCTYPE html>
@@ -29,10 +28,10 @@ if ($incluir) {
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
     <script defer src="js/activarPagina.js"></script>
     <!--calendario-->
-    <link rel="stylesheet" type="text/css" href="views/css/fullcalendar.min.css">
+    <link rel="stylesheet" type="text/css" href="views/views-socio/css/fullcalendar.min.css">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="views/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="views/views-socio/css/bootstrap.min.css">
     <link rel="stylesheet" href="views/views-socio/css/estiloCalendario.css">
 </head>
 
@@ -43,6 +42,7 @@ if ($incluir) {
             <aside class="lateral">
                 <ul>
                     <li><a href="index.php?n=calendarioSocio" class="active">Calendario</a></li>
+                    <li><a href="index.php?n=puntos">Puntos</a></li>
                     <li><a href="index.php?n=reunionesSocio">Reuniones</a></li>
                     <li><a href="index.php?n=sociosSocio">Socios</a></li>
                 </ul>
@@ -51,7 +51,7 @@ if ($incluir) {
         <div id="contenido">
             <nav id="navbar">
                 <div class="navbar__nombre__empresa">
-                    <h2 class="nombre_empresa">Calendario de la empresa <?php echo $_SESSION['empresa'];?></h2>
+                    <h2 class="nombre_empresa">Calendario de la empresa <?php echo $_SESSION['empresa']; ?></h2>
                 </div>
                 <ul>
                     <li><a href="index.php?n=principal"><i class="fi fi-rr-settings"></i></a></li>
@@ -60,6 +60,82 @@ if ($incluir) {
                 </ul>
             </nav>
             <div class="contenido__pagina">
+                <div class="container">
+                    <div class="row">
+                        <div class="col msjs">
+                            <?php
+                            include('msjs.php');
+                            ?>
+                        </div>
+                    </div>
+                </div>
+                <div id="calendar"></div>
+                <?php
+                include('modalAgregarPunto.php');
+                ?>
+                <script src="js/jquery-3.0.0.min.js"> </script>
+                <script src="js/popper.min.js"></script>
+                <script src="js/bootstrap.min.js"></script>
+                <script type="text/javascript" src="js/moment.min.js"></script>
+                <script type="text/javascript" src="js/fullcalendar.min.js"></script>
+                <script src='locales/es.js'></script>
+                <script type="text/javascript">
+                    $(document).ready(function() {
+                        $("#calendar").fullCalendar({
+                            header: {
+                                left: "prev,next today",
+                                center: "title",
+                                right: "month,agendaWeek,agendaDay"
+                            },
+
+                            locale: 'es',
+
+                            defaultView: "month",
+                            navLinks: true,
+                            editable: true,
+                            eventLimit: true,
+                            selectable: true,
+                            selectHelper: false,
+                            events: [
+                                <?php
+                                while ($dataReunion = mysqli_fetch_array($resulReunions)) { ?> {
+                                        _id_reunion: '<?php echo $dataReunion['id_reunion'] ?>',
+                                        title: '<?php echo $dataReunion['nombre_empresa']; ?>',
+                                        start: '<?php echo $dataReunion['fecha_inicio']; ?>',
+                                        end: '<?php echo $dataReunion['fecha_fin']; ?>',
+                                        color: '<?php echo $dataReunion['color_reunion']; ?>'
+                                    },
+                                <?php } ?>
+                                <?php
+                                while ($dataPunto = mysqli_fetch_array($resulPuntos)) { ?> {
+                                        _id_punto: '<?php echo $dataPunto['id_punto'] ?>',
+                                        title: '<?php echo $dataPunto['archivo'] ?>',
+                                        start: '<?php echo $dataPunto['fecha_inicio'];?>',
+                                        end: '<?php echo $dataPunto['fecha_fin']; ?>',
+                                        color: '<?php echo $dataPunto['color_reunion']; ?>'
+                                    },
+                                <?php } ?>
+
+                            ],
+                            //Modificar Reunion del Calendario 
+                            eventClick: function(event) {
+                                var id_reunion = event._id_reunion;
+                                $('input[name=id_reunion').val(id_reunion);
+                                $('input[name=nombre_empresa').val(event.title);
+                                $('input[name=fecha_inicio').val(event.start.format('DD-MM-YYYY'));
+                                $('input[name=fecha_fin').val(event.end.format("DD-MM-YYYY"));
+                                $("#modalUpdateEvento").modal();
+                            },
+                        });
+                        //Oculta mensajes de Notificacion
+                        setTimeout(function() {
+                            $(".alert").slideUp(300);
+                        }, 3000);
+
+
+                    });
+                </script>
+                <!--
                 <div class="container">
                     <div class="row">
                         <div class="col msjs">
@@ -188,6 +264,7 @@ if ($incluir) {
 
                     });
                 </script>
+                -->
             </div>
         </div>
     </div>

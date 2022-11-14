@@ -174,3 +174,7 @@ a:is(:link, :active, :visited).active{
 .subir_archivo{
     display: block;
 }
+
+.enviar{
+    display: block;
+}

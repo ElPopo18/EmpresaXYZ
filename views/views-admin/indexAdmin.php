@@ -3,6 +3,7 @@
     if (empty($_SESSION['username'])) {
         header('location: index.php?n=paginaLogin');
     }
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">

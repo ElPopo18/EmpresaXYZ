@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Registro de socio</title>
-  <link rel="stylesheet" href="views/css/registroSocio.css">
+  <link rel="stylesheet" href="views/views-admin/css/registroSocios.css">
   <link rel="icon" href="views/img/calendario.png">
   <script src="https://kit.fontawesome.com/1c51e264f0.js" crossorigin="anonymous"></script>
 </head>

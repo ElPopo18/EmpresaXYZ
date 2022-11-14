@@ -23,11 +23,11 @@ $resulReunions = mysqli_query($conexion, $SqlReunions);
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
     <script defer src="js/activarPagina.js"></script>
     <!--calendario-->
-    <link rel="stylesheet" type="text/css" href="views/css/fullcalendar.min.css">
+    <link rel="stylesheet" type="text/css" href="views/views-admin/css/fullcalendar.min.css">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="views/css/bootstrap.min.css">
-    <link rel="stylesheet" href="views/css/estiloCalendario.css">
+    <link rel="stylesheet" type="text/css" href="views/views-admin/css/bootstrap.min.css">
+    <link rel="stylesheet" href="views/views-admin/css/estiloCalendario.css">
 </head>
 
 <body>
@@ -110,7 +110,7 @@ $resulReunions = mysqli_query($conexion, $SqlReunions);
                                         start: '<?php echo $dataReunion['fecha_inicio']; ?>',
                                         end: '<?php echo $dataReunion['fecha_fin']; ?>',
                                         color: '<?php echo $dataReunion['color_reunion']; ?>'
-                                    },
+                                    },                                        
                                 <?php } ?>
                             ],
 
