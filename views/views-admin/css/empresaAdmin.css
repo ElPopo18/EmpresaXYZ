@@ -197,6 +197,7 @@ th{
     color: #fff;
     padding: 10px;
     transition: all .4s;
+    cursor: pointer;
 }
 .tabla__link:hover{
     color: #fff;

@@ -30,7 +30,7 @@ if (empty($_SESSION['username'])) {
             <h1 class="titulo"><img src="views/img/calendario.png" class="logo">EmpresaXYZ</h1>
             <aside class="lateral">
                 <ul>
-                <li><a href="index.php?n=inicioAdmin">Dashboard</a></li>
+                    <li><a href="index.php?n=inicioAdmin">Dashboard</a></li>
                     <li><a href="index.php?n=calendarioAdmin">Calendario</a></li>
                     <li><a href="index.php?n=reunionesAdmin">Reuniones</a></li>
                     <li><a href="index.php?n=empresasAdmin">Empresas</a></li>
@@ -40,11 +40,15 @@ if (empty($_SESSION['username'])) {
         </header>
         <div id="contenido">
             <nav id="navbar">
+                <form class="buscar" method="post">
+                    <label class="buscar__label" for="buscar">Buscar: </label>
+                    <input type="text" id="buscar" name="buscar" class="buscar__input" placeholder="Id o nombre de la empresa que desea buscar">
+                </form>
                 <ul>
                     <li><a href="index.php?n=principal"><i class="fi fi-rr-settings"></i></a></li>
                     <li class="margin-right"><a href="controllers/controladorCerrarSesion.php"><i class="fi fi-sr-exit"></i></a></li>
 
-                    <li class="ajustar"><img src="https://i.scdn.co/image/ab67616d00001e0249d694203245f241a1bcaa72"><span class="username"><?php echo $_SESSION['username']?><p class="cargo"><?php echo $_SESSION['cargo']?></p></span></li>
+                    <li class="ajustar"><img src="https://i.scdn.co/image/ab67616d00001e0249d694203245f241a1bcaa72"><span class="username"><?php echo $_SESSION['username'] ?><p class="cargo"><?php echo $_SESSION['cargo'] ?></p></span></li>
                 </ul>
             </nav>
             <div class="contenido__pagina">
@@ -70,12 +74,12 @@ if (empty($_SESSION['username'])) {
                                     <td><?php echo $row['nombre_soc'] ?></td>
                                     <td><?php echo $row['apellido_soc'] ?></td>
                                     <td><?php echo $row['ced_socio'] ?></td>
-                                    <td><?php echo $row['nombre_empresa']?></td>
+                                    <td><?php echo $row['nombre_empresa'] ?></td>
                                     <td><?php echo $row['cargo'] ?></td>
-                                    <td class="tabla__link"> <a  href="editar-inventario.php?id=<?php echo $row['ced_socio']; ?>" class="editar">Editar</td>
-                                    <td class="tabla__link"> <a  href="eliminar-inventario.php?id=<?php echo $row['ced_socio']; ?>" class="eliminar">Eliminar</td>
+                                    <td class="tabla__link"> <a href="editar-inventario.php?id=<?php echo $row['ced_socio']; ?>" class="editar">Editar</td>
+                                    <td class="tabla__link"> <a href="eliminar-inventario.php?id=<?php echo $row['ced_socio']; ?>" class="eliminar">Eliminar</td>
                                 </tr>
-    
+
                             <?php         } ?>
                         </tbody>
                     </table>

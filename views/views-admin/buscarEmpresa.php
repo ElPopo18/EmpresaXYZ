@@ -15,8 +15,8 @@
             $salida .= '<tr>';
             $salida .= '<td>'.$row['id_empresa'].'</td>';
             $salida .= '<td>'.$row['nombre_empresa'].'</td>';
-            $salida .= '<td><a hreft="">Editar</a></td>';
-            $salida .= '<td><a hreft="">Eliminar</a></td>';
+            $salida .= '<td class="tabla__link"><a href="">Editar</a></td>';
+            $salida .= '<td class="tabla__link"><a href="">Eliminar</a></td>';
             $salida .= '</tr>';
         }
     }else {

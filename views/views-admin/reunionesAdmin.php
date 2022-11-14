@@ -1,13 +1,13 @@
-<?php 
-    session_start();
-    if (empty($_SESSION['username'])) {
-        header('location: index.php?n=paginaLogin');
-    }
-    $incluir = include('config/conexion.php');
-    if ($incluir) {
-        $consulta = "SELECT *  FROM reuniones";
-        $resultado = mysqli_query($conexion, $consulta);
-    }
+<?php
+session_start();
+if (empty($_SESSION['username'])) {
+    header('location: index.php?n=paginaLogin');
+}
+include('config/conexion.php');
+
+    $consulta = "SELECT *  FROM reuniones";
+    $resultado = mysqli_query($conexion, $consulta);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,14 +39,18 @@
         </header>
         <div id="contenido">
             <nav id="navbar">
+                <form class="buscar" method="post">
+                    <label class="buscar__label" for="buscar">Buscar: </label>
+                    <input type="text" id="buscar" name="buscar" class="buscar__input" placeholder="Id o nombre de la empresa que desea buscar">
+                </form>
                 <ul>
                     <li><a href="index.php?n=principal"><i class="fi fi-rr-settings"></i></a></li>
                     <li class="margin-right"><a href="controllers/controladorCerrarSesion.php"><i class="fi fi-sr-exit"></i></a></li>
-                    <li class="ajustar"><img src="https://i.scdn.co/image/ab67616d00001e0249d694203245f241a1bcaa72"><span class="username"><?php echo $_SESSION['username']?><p class="cargo"><?php echo $_SESSION['cargo']?></p></span></li>
+                    <li class="ajustar"><img src="https://i.scdn.co/image/ab67616d00001e0249d694203245f241a1bcaa72"><span class="username"><?php echo $_SESSION['username'] ?><p class="cargo"><?php echo $_SESSION['cargo'] ?></p></span></li>
                 </ul>
             </nav>
             <div class="contenido__pagina">
-            <h2 class="tabla__titulo">Reuniones Registradas</h2>
+                <h2 class="tabla__titulo">Reuniones Registradas</h2>
                 <div class="tabla_scroll">
                     <table border="1" class="tabla">
                         <thead>
@@ -58,7 +62,7 @@
                                 <th>Fecha de fin</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="reuniones">
                             <?php
                             while ($row = $resultado->fetch_array()) { ?>
                                 <tr>
@@ -66,7 +70,7 @@
                                     <td><?php echo $row['nombre_empresa'] ?></td>
                                     <td><?php echo $row['color_reunion'] ?></td>
                                     <td><?php echo $row['fecha_inicio'] ?></td>
-                                    <td><?php echo $row['fecha_fin']?></td>
+                                    <td><?php echo $row['fecha_fin'] ?></td>
                                 </tr>
                             <?php         } ?>
                         </tbody>

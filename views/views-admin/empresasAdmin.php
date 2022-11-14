@@ -40,8 +40,9 @@ if (empty($_SESSION['username'])) {
         </header>
         <div id="contenido">
             <nav id="navbar">
-                <form class="buscar" method="post" action="">
+                <form class="buscar" method="post">
                     <label class="buscar__label" for="buscar">Buscar: </label>
+                    <input type="hidden" id="empresa" name="empresa" value="empresa">
                     <input type="text" id="buscar" name="buscar" class="buscar__input" placeholder="Id o nombre de la empresa que desea buscar">
                 </form>
                 <ul>
@@ -62,7 +63,7 @@ if (empty($_SESSION['username'])) {
                                 <th colspan="2">Opciones</th>
                             </tr>
                         </thead>
-                        <tbody id="resultado">
+                        <tbody id="empresas">
                         </tbody>
                     </table>
                     <a href="index.php?n=paginaRegistroEmpresa" class="registro__btn">&iquest; Desea registrar una
@@ -75,20 +76,20 @@ if (empty($_SESSION['username'])) {
         $(buscar_datos());
         function buscar_datos(consulta){
             $.ajax({
-                url: "views/views-admin/buscar.php",
+                url: "views/views-admin/buscarEmpresa.php",
                 type: "POST",
                 dataType: "HTML",
                 data: {consulta: consulta},
             })
             .done(function(respuesta) {
-                $("#resultado").html(respuesta);
+                $("#empresas").html(respuesta);
             })
             .fail(function() {
                 console.log("error");
             })
         }
 
-        $(document).on("keyup", "#buscar",function(){
+        $(document).on("keyup", "#buscar", function(){
             var valor = $(this).val();
             if (valor != "") {
                 buscar_datos(valor);
