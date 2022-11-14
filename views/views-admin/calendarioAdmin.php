@@ -46,6 +46,9 @@ $resulReunions = mysqli_query($conexion, $SqlReunions);
         </header>
         <div id="contenido">
             <nav id="navbar">
+                <div class="navbar__nombre__empresa">
+                    <h2 class="nombre_empresa">Calendario de reuniones de las empresa</h2>
+                </div>
                 <ul>
                     <li><a href="index.php?n=principal"><i class="fi fi-rr-settings"></i></a></li>
                     <li class="margin-right"><a href="controllers/controladorCerrarSesion.php"><i class="fi fi-sr-exit"></i></a></li>
@@ -110,7 +113,7 @@ $resulReunions = mysqli_query($conexion, $SqlReunions);
                                         start: '<?php echo $dataReunion['fecha_inicio']; ?>',
                                         end: '<?php echo $dataReunion['fecha_fin']; ?>',
                                         color: '<?php echo $dataReunion['color_reunion']; ?>'
-                                    },                                        
+                                    },
                                 <?php } ?>
                             ],
 

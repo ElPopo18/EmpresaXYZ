@@ -1,9 +1,9 @@
-<?php 
-    session_start();
-    if (empty($_SESSION['username'])) {
-        header('location: index.php?n=paginaLogin');
-    }
-    
+<?php
+session_start();
+if (empty($_SESSION['username'])) {
+    header('location: index.php?n=paginaLogin');
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +26,7 @@
             <h1 class="titulo"><img src="views/img/calendario.png" class="logo">EmpresaXYZ</h1>
             <aside class="lateral">
                 <ul>
-                <li><a href="index.php?n=inicioAdmin" class="active">Dashboard</a></li>
+                    <li><a href="index.php?n=inicioAdmin" class="active">Dashboard</a></li>
                     <li><a href="index.php?n=calendarioAdmin">Calendario</a></li>
                     <li><a href="index.php?n=reunionesAdmin">Reuniones</a></li>
                     <li><a href="index.php?n=empresasAdmin">Empresas</a></li>
@@ -36,10 +36,13 @@
         </header>
         <div id="contenido">
             <nav id="navbar">
+                <div class="navbar__registro">
+                    <h2 class="navbar__r">Registros de usuarios</h2>
+                </div>
                 <ul>
                     <li><a href="index.php?n=principal"><i class="fi fi-rr-settings"></i></a></li>
                     <li class="margin-right"><a href="controllers/controladorCerrarSesion.php"><i class="fi fi-sr-exit"></i></a></li>
-                    <li class="ajustar"><img src="https://i.scdn.co/image/ab67616d00001e0249d694203245f241a1bcaa72"><span class="username"><?php echo $_SESSION['username']?><p class="cargo"><?php echo $_SESSION['cargo']?></p></span></li>
+                    <li class="ajustar"><img src="https://i.scdn.co/image/ab67616d00001e0249d694203245f241a1bcaa72"><span class="username"><?php echo $_SESSION['username'] ?><p class="cargo"><?php echo $_SESSION['cargo'] ?></p></span></li>
                 </ul>
             </nav>
             <div class="contenido__pagina">
