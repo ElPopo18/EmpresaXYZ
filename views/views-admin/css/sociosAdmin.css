@@ -91,7 +91,7 @@ a:is(:link, :active, :visited).active{
     justify-content: space-between;
 }
 #navbar .buscar{
-    width: 52%;
+    width: 55%;
 }
 
 #navbar .buscar__label{

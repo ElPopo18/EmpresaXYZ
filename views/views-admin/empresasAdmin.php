@@ -42,7 +42,6 @@ if (empty($_SESSION['username'])) {
             <nav id="navbar">
                 <form class="buscar" method="post">
                     <label class="buscar__label" for="buscar">Buscar: </label>
-                    <input type="hidden" id="empresa" name="empresa" value="empresa">
                     <input type="text" id="buscar" name="buscar" class="buscar__input" placeholder="Id o nombre de la empresa que desea buscar">
                 </form>
                 <ul>

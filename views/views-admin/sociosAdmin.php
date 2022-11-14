@@ -22,6 +22,7 @@ if (empty($_SESSION['username'])) {
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
     <script defer src="js/activarPagina.js"></script>
+    <script src="js/jquery-3.0.0.min.js"></script>
 </head>
 
 <body>
@@ -42,7 +43,7 @@ if (empty($_SESSION['username'])) {
             <nav id="navbar">
                 <form class="buscar" method="post">
                     <label class="buscar__label" for="buscar">Buscar: </label>
-                    <input type="text" id="buscar" name="buscar" class="buscar__input" placeholder="Id o nombre de la empresa que desea buscar">
+                    <input type="text" id="buscar" name="buscar" class="buscar__input" placeholder="Usuario/Nombre/Apellido/Cedula/Empresa/Cargo">
                 </form>
                 <ul>
                     <li><a href="index.php?n=principal"><i class="fi fi-rr-settings"></i></a></li>
@@ -66,21 +67,7 @@ if (empty($_SESSION['username'])) {
                                 <th colspan="2">Opciones</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <?php
-                            while ($row = $resultado->fetch_array()) { ?>
-                                <tr>
-                                    <td><?php echo $row['username']; ?></td>
-                                    <td><?php echo $row['nombre_soc'] ?></td>
-                                    <td><?php echo $row['apellido_soc'] ?></td>
-                                    <td><?php echo $row['ced_socio'] ?></td>
-                                    <td><?php echo $row['nombre_empresa'] ?></td>
-                                    <td><?php echo $row['cargo'] ?></td>
-                                    <td class="tabla__link"> <a href="editar-inventario.php?id=<?php echo $row['ced_socio']; ?>" class="editar">Editar</td>
-                                    <td class="tabla__link"> <a href="eliminar-inventario.php?id=<?php echo $row['ced_socio']; ?>" class="eliminar">Eliminar</td>
-                                </tr>
-
-                            <?php         } ?>
+                        <tbody id="socio">
                         </tbody>
                     </table>
                 </div>
@@ -88,6 +75,32 @@ if (empty($_SESSION['username'])) {
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        $(buscar_datos());
+        function buscar_datos(consulta){
+            $.ajax({
+                url: "views/views-admin/buscarSocio.php",
+                type: "POST",
+                dataType: "HTML",
+                data: {consulta: consulta},
+            })
+            .done(function(respuesta) {
+                $("#socio").html(respuesta);
+            })
+            .fail(function() {
+                console.log("error");
+            })
+        }
+
+        $(document).on("keyup", "#buscar", function(){
+            var valor = $(this).val();
+            if (valor != "") {
+                buscar_datos(valor);
+            }else{
+                buscar_datos();
+            }
+        });
+    </script>
 </body>
 
 </html>

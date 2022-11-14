@@ -91,7 +91,7 @@ a:is(:link, :active, :visited).active{
     justify-content: space-between;
 }
 #navbar .buscar{
-    width: 52%;
+    width: 65%;
 }
 
 #navbar .buscar__label{
@@ -188,12 +188,29 @@ a:is(:link, :active, :visited).active{
 	font-family: arial;
     margin: auto;
     width: 100%;
-    
 }
 th{
 	color: #ffffff;
 	padding: 20px;;
 }
+.tabla__link{
+    color: #fff;
+    padding: 10px;
+    transition: all .4s;
+    cursor: pointer;
+}
+.tabla__link:hover{
+    color: #fff;
+    background-color: #0c2176;
+    border-radius: 60px;
+}
+
+.tabla__link a{
+    color: #fff;
+    text-decoration: none;
+}
+
+
 .registro__btn{
     display: block;
     background-color: #00106b;

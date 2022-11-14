@@ -21,6 +21,7 @@ include('config/conexion.php');
     <link rel="stylesheet" href="views/views-admin/css/reunionesAdmin.css">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <script src="js/jquery-3.0.0.min.js"></script>
 </head>
 
 <body>
@@ -39,9 +40,9 @@ include('config/conexion.php');
         </header>
         <div id="contenido">
             <nav id="navbar">
-                <form class="buscar" method="post">
+            <form class="buscar" method="post">
                     <label class="buscar__label" for="buscar">Buscar: </label>
-                    <input type="text" id="buscar" name="buscar" class="buscar__input" placeholder="Id o nombre de la empresa que desea buscar">
+                    <input type="text" id="buscar" name="buscar" class="buscar__input" placeholder="Id de la reunion/Empresa/Color/Fechas que desea buscar">
                 </form>
                 <ul>
                     <li><a href="index.php?n=principal"><i class="fi fi-rr-settings"></i></a></li>
@@ -55,7 +56,7 @@ include('config/conexion.php');
                     <table border="1" class="tabla">
                         <thead>
                             <tr>
-                                <th>Id</th>
+                                <th>Id Reunion</th>
                                 <th>Nombre Empresa</th>
                                 <th>color</th>
                                 <th>Fecha de inicio</th>
@@ -63,16 +64,6 @@ include('config/conexion.php');
                             </tr>
                         </thead>
                         <tbody id="reuniones">
-                            <?php
-                            while ($row = $resultado->fetch_array()) { ?>
-                                <tr>
-                                    <td><?php echo $row['id_reunion']; ?></td>
-                                    <td><?php echo $row['nombre_empresa'] ?></td>
-                                    <td><?php echo $row['color_reunion'] ?></td>
-                                    <td><?php echo $row['fecha_inicio'] ?></td>
-                                    <td><?php echo $row['fecha_fin'] ?></td>
-                                </tr>
-                            <?php         } ?>
                         </tbody>
                     </table>
                 </div>
@@ -80,6 +71,32 @@ include('config/conexion.php');
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        $(buscar_datos());
+        function buscar_datos(consulta){
+            $.ajax({
+                url: "views/views-admin/buscarReunion.php",
+                type: "POST",
+                dataType: "HTML",
+                data: {consulta: consulta},
+            })
+            .done(function(respuesta) {
+                $("#reuniones").html(respuesta);
+            })
+            .fail(function() {
+                console.log("error");
+            })
+        }
+
+        $(document).on("keyup", "#buscar", function(){
+            var valor = $(this).val();
+            if (valor != "") {
+                buscar_datos(valor);
+            }else{
+                buscar_datos();
+            }
+        });
+    </script>
 </body>
 
 </html>
