@@ -68,14 +68,13 @@ $resulReunions = mysqli_query($conexion, $SqlReunions);
                 <div id="calendar"></div>
                 <?php
                 include('modalNuevoReunion.php');
-                include('modalUpdateReunion.php');
                 ?>
                 <script src="js/jquery-3.0.0.min.js"> </script>
                 <script src="js/popper.min.js"></script>
                 <script src="js/bootstrap.min.js"></script>
                 <script type="text/javascript" src="js/moment.min.js"></script>
                 <script type="text/javascript" src="js/fullcalendar.min.js"></script>
-                <script src='locales/es.js'></script>
+                <script src="js/es.js"></script>
                 <script type="text/javascript">
                     $(document).ready(function() {
                         $("#calendar").fullCalendar({
@@ -127,7 +126,7 @@ $resulReunions = mysqli_query($conexion, $SqlReunions);
                                 //Eliminar Reunion
                                 element.find(".closeon").on("click", function() {
 
-                                    var pregunta = confirm("Deseas Borrar esta Reunion?");
+                                    var pregunta = confirm("Deseas Borrar este Evento?");
                                     if (pregunta) {
 
                                         $("#calendar").fullCalendar("removeEvents", event._id_reunion);
@@ -166,15 +165,6 @@ $resulReunions = mysqli_query($conexion, $SqlReunions);
                                         // $("#respuesta").html(response);
                                     }
                                 });
-                            },
-                            //Modificar Reunion del Calendario 
-                            eventClick: function(event) {
-                                var id_reunion = event._id_reunion;
-                                $('input[name=id_reunion').val(id_reunion);
-                                $('input[name=nombre_empresa').val(event.title);
-                                $('input[name=fecha_inicio').val(event.start.format('DD-MM-YYYY'));
-                                $('input[name=fecha_fin').val(event.end.format("DD-MM-YYYY"));
-                                $("#modalUpdateEvento").modal();
                             },
                         });
                         //Oculta mensajes de Notificacion

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-11-2022 a las 03:00:29
+-- Tiempo de generación: 15-11-2022 a las 05:57:10
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -37,7 +37,14 @@ CREATE TABLE `empresa` (
 --
 
 INSERT INTO `empresa` (`id_empresa`, `nombre_empresa`) VALUES
-(1, 'Empresa XYZ');
+(0, 'Empresa XYZ'),
+(1, 'Byclashlol'),
+(2, 'sdfg'),
+(3, 'ds'),
+(4, 'Arturos'),
+(5, 'Macdonals'),
+(6, 'kjh'),
+(7, 'mono');
 
 -- --------------------------------------------------------
 
@@ -48,8 +55,29 @@ INSERT INTO `empresa` (`id_empresa`, `nombre_empresa`) VALUES
 CREATE TABLE `punto` (
   `id_punto` int(65) NOT NULL,
   `descripcion` varchar(250) NOT NULL,
-  `descision` varchar(25) NOT NULL,
-  `archivo` varchar(25) DEFAULT NULL
+  `archivo` varchar(25) NOT NULL,
+  `nombre_empresa` varchar(25) NOT NULL,
+  `id_reunion` int(11) NOT NULL,
+  `fecha_inicio` date NOT NULL,
+  `fecha_fin` date NOT NULL,
+  `color_reunion` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `puntos`
+--
+
+CREATE TABLE `puntos` (
+  `id_punto` int(11) NOT NULL,
+  `descripcion` varchar(250) NOT NULL,
+  `archivo` varchar(25) NOT NULL,
+  `nombre_empresa` varchar(25) NOT NULL,
+  `id_reunion` int(11) NOT NULL,
+  `fecha_inicio` date NOT NULL,
+  `fecha_fin` date NOT NULL,
+  `color_reunion` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -62,16 +90,9 @@ CREATE TABLE `reunion` (
   `id_reunion` int(11) NOT NULL,
   `nombre_empresa` varchar(25) NOT NULL,
   `color_reunion` varchar(20) NOT NULL,
-  `fecha_inicio` varchar(20) NOT NULL,
-  `fecha_fin` varchar(20) NOT NULL
+  `fecha_inicio` date NOT NULL,
+  `fecha_fin` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `reunion`
---
-
-INSERT INTO `reunion` (`id_reunion`, `nombre_empresa`, `color_reunion`, `fecha_inicio`, `fecha_fin`) VALUES
-(1, 'Empresa XYZ', '#9c27b0', '2022-11-15', '2022-11-16');
 
 -- --------------------------------------------------------
 
@@ -83,8 +104,8 @@ CREATE TABLE `reuniones` (
   `id_reunion` int(11) NOT NULL,
   `nombre_empresa` varchar(25) NOT NULL,
   `color_reunion` varchar(20) NOT NULL,
-  `fecha_inicio` varchar(20) NOT NULL,
-  `fecha_fin` varchar(20) NOT NULL
+  `fecha_inicio` date NOT NULL,
+  `fecha_fin` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -92,7 +113,18 @@ CREATE TABLE `reuniones` (
 --
 
 INSERT INTO `reuniones` (`id_reunion`, `nombre_empresa`, `color_reunion`, `fecha_inicio`, `fecha_fin`) VALUES
-(1, 'Empresa XYZ', '#9c27b0', '2022-11-15', '2022-11-16');
+(1, 'Empresa XYZ', '#9c27b0', '2022-11-09', '2022-11-10'),
+(2, 'Empresa XYZ', '#2196F3', '2022-11-16', '2022-11-17'),
+(3, 'L', '#FF5722', '2022-11-17', '2022-11-18'),
+(4, 'X', '#2196F3', '2022-11-11', '2022-11-12'),
+(5, 'Consorcio', '#FFC107', '2022-11-08', '2022-11-09'),
+(6, 'Consorcio', '#FFC107', '2022-11-08', '2022-11-09'),
+(7, 'Consorcio', '#8BC34A', '1970-01-01', '1970-01-02'),
+(8, 'Kjhg', '#FF5722', '1970-01-01', '1970-01-02'),
+(9, 'Kjhg', '#2196F3', '1970-01-01', '1970-01-02'),
+(10, 'Hgc', '#8BC34A', '2022-11-09', '2022-11-10'),
+(11, 'Liu', '#FF5722', '2022-11-15', '2022-11-16'),
+(12, 'Jh', '#FF5722', '2022-11-23', '2022-11-24');
 
 -- --------------------------------------------------------
 
@@ -115,7 +147,7 @@ CREATE TABLE `socio` (
 
 INSERT INTO `socio` (`ced_socio`, `nombre_soc`, `apellido_soc`, `username`, `cargo`, `nombre_empresa`) VALUES
 (1234, 'admin', 'admin', 'admin', 'Administrador', ''),
-(28518451, 'Anibal', 'Lopez', 'Anibal Lopez', 'Socio', 'Empresa XYZ');
+(28518451, 'Anibal', 'Lopez', 'Anibal Lopez', 'Socio', 'Consorcio');
 
 -- --------------------------------------------------------
 
@@ -143,7 +175,17 @@ ALTER TABLE `empresa`
 -- Indices de la tabla `punto`
 --
 ALTER TABLE `punto`
-  ADD PRIMARY KEY (`id_punto`);
+  ADD PRIMARY KEY (`id_punto`),
+  ADD KEY `nombre_empresa` (`nombre_empresa`),
+  ADD KEY `id_reunion` (`id_reunion`);
+
+--
+-- Indices de la tabla `puntos`
+--
+ALTER TABLE `puntos`
+  ADD PRIMARY KEY (`id_punto`),
+  ADD KEY `nombre_empresa` (`nombre_empresa`),
+  ADD KEY `id_reunion` (`id_reunion`);
 
 --
 -- Indices de la tabla `reunion`
@@ -172,16 +214,34 @@ ALTER TABLE `socio`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `empresa`
+--
+ALTER TABLE `empresa`
+  MODIFY `id_empresa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT de la tabla `punto`
+--
+ALTER TABLE `punto`
+  MODIFY `id_punto` int(65) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `puntos`
+--
+ALTER TABLE `puntos`
+  MODIFY `id_punto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT de la tabla `reunion`
 --
 ALTER TABLE `reunion`
-  MODIFY `id_reunion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_reunion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `reuniones`
 --
 ALTER TABLE `reuniones`
-  MODIFY `id_reunion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_reunion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

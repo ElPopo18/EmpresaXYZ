@@ -392,7 +392,9 @@ tr:first-child>td>.fc-day-grid-event {
 }
 .fc-day-grid-event .fc-content {
  white-space:nowrap;
- overflow:hidden
+ overflow:hidden;
+ text-align: center;
+ padding: 5px;
 }
 .fc-day-grid-event .fc-time {
  font-weight:700

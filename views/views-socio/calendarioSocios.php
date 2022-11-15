@@ -78,7 +78,7 @@ if ($incluir) {
                 <script src="js/bootstrap.min.js"></script>
                 <script type="text/javascript" src="js/moment.min.js"></script>
                 <script type="text/javascript" src="js/fullcalendar.min.js"></script>
-                <script src='locales/es.js'></script>
+                <script src='js/es.js'></script>
                 <script type="text/javascript">
                     $(document).ready(function() {
                         $("#calendar").fullCalendar({
@@ -106,16 +106,6 @@ if ($incluir) {
                                         color: '<?php echo $dataReunion['color_reunion']; ?>'
                                     },
                                 <?php } ?>
-                                <?php
-                                while ($dataPunto = mysqli_fetch_array($resulPuntos)) { ?> {
-                                        _id_punto: '<?php echo $dataPunto['id_punto'] ?>',
-                                        title: '<?php echo $dataPunto['archivo'] ?>',
-                                        start: '<?php echo $dataPunto['fecha_inicio'];?>',
-                                        end: '<?php echo $dataPunto['fecha_fin']; ?>',
-                                        color: '<?php echo $dataPunto['color_reunion']; ?>'
-                                    },
-                                <?php } ?>
-
                             ],
                             //Modificar Reunion del Calendario 
                             eventClick: function(event) {
@@ -135,136 +125,7 @@ if ($incluir) {
 
                     });
                 </script>
-                <!--
-                <div class="container">
-                    <div class="row">
-                        <div class="col msjs">
-                            <?php
-                            include('msjs.php');
-                            ?>
-                        </div>
-                    </div>
-                </div>
-                <div id="calendar"></div>
-                <?php
-                include('modalSubirArchivo.php');
-                ?>
-                <script src="js/jquery-3.0.0.min.js"> </script>
-                <script src="js/popper.min.js"></script>
-                <script src="js/bootstrap.min.js"></script>
-                <script type="text/javascript" src="js/moment.min.js"></script>
-                <script type="text/javascript" src="js/fullcalendar.min.js"></script>
-                <script src='locales/es.js'></script>
-                <script type="text/javascript">
-                    $(document).ready(function() {
-                        $("#calendar").fullCalendar({
-                            header: {
-                                left: "prev,next today",
-                                center: "title",
-                                right: "month,agendaWeek,agendaDay"
-                            },
-
-                            locale: 'es',
-
-                            defaultView: "month",
-                            navLinks: true,
-                            editable: true,
-                            eventLimit: true,
-                            selectable: true,
-                            selectHelper: false,
-
-                            //Nuevo Reunion
-                            select: function(start, end) {
-                                $("#exampleModal").modal();
-                                $("input[name=fecha_inicio]").val(start.format('DD-MM-YYYY'));
-
-                                var valorFechaFin = end.format("DD-MM-YYYY");
-                                var F_final = moment(valorFechaFin, "DD-MM-YYYY").subtract(1, 'days').format('DD-MM-YYYY'); //Le resto 1 dia
-                                $('input[name=fecha_fin').val(F_final);
-
-                            },
-
-                            events: [
-                                <?php
-                                while ($dataReunion = mysqli_fetch_array($resulReunions)) { ?> {
-                                        _id_reunion: '<?php echo $dataReunion['id_reunion'] ?>',
-                                        title: '<?php echo $dataReunion['nombre_empresa']; ?>',
-                                        start: '<?php echo $dataReunion['fecha_inicio']; ?>',
-                                        end: '<?php echo $dataReunion['fecha_fin']; ?>',
-                                        color: '<?php echo $dataReunion['color_reunion']; ?>'
-                                    },
-                                <?php } ?>
-                            ],
-
-
-                            //Eliminar Reunion
-                            eventRender: function(event, element) {
-                                element
-                                    .find(".fc-content")
-                                    .prepend("<span id='btnCerrar'; class='closeon material-icons'>&#xe5cd;</span>");
-
-                                //Eliminar Reunion
-                                element.find(".closeon").on("click", function() {
-
-                                    var pregunta = confirm("Deseas Borrar esta Reunion?");
-                                    if (pregunta) {
-
-                                        $("#calendar").fullCalendar("removeEvents", event._id_reunion);
-
-                                        $.ajax({
-                                            type: "POST",
-                                            url: 'views/views-admin/deleteReunion.php',
-                                            data: {
-                                                id_reunion: event._id_reunion
-                                            },
-                                            success: function(datos) {
-                                                $(".alert-danger").show();
-
-                                                setTimeout(function() {
-                                                    $(".alert-danger").slideUp(500);
-                                                }, 3000);
-
-                                            }
-                                        });
-                                    }
-                                });
-                            },
-
-
-                            //Moviendo Reunion Drag - Drop
-                            eventDrop: function(event, delta) {
-                                var id_reunion = event._id_reunion;
-                                var start = (event.start.format('DD-MM-YYYY'));
-                                var end = (event.end.format("DD-MM-YYYY"));
-
-                                $.ajax({
-                                    url: 'views/views-admin/drag_drop_Reunion.php',
-                                    data: 'start=' + start + '&end=' + end + '&id_reunion=' + id_reunion,
-                                    type: "POST",
-                                    success: function(response) {
-                                        // $("#respuesta").html(response);
-                                    }
-                                });
-                            },
-                            //Modificar Reunion del Calendario 
-                            eventClick: function(event) {
-                                var id_reunion = event._id_reunion;
-                                $('input[name=id_reunion').val(id_reunion);
-                                $('input[name=nombre_empresa').val(event.title);
-                                $('input[name=fecha_inicio').val(event.start.format('DD-MM-YYYY'));
-                                $('input[name=fecha_fin').val(event.end.format("DD-MM-YYYY"));
-                                $("#modalUpdateEvento").modal();
-                            },
-                        });
-                        //Oculta mensajes de Notificacion
-                        setTimeout(function() {
-                            $(".alert").slideUp(300);
-                        }, 3000);
-
-
-                    });
-                </script>
-                -->
+               
             </div>
         </div>
     </div>

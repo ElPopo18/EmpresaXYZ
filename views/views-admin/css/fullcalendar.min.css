@@ -221,6 +221,14 @@ a[data-goto]:hover {
 .fc-row .fc-highlight-skeleton {
  z-index:3
 }
+.fc-content{
+    display: flex;
+}
+.fc-title{
+    align-self: center;
+    flex-basis: 66%;
+    text-align: center;
+}
 .fc-row .fc-content-skeleton {
  position:relative;
  z-index:4;
@@ -392,7 +400,9 @@ tr:first-child>td>.fc-day-grid-event {
 }
 .fc-day-grid-event .fc-content {
  white-space:nowrap;
- overflow:hidden
+ overflow:hidden;
+ text-align: center;
+ padding: 5px; /*! ojo a esto*/
 }
 .fc-day-grid-event .fc-time {
  font-weight:700
