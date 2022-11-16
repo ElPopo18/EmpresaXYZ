@@ -58,7 +58,7 @@ include('config/conexion.php');
                             <tr>
                                 <th>Id Reunion</th>
                                 <th>Nombre Empresa</th>
-                                <th>color</th>
+                                <th>Color</th>
                                 <th>Fecha de inicio</th>
                                 <th>Fecha de fin</th>
                             </tr>
