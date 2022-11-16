@@ -126,7 +126,7 @@ $resulReunions = mysqli_query($conexion, $SqlReunions);
                                 //Eliminar Reunion
                                 element.find(".closeon").on("click", function() {
 
-                                    var pregunta = confirm("Desea Borrar esta Reunion ?");
+                                    var pregunta = confirm("¿ Desea Borrar esta Reunion ?");
                                     if (pregunta) {
 
                                         $("#calendar").fullCalendar("removeEvents", event._id_reunion);
