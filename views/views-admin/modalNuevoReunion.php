@@ -36,10 +36,10 @@
 
         <div class="col-md-12" id="grupoRadio">
 
-          <input type="radio" name="color_reunion" id="crimson" value="#DC143C">
+          <input type="radio" name="color_reunion" id="crimson" value="#DC143C" checked>
           <label for="crimson" class="circu" style="background-color: #DC143C;"> </label>
           
-          <input type="radio" name="color_reunion" id="orange" value="#FF5722" checked>
+          <input type="radio" name="color_reunion" id="orange" value="#FF5722">
           <label for="orange" class="circu" style="background-color: #FF5722;"> </label>
 
           <input type="radio" name="color_reunion" id="amber" value="#FFC107">
