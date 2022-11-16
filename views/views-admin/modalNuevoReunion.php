@@ -1,4 +1,4 @@
-<div class="modal" id="exampleModal" tabindex="-1" role="dialog">
+<div class="modal" id="nuevaReunion" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -11,24 +11,34 @@
         <div class="form-group">
           <label for="nombre_empresa" class="col-sm-12 control-label">Nombre de la empresa</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" name="nombre_empresa" id="nombre_empresa" placeholder="Nombre del la empresa" required />
+            <input type="text" class="form-control" name="nombre_empresa" id="nombre_empresa" placeholder="Nombre de la empresa" required />
           </div>
         </div>
+        
         <div class="form-group">
+          <label for="descripcion" class="col-sm-12 control-label">Descripcion</label>
+          <div class="col-sm-10">
+            <textarea type="text" class="form-control" name="descripcion" id="descripcion" placeholder="Descripcion de la reunion" row="3" required></textarea>
+          </div>
+        </div>
+        <div class="form-group d-none">
           <label for="fecha_inicio" class="col-sm-12 control-label">Fecha Inicio</label>
           <div class="col-sm-10">
-            <input type="date" class="form-control" name="fecha_inicio" id="fecha_inicio" placeholder="Fecha Inicio" required>
+            <input type="text" class="form-control" name="fecha_inicio" id="fecha_inicio" placeholder="Fecha Inicio" required>
           </div>
         </div>
-        <div class="form-group">
-          <label for="fecha_fin" class="col-sm-12 control-label">Fecha Final</label>
+        <div class="form-group d-none">
+          <label for="fecha_fin " class="col-sm-12 control-label">Fecha Final</label>
           <div class="col-sm-10">
-            <input type="date" class="form-control" name="fecha_fin" id="fecha_fin" placeholder="Fecha Final" required>
+            <input type="text" class="form-control" name="fecha_fin" id="fecha_fin" placeholder="Fecha Final" required>
           </div>
         </div>
 
         <div class="col-md-12" id="grupoRadio">
 
+          <input type="radio" name="color_reunion" id="crimson" value="#DC143C">
+          <label for="crimson" class="circu" style="background-color: #DC143C;"> </label>
+          
           <input type="radio" name="color_reunion" id="orange" value="#FF5722" checked>
           <label for="orange" class="circu" style="background-color: #FF5722;"> </label>
 
@@ -46,6 +56,7 @@
 
           <input type="radio" name="color_reunion" id="indigo" value="#9c27b0">
           <label for="indigo" class="circu" style="background-color: #9c27b0;"> </label>
+          
 
         </div>
 

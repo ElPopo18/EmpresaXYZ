@@ -95,7 +95,7 @@ $resulReunions = mysqli_query($conexion, $SqlReunions);
 
                             //Nuevo Reunion
                             select: function(start, end) {
-                                $("#exampleModal").modal();
+                                $("#nuevaReunion").modal();
                                 $("input[name=fecha_inicio]").val(start.format('DD-MM-YYYY'));
 
                                 var valorFechaFin = end.format("DD-MM-YYYY");
@@ -126,7 +126,7 @@ $resulReunions = mysqli_query($conexion, $SqlReunions);
                                 //Eliminar Reunion
                                 element.find(".closeon").on("click", function() {
 
-                                    var pregunta = confirm("Deseas Borrar este Evento?");
+                                    var pregunta = confirm("Desea Borrar esta Reunion ?");
                                     if (pregunta) {
 
                                         $("#calendar").fullCalendar("removeEvents", event._id_reunion);

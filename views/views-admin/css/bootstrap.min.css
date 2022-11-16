@@ -5299,7 +5299,7 @@ a.close.disabled {
 @media (min-width:576px) {
  .modal-dialog {
    max-width: 500px;
-   margin: 7rem auto;
+   margin: 8.5rem auto;
   color: #00106b;
  }
  .modal-dialog-scrollable {

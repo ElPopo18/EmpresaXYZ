@@ -194,6 +194,9 @@ th{
 	color: #ffffff;
 	padding: 20px;;
 }
+td{
+    padding: 10px;
+}
 .tabla__link{
     color: #fff;
     padding: 10px;
