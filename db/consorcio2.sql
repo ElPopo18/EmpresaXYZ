@@ -73,6 +73,8 @@ CREATE TABLE
         `cargo` varchar(25) NOT NULL
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
+INSERT INTO `socio` VALUES ('27922803','admin','admin','admin','Administrador');
+
 -- --------------------------------------------------------
 
 --
@@ -101,6 +103,7 @@ CREATE TABLE
     `reunion` (
         `id_reunion` int(25) NOT NULL,
         `id_punto` int(30) NOT NULL,
+        `id_empresa` int(30) NOT NULL,
         `fecha` datetime
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
@@ -154,7 +157,7 @@ ALTER TABLE `empresa` ADD PRIMARY KEY (`id`);
 
 --
 
-ALTER TABLE `socio` ADD PRIMARY KEY (`ced_socio`);
+ALTER TABLE `socio` ADD PRIMARY KEY(`ced_socio`);
 
 --
 
@@ -162,17 +165,15 @@ ALTER TABLE `socio` ADD PRIMARY KEY (`ced_socio`);
 
 --
 
-ALTER TABLE `punto`
-ADD
-    PRIMARY KEY (`id_punto`),
-    --
-    -- Indices de la tabla `reunion`
-    --
-ALTER TABLE `reunion`
-ADD
-    PRIMARY KEY (`id_reunion`),
-ADD
-    KEY `id_punto` (`id_punto`);
+ALTER TABLE `punto` ADD PRIMARY KEY (`id_punto`);
+--
+-- Indices de la tabla `reunion`
+--
+
+ALTER TABLE `reunion` 
+    ADD PRIMARY KEY (`id_reunion`),
+    ADD KEY `reunion_ibfk_1` (`id_punto`),
+    ADD KEY `reunion_ibfk_2` (`id_empresa`);
 
 --
 
@@ -189,11 +190,9 @@ ALTER TABLE `punto` ADD PRIMARY KEY (`id_punto`);
 --
 
 ALTER TABLE `socio_has_punto`
-ADD PRIMARY KEY (`id`),
-ADD
-    KEY `id_punto` (`id_punto`),
-ADD
-    KEY `id_socio` (`id_socio`);
+    ADD PRIMARY KEY (`id`),
+    ADD KEY `socio_has_punto_ibfk_1` (`id_punto`),
+    ADD KEY `socio_has_punto_ibfk_2` (`id_socio`);
 
 --
 
@@ -201,14 +200,10 @@ ADD
 
 --
 
-ALTER TABLE
-    `empresa_has_socio`
-ADD
-    PRIMARY KEY (`id_empresoc`),
-ADD
-    KEY `id_empresa` (`id_empresa`),
-ADD
-    KEY `id_socio` (`id_socio`);
+ALTER TABLE `empresa_has_socio`
+    ADD PRIMARY KEY (`id_empresoc`),
+    ADD KEY `empresa_has_socio_ibfk_1` (`id_empresa`),
+    ADD KEY `empresa_has_socio_ibfk_2` (`id_socio`);
 
 --
 
@@ -274,8 +269,8 @@ ALTER TABLE
 --
 
 ALTER TABLE `reunion`
-ADD
-    CONSTRAINT `reunion_ibfk_1` FOREIGN KEY (`id_punto`) REFERENCES `punto` (`id_punto`);
+    ADD CONSTRAINT `reunion_ibfk_1` FOREIGN KEY (`id_punto`) REFERENCES `punto` (`id_punto`) ON DELETE CASCADE ON UPDATE CASCADE,
+    ADD CONSTRAINT `reunion_ibfk_2` FOREIGN KEY (`id_empresa`) REFERENCES `empresa` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 
@@ -284,10 +279,8 @@ ADD
 --
 
 ALTER TABLE `socio_has_punto`
-ADD
-    CONSTRAINT `socio_has_punto_ibfk_1` FOREIGN KEY (`id_punto`) REFERENCES `punto` (`id_punto`),
-ADD
-    CONSTRAINT `socio_has_punto_ibfk_2` FOREIGN KEY (`id_socio`) REFERENCES `socio` (`ced_socio`);
+    ADD CONSTRAINT `socio_has_punto_ibfk_1` FOREIGN KEY (`id_punto`) REFERENCES `punto` (`id_punto`) ON DELETE CASCADE ON UPDATE CASCADE,
+    ADD CONSTRAINT `socio_has_punto_ibfk_2` FOREIGN KEY (`id_socio`) REFERENCES `socio` (`ced_socio`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 
@@ -295,11 +288,9 @@ ADD
 
 --
 
-ALTER TABLE `socio_has_punto`
-ADD
-    CONSTRAINT `empresa_has_socio_ibfk_1` FOREIGN KEY (`id_empresa`) REFERENCES `empresa` (`id_empresa`),
-ADD
-    CONSTRAINT `empresa_has_socio_ibfk_2` FOREIGN KEY (`id_socio`) REFERENCES `socio` (`ced_socio`);
+ALTER TABLE `empresa_has_socio`
+    ADD CONSTRAINT `empresa_has_socio_ibfk_1` FOREIGN KEY (`id_empresa`) REFERENCES `empresa` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+    ADD CONSTRAINT `empresa_has_socio_ibfk_2` FOREIGN KEY (`id_socio`) REFERENCES `socio` (`ced_socio`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 COMMIT;
 
