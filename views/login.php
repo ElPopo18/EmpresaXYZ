@@ -8,29 +8,32 @@
   <title>Inicio de socio</title>
   <link rel="icon" href="views/img/calendario.png">
   <link rel="stylesheet" href="views/css/login.css">
-  <script src="https://kit.fontawesome.com/2a47b8bfbb.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/1c51e264f0.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="views/css/bootstrap.min.css">
 </head>
 
 <body>
-  <form class="form" autocomplete="off">
+  <form class="form" autocomplete="off" method="POST">
     <div class="titulo-btn">
       <a class="btn" href="index.php?n=principal"><i class="fa-solid fa-arrow-left"></i></a>
       <h2 class="titulo-form">Iniciar Sesion</h2>
     </div>
-    <!--<p class="parrafo">&iquest; Aun no eres socio ? <a href="index.php?n=paginaRegistro" class="form-link">Entra aqui para Registrarte</a></p>-->
+    <?php
+    include "config/conexion.php";
+    include "controllers/controladorLogin.php";
+    ?>
     <div class="form_container">
       <div class="form_grupo">
-        <input type="text" name="username" class="form_input" placeholder=" " required>
+        <input type="text" name="username" class="form_input" placeholder=" ">
         <label for="name" class="form_label">Usuario:</label>
         <span class="form_line"></span>
       </div>
       <div class="form_grupo">
-        <input type="password" name="ced_socio" class="form_input" placeholder=" " required>
+        <input type="password" name="ced_socio" class="form_input" placeholder=" ">
         <label for="password" class="form_label">Cedula:</label>
         <span class="form_line"></span>
       </div>
-      <input type="submit" class="form_submit" value="Iniciar">
-      <input type="hidden" name="n" value="login">
+      <input name="btn_ingresar" type="submit" class="form_submit" value="Iniciar Sesion">
     </div>
   </form>
 </body>

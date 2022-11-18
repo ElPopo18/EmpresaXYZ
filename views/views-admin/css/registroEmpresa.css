@@ -6,7 +6,7 @@
     font-family: 'Hammersmith One';
 }
 body{
-    background-image: url(../img/empresa.jpg) !important;
+    background-image: url(views/img/empresa.jpg) !important;
     min-height: 100vh;
     background-repeat: no-repeat;
     background-position: center;

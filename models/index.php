@@ -9,9 +9,9 @@ class Modelo
     public function __construct()
     {
         $this->Modelo = array();
-        $this->db = new PDO('mysql:host=localhost;dbname=consorcio2', "root", "");
+        $this->db = new PDO('mysql:host=localhost;dbname=consorcio', "root", "");
     }
-
+        //insertar a la base de datos
     public function insertar($tabla, $data)
     {
         $consulta = "insert into " . $tabla . " values(" . $data . ")";

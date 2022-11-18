@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Registro de socio</title>
-  <link rel="stylesheet" href="views/css/registroSocio.css">
+  <link rel="stylesheet" href="views/views-admin/css/registroSocios.css">
   <link rel="icon" href="views/img/calendario.png">
   <script src="https://kit.fontawesome.com/1c51e264f0.js" crossorigin="anonymous"></script>
 </head>
@@ -15,7 +15,7 @@
 
   <form class="form">
     <div class="titulo-btn">
-      <a class="btn" href="index.php?n=dashboard"><i class="fa-solid fa-arrow-left"></i></a>
+      <a class="btn" href="index.php?n=inicioAdmin"><i class="fa-solid fa-arrow-left"></i></a>
       <h2 class="titulo-form">Resgistrar Socio</h2>
     </div>
     <!--<p class="parrafo">&iquest; Ya eres socio ? <a href="index.php?n=paginaLoginSocio" class="form-link">Entra aqui para iniciar sesion</a></p>-->
@@ -38,6 +38,11 @@
       <div class="form_grupo">
         <input type="text" name="ced_socio" class="form_input" placeholder=" " required>
         <label for="cedula" class="form_label">Cedula:</label>
+        <span class="form_line"></span>
+      </div>
+      <div class="form_grupo">
+        <input type="text" name="nombre_empresa" class="form_input" placeholder=" " required>
+        <label for="nombre_empresa" class="form_label">Nombre de la empresa:</label>
         <span class="form_line"></span>
       </div>
       <div class="form_grupo">

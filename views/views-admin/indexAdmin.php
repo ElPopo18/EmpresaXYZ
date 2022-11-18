@@ -1,6 +1,8 @@
 <?php
-
 session_start();
+if (empty($_SESSION['username'])) {
+    header('location: index.php?n=paginaLogin');
+}
 
 ?>
 <!DOCTYPE html>
@@ -12,9 +14,10 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="icon" href="views/img/calendario.png">
-    <link rel="stylesheet" href="views/css/indexAdmin.css">
+    <link rel="stylesheet" href="views/views-admin/css/indexAdmin.css">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <script defer src="js/activarPagina.js"></script>
 </head>
 
 <body>
@@ -23,20 +26,23 @@ session_start();
             <h1 class="titulo"><img src="views/img/calendario.png" class="logo">EmpresaXYZ</h1>
             <aside class="lateral">
                 <ul>
-                    <li><a href="index.php?n=dashboard">Dashboard</a></li>
-                    <li><a href="index.php?n=calendario">Calendario</a></li>
-                    <li><a>Reuniones</a></li>
-                    <li><a>Empresas</a></li>
-                    <li><a>Socios</a></li>
+                    <li><a href="index.php?n=inicioAdmin" class="active">Dashboard</a></li>
+                    <li><a href="index.php?n=calendarioAdmin">Calendario</a></li>
+                    <li><a href="index.php?n=reunionesAdmin">Reuniones</a></li>
+                    <li><a href="index.php?n=empresasAdmin">Empresas</a></li>
+                    <li><a href="index.php?n=sociosAdmin">Socios</a></li>
                 </ul>
             </aside>
         </header>
         <div id="contenido">
             <nav id="navbar">
+                <div class="navbar__registro">
+                    <h2 class="navbar__r">Registros de usuarios</h2>
+                </div>
                 <ul>
                     <li><a href="index.php?n=principal"><i class="fi fi-rr-settings"></i></a></li>
-                    <li class="margin-right"><a href="index.php?n=principal"><i class="fi fi-sr-exit"></i></a></li>
-                    <li class="ajustar"><img src="https://i.scdn.co/image/ab67616d00001e0249d694203245f241a1bcaa72"><span class="username">Administrador</span></li>
+                    <li class="margin-right"><a href="controllers/controladorCerrarSesion.php"><i class="fi fi-sr-exit"></i></a></li>
+                    <li class="ajustar"><img src="https://i.scdn.co/image/ab67616d00001e0249d694203245f241a1bcaa72"><span class="username"><?php echo $_SESSION['username'] ?><p class="cargo"><?php echo $_SESSION['cargo'] ?></p></span></li>
                 </ul>
             </nav>
             <div class="contenido__pagina">
@@ -67,7 +73,12 @@ session_start();
                     </div>
                     <div class="registro__lista">
                         <ul>
-                            <li></li>
+                            <li>Ver calendario de reuniones</li>
+                            <li>Crear reuniones</li>
+                            <li>Editar fechas de reuniones</li>
+                            <li>Eliminar Reuniones</li>
+                            <li>Registrar, eliminar Socios</li>
+                            <li>Registrar, eliminar Empresas</li>
                         </ul>
                     </div>
                     <a href="index.php?n=paginaRegistroEmpresa" class="registro__btn">Una Empresa</a>

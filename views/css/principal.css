@@ -2,6 +2,8 @@
 * {
   padding: 0px;
   margin: 0px;
+  box-sizing: border-box;
+  font-family: "Hammersmith One";
 }
 #contenedor-general {
   min-height: 100vh;
@@ -16,10 +18,10 @@
   padding: 7rem;
 }
 .titulo {
-  width: 400px;
+  width: 420px;
   font-size: 2rem;
   color: #0c2176;
-  font-family: "Hammersmith One", sans-serif;
+  font-family: "Hammersmith One";
   margin-bottom: 3rem;
   background-color: #e5e5f7;
   opacity: 0.9;

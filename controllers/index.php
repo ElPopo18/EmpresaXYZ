@@ -1,6 +1,5 @@
 <?php
 require 'models/index.php';
-
 class ModeloController
 {
     private $model;
@@ -13,16 +12,19 @@ class ModeloController
     {
         require_once("views/principal.php");
     }
+    static function inactividad(){
+        require_once("views/tiempoInactivo.php");
+    }
     //todo apartir de aqui es funciones de registro
     // va a la pagina de registrar socio
     static function paginaRegistroSocio()
     {
-        require_once("views/registroSocio.php");
+        require_once("views/views-admin/registroSocio.php");
     }
     //va a la pagina de registrar una empresa
     static function paginaRegistroEmpresa()
     {
-        require_once("views/registroEmpresa.php");
+        require_once("views/views-admin/registroEmpresa.php");
     }
     //  Guardar datos de un usuario socio
     static function registroSocio()
@@ -32,74 +34,81 @@ class ModeloController
         $apellido_soc = $_REQUEST['apellido_soc'];
         $username = $_REQUEST['username'];
         $cargo = $_REQUEST['cargo'];
-        $data = "'" . $ced_socio . "','" . $nombre_soc . "','" . $apellido_soc . "','" . $username . "','" . $cargo . "'";
+        $empresa = $_REQUEST['nombre_empresa'];
+        $data = "'" . $ced_socio . "','" . $nombre_soc . "','" . $apellido_soc . "','" . $username . "','" . $cargo . "','" . $empresa . "'";
         $usuario = new Modelo();
         $condicion = "ced_socio='" . $ced_socio . "' AND nombre_soc='" . $nombre_soc . "' AND apellido_soc='" . $apellido_soc . "' AND username='" . $username . "' AND
-        cargo='" . $cargo . "'";
+        cargo='" . $cargo . "' AND nombre_empresa='" . $empresa . "'";
 
         if ($usuario->validarUsuarioExistente("socio", "username='" . $username . "'", "cargo='" . $cargo . "'")) {
-            header('location:' . ModeloController::paginaRegistroSocio());
+            header('location:' . 'index.php?n=paginaRegistroSocio');
         } else {
             $dato = $usuario->insertar("socio", $data);
-            header('location:' . 'index.php?n=dashboard');
+            header('location:' . 'index.php?n=inicioAdmin');
         }
     }
     //registrar una empresa
     static function registroEmpresa()
     {
-        $rif = $_REQUEST['rif'];
+        $id_empresa = $_REQUEST['id_empresa'];
         $nombre_empresa = $_REQUEST['nombre_empresa'];
-        $data = "'" . $rif . "','" . $nombre_empresa . "'";
+        $data = "'" . $id_empresa . "','" . $nombre_empresa . "'";
         $empresa = new Modelo();
-        $condicion = "rif='" . $rif . "' AND nombre_empresa='" . $nombre_empresa . "'";
+        $condicion = "id_empresa='" . $id_empresa . "' AND nombre_empresa='" . $nombre_empresa . "'";
         if ($empresa->validarUsuarioExistente("empresa", "nombre_empresa='" . $nombre_empresa . "'")) {
-            header('location:' . ModeloController::paginaRegistroEmpresa());
-            echo "<script>alert('el nombre de la empresa: $empresa ya esta siendo utilizados');</script>";
+            header('location: index.php?n=paginaRegistroEmpresa');
         } else {
             $dato = $empresa->insertar("empresa", $data);
-            header('location:' . 'index.php?n=dashboard');
+            header('location:' . 'index.php?n=inicioAdmin');
         }
     }
-    //todo apartir de aqui es funciones de Login
     //va a la pagina de login
     static function paginaLogin()
     {
         require_once("views/login.php");
     }
-    //iniciar sesion como socio
-    static function login()
+    //todo interfaz del admin
+    static function inicioAdmin()
     {
-        $username = $_REQUEST['username'];
-        $ced_socio = $_REQUEST['ced_socio'];
-        $datos = new Modelo();
-        $data = "username ='" . $username . "' and ced_socio ='" . $ced_socio . "'";
-        $dato = $datos->validarUsuarioExistente("socio", $data);
-        $cargoAdmin = $datos->cargoAdmin($username);
-        /*
-        if ($dato == true && $cargoSocio == true) {
-            require_once("views/socio/index.php");
-        }*/
-        if ($dato == true && $cargoAdmin == true) {
-            require_once("views/admin/index.php");
-        } else {
-            header('location:' . ModeloController::paginaLogin());
-        }
+        require_once("views/views-admin/indexAdmin.php");
     }
-    //todo interfaz
-    /*
-    static function inicioSocio()
+    //empresas
+    static function empresasAdmin()
     {
-        require_once("views/socio/index.php");
+        require_once("views/views-admin/empresasAdmin.php");
     }
-    */
-    //ir al inicio
-    static function dashboard()
+    //reuniones
+    static function reunionesAdmin()
     {
-        require_once("views/admin/index.php");
+        require_once("views/views-admin/reunionesAdmin.php");
     }
-    //ir al calendario
-    static function calendario()
+    //reuniones
+    static function sociosAdmin()
     {
-        require_once("views/calendario.php");
+        require_once("views/views-admin/sociosAdmin.php");
     }
+    static function calendarioAdmin()
+    {
+        require_once("views/views-admin/calendarioAdmin.php");
+    }
+    //todo fin interfaz del admin
+
+    //todo interfaz del socio
+
+    static function calendarioSocio()
+    {
+        require_once("views/views-socio/calendarioSocios.php");
+    }
+    static function reunionesSocio()
+    {
+        require_once("views/views-socio/reunionesSocios.php");
+    }
+    static function sociosSocio()
+    {
+        require_once("views/views-socio/sociosSocios.php");
+    }
+    static function puntos(){
+        require_once("views/views-socio/puntos.php");
+    }
+    //todo fin interfaz del socio
 }

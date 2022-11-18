@@ -37,7 +37,6 @@
 }
 
 .lateral{
-    /*margin-top: 20%;*/
     width: 80%;
 }
 
@@ -47,7 +46,6 @@
 
 .lateral ul li{
     padding-bottom: 20px;
-
 }
 
 .lateral a{
@@ -60,14 +58,28 @@
     cursor: pointer;
     text-decoration: none;
     border-left: 5px solid transparent;
-    
 }
 .lateral a:hover{
     border-left: 5px solid #c7C7C7;
     background-color: #233077;
 }
 
+a:is(:link, :active, :visited).active{
+    border-left: 5px solid #c7C7C7;
+    background-color: #233077;
+}
 
+#navbar .navbar__nombre__empresa{
+    background-image: radial-gradient(#0c2176 0.5px, transparent 0.5px),radial-gradient(#0c2176 0.5px, #e5e5f7 0.5px);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+    border-radius: 10px;
+    align-self: center;
+}
+.nombre_empresa{
+    color: #00106b;
+    padding: .5rem;
+}
 /*? fin header*/
 
 #contenido{
@@ -83,7 +95,9 @@
     flex-basis: 6%;
     background-color: #00106b;
     margin-top: 1%;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
+    display: flex;
+justify-content: space-between;
 }
 
 #navbar > ul{
@@ -121,8 +135,11 @@
 }
 
 .username{
-    font-size: 16px;
+    font-size: 18px;
     font-family: arial;
+}
+.cargo{
+    font-size: 12px;
 }
 .margin-right{
     margin-right: 15px;
@@ -141,6 +158,12 @@
 .contenido__pagina{
     display: flex;
     flex-flow: row wrap;
-    justify-content: center;
+    justify-content: space-evenly;
     flex-basis: 94%;
+    align-items: center;
+    background-image: radial-gradient(#0c2176 0.5px, transparent 0.5px),radial-gradient(#0c2176 0.5px, #e5e5f7 0.5px);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+    border-radius: 10px;
+    padding: 30px;
 }
