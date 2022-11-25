@@ -22,7 +22,7 @@ if (empty($_SESSION['username'])) {
 <body>
     <div id="container">
         <header id="header">
-            <h1 class="titulo"><img src="views/img/calendario.png" class="logo">EmpresaXYZ</h1>
+            <h1 class="titulo"><img src="../img/calendario.png" class="logo">EmpresaXYZ</h1>
             <aside class="lateral">
                 <ul>
                     <li><a href="../../index.php?n=inicioAdmin">Dashboard</a></li>
@@ -40,9 +40,9 @@ if (empty($_SESSION['username'])) {
                     <h2 class="seccion">Configuraciones del adminitrador</h2>
                 </div>
                 <ul>
-                    <li><a href="index.php?n=configuracionAdmin"><i class="fi fi-rr-settings"></i></a></li>
+                    <li><a href="../../index.php?n=configuracionAdmin"><i class="fi fi-rr-settings"></i></a></li>
                     <li class="margin-right"><a href="../../controllers/controladorCerrarSesion.php"><i class="fi fi-sr-exit"></i></a></li>
-                    <li class="ajustar"><img src="img-perfil/<?php echo $_SESSION['foto']?>"><span class="username"><?php echo $_SESSION['username'] ?><p class="cargo"><?php echo $_SESSION['cargo'] ?></p></span></li>
+                    <li class="ajustar"><img src="../../img-perfil/<?php echo $_SESSION['foto']?>"><span class="username"><?php echo $_SESSION['username'] ?><p class="cargo"><?php echo $_SESSION['cargo'] ?></p></span></li>
                 </ul>
             </nav>
             <div class="contenido__pagina">
@@ -60,7 +60,11 @@ if (empty($_SESSION['username'])) {
                     $img_file = $foto['name'];
                     $img_type = $foto['type'];
                     $directorio = "../../img-perfil";
-                    if ($img_file == NULL) {
+                    if ($pass == NULL) {
+                        $actualizar = "UPDATE socio SET nombre_soc='$nombre', apellido_soc='$apellido' WHERE username= '$usuario'";   
+                        $resultado = $conexion->query($actualizar);
+                    }
+                    else if ($img_file == NULL) {
                         $actualizar = "UPDATE socio SET nombre_soc='$nombre', apellido_soc='$apellido', password='$password' WHERE username= '$usuario'";   
                         $resultado = $conexion->query($actualizar);
                     }
@@ -76,10 +80,12 @@ if (empty($_SESSION['username'])) {
                                 echo '<div class="mensaje">Usuario editado con exito</div>';
                             }
                         }
+                        echo '<div class="mensaje">Usuario editado con exito</div>';
                     }
+                    echo '<div class="mensaje">Usuario editado con exito</div>';
                     ?>
                 </div>
-            </div>x
+            </div>
         </div>
     </div>
 </body>
