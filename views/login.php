@@ -29,8 +29,8 @@
         <span class="form_line"></span>
       </div>
       <div class="form_grupo">
-        <input type="password" name="ced_socio" class="form_input" placeholder=" ">
-        <label for="password" class="form_label">Cedula:</label>
+        <input type="password" name="password" class="form_input" placeholder=" ">
+        <label for="password" class="form_label">Contraseña:</label>
         <span class="form_line"></span>
       </div>
       <input name="btn_ingresar" type="submit" class="form_submit" value="Iniciar Sesion">

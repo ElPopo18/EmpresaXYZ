@@ -18,11 +18,15 @@
       <a class="btn" href="index.php?n=inicioAdmin"><i class="fa-solid fa-arrow-left"></i></a>
       <h2 class="titulo-form">Resgistrar Socio</h2>
     </div>
-    <!--<p class="parrafo">&iquest; Ya eres socio ? <a href="index.php?n=paginaLoginSocio" class="form-link">Entra aqui para iniciar sesion</a></p>-->
     <div class="form_container">
       <div class="form_grupo">
         <input type="text" name="username" class="form_input" placeholder=" " required>
         <label for="name" class="form_label">Usuario:</label>
+        <span class="form_line"></span>
+      </div>
+      <div class="form_grupo">
+        <input type="password" name="password" class="form_input" placeholder=" " required>
+        <label for="password" class="form_label">Contraseña:</label>
         <span class="form_line"></span>
       </div>
       <div class="form_grupo">

@@ -14,9 +14,9 @@
         while ($row = $resultado->fetch_assoc()) {
             $salida .= '<tr>';
             $salida .= '<td>'.$row['username'].'</td>';
-            $salida .= '<td>'.$row['ced_socio'].'</td>';
             $salida .= '<td>'.$row['nombre_soc'].'</td>';
             $salida .= '<td>'.$row['apellido_soc'].'</td>';
+            $salida .= '<td>'.$row['ced_socio'].'</td>';
             $salida .= '<td>'.$row['nombre_empresa'].'</td>';
             $salida .= '<td>'.$row['cargo'].'</td>';
             $salida .= '<td class="tabla__link"><a href="">Editar</a></td>';

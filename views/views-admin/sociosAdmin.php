@@ -46,10 +46,10 @@ if (empty($_SESSION['username'])) {
                     <input type="text" id="buscar" name="buscar" class="buscar__input" placeholder="Usuario/Nombre/Apellido/Cedula/Empresa/Cargo">
                 </form>
                 <ul>
-                    <li><a href="index.php?n=principal"><i class="fi fi-rr-settings"></i></a></li>
+                    <li><a href="index.php?n=configuracionAdmin"><i class="fi fi-rr-settings"></i></a></li>
                     <li class="margin-right"><a href="controllers/controladorCerrarSesion.php"><i class="fi fi-sr-exit"></i></a></li>
 
-                    <li class="ajustar"><img src="https://i.scdn.co/image/ab67616d00001e0249d694203245f241a1bcaa72"><span class="username"><?php echo $_SESSION['username'] ?><p class="cargo"><?php echo $_SESSION['cargo'] ?></p></span></li>
+                    <li class="ajustar"><img src="img-perfil/<?php echo $_SESSION['foto']?>"><span class="username"><?php echo $_SESSION['username'] ?><p class="cargo"><?php echo $_SESSION['cargo'] ?></p></span></li>
                 </ul>
             </nav>
             <div class="contenido__pagina">
