@@ -60,13 +60,14 @@ if (empty($_SESSION['username'])) {
                     $img_file = $foto['name'];
                     $img_type = $foto['type'];
                     $directorio = "../../img-perfil";
+                    $actualizar = "UPDATE socio SET nombre_soc='$nombre', apellido_soc='$apellido' WHERE username= '$usuario'";   
                     if ($pass == NULL) {
-                        $actualizar = "UPDATE socio SET nombre_soc='$nombre', apellido_soc='$apellido' WHERE username= '$usuario'";   
                         $resultado = $conexion->query($actualizar);
                     }
                     else if ($img_file == NULL) {
                         $actualizar = "UPDATE socio SET nombre_soc='$nombre', apellido_soc='$apellido', password='$password' WHERE username= '$usuario'";   
                         $resultado = $conexion->query($actualizar);
+                        echo '<div class="mensaje">Usuario editado con exito</div>';
                     }
                     else {
                         //si es una imagen
@@ -80,9 +81,7 @@ if (empty($_SESSION['username'])) {
                                 echo '<div class="mensaje">Usuario editado con exito</div>';
                             }
                         }
-                        echo '<div class="mensaje">Usuario editado con exito</div>';
                     }
-                    echo '<div class="mensaje">Usuario editado con exito</div>';
                     ?>
                 </div>
             </div>
