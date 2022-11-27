@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-11-2022 a las 05:57:10
+-- Tiempo de generación: 18-11-2022 a las 17:27:20
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -89,10 +89,18 @@ CREATE TABLE `puntos` (
 CREATE TABLE `reunion` (
   `id_reunion` int(11) NOT NULL,
   `nombre_empresa` varchar(25) NOT NULL,
+  `descripcion` varchar(250) NOT NULL,
   `color_reunion` varchar(20) NOT NULL,
   `fecha_inicio` date NOT NULL,
   `fecha_fin` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `reunion`
+--
+
+INSERT INTO `reunion` (`id_reunion`, `nombre_empresa`, `descripcion`, `color_reunion`, `fecha_inicio`, `fecha_fin`) VALUES
+(14, 'Consorcio', 'Sexo', '#DC143C', '2022-11-04', '2022-11-05');
 
 -- --------------------------------------------------------
 
@@ -103,6 +111,7 @@ CREATE TABLE `reunion` (
 CREATE TABLE `reuniones` (
   `id_reunion` int(11) NOT NULL,
   `nombre_empresa` varchar(25) NOT NULL,
+  `descripcion` varchar(250) NOT NULL,
   `color_reunion` varchar(20) NOT NULL,
   `fecha_inicio` date NOT NULL,
   `fecha_fin` date NOT NULL
@@ -112,19 +121,20 @@ CREATE TABLE `reuniones` (
 -- Volcado de datos para la tabla `reuniones`
 --
 
-INSERT INTO `reuniones` (`id_reunion`, `nombre_empresa`, `color_reunion`, `fecha_inicio`, `fecha_fin`) VALUES
-(1, 'Empresa XYZ', '#9c27b0', '2022-11-09', '2022-11-10'),
-(2, 'Empresa XYZ', '#2196F3', '2022-11-16', '2022-11-17'),
-(3, 'L', '#FF5722', '2022-11-17', '2022-11-18'),
-(4, 'X', '#2196F3', '2022-11-11', '2022-11-12'),
-(5, 'Consorcio', '#FFC107', '2022-11-08', '2022-11-09'),
-(6, 'Consorcio', '#FFC107', '2022-11-08', '2022-11-09'),
-(7, 'Consorcio', '#8BC34A', '1970-01-01', '1970-01-02'),
-(8, 'Kjhg', '#FF5722', '1970-01-01', '1970-01-02'),
-(9, 'Kjhg', '#2196F3', '1970-01-01', '1970-01-02'),
-(10, 'Hgc', '#8BC34A', '2022-11-09', '2022-11-10'),
-(11, 'Liu', '#FF5722', '2022-11-15', '2022-11-16'),
-(12, 'Jh', '#FF5722', '2022-11-23', '2022-11-24');
+INSERT INTO `reuniones` (`id_reunion`, `nombre_empresa`, `descripcion`, `color_reunion`, `fecha_inicio`, `fecha_fin`) VALUES
+(1, 'Empresa XYZ', '', '#9c27b0', '2022-11-09', '2022-11-10'),
+(2, 'Empresa XYZ', '', '#2196F3', '2022-11-16', '2022-11-17'),
+(3, 'L', '', '#FF5722', '2022-11-17', '2022-11-18'),
+(4, 'X', '', '#2196F3', '2022-11-11', '2022-11-12'),
+(5, 'Consorcio', '', '#FFC107', '2022-11-08', '2022-11-09'),
+(6, 'Consorcio', '', '#FFC107', '2022-11-08', '2022-11-09'),
+(7, 'Consorcio', '', '#8BC34A', '1970-01-01', '1970-01-02'),
+(8, 'Kjhg', '', '#FF5722', '1970-01-01', '1970-01-02'),
+(9, 'Kjhg', '', '#2196F3', '1970-01-01', '1970-01-02'),
+(10, 'Hgc', '', '#8BC34A', '2022-11-09', '2022-11-10'),
+(11, 'Liu', '', '#FF5722', '2022-11-15', '2022-11-16'),
+(12, 'Jh', '', '#FF5722', '2022-11-23', '2022-11-24'),
+(13, 'Consorcio', 'Sexo', '#DC143C', '2022-11-04', '2022-11-05');
 
 -- --------------------------------------------------------
 
@@ -137,6 +147,7 @@ CREATE TABLE `socio` (
   `nombre_soc` varchar(25) NOT NULL,
   `apellido_soc` varchar(25) NOT NULL,
   `username` varchar(25) NOT NULL,
+  `password` varchar(250) NOT NULL,
   `cargo` varchar(25) NOT NULL,
   `nombre_empresa` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -145,9 +156,9 @@ CREATE TABLE `socio` (
 -- Volcado de datos para la tabla `socio`
 --
 
-INSERT INTO `socio` (`ced_socio`, `nombre_soc`, `apellido_soc`, `username`, `cargo`, `nombre_empresa`) VALUES
-(1234, 'admin', 'admin', 'admin', 'Administrador', ''),
-(28518451, 'Anibal', 'Lopez', 'Anibal Lopez', 'Socio', 'Consorcio');
+INSERT INTO `socio` (`ced_socio`, `nombre_soc`, `apellido_soc`, `username`, `password`, `cargo`, `nombre_empresa`) VALUES
+(1234, 'admin', 'admin', 'admin', 'admin', 'Administrador', ''),
+(28518451, 'Anibal', 'Lopez', 'Anibal Lopez', 'morocho78', 'Socio', 'Consorcio');
 
 -- --------------------------------------------------------
 
@@ -235,13 +246,13 @@ ALTER TABLE `puntos`
 -- AUTO_INCREMENT de la tabla `reunion`
 --
 ALTER TABLE `reunion`
-  MODIFY `id_reunion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_reunion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `reuniones`
 --
 ALTER TABLE `reuniones`
-  MODIFY `id_reunion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_reunion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

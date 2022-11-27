@@ -32,13 +32,14 @@ class ModeloController
         $ced_socio = $_REQUEST['ced_socio'];
         $nombre_soc = $_REQUEST['nombre_soc'];
         $apellido_soc = $_REQUEST['apellido_soc'];
+        $pass = $_REQUEST['password'];
         $username = $_REQUEST['username'];
         $cargo = $_REQUEST['cargo'];
         $empresa = $_REQUEST['nombre_empresa'];
-        $data = "'" . $ced_socio . "','" . $nombre_soc . "','" . $apellido_soc . "','" . $username . "','" . $cargo . "','" . $empresa . "'";
+        $data = "'" . $ced_socio . "','" . $nombre_soc . "','" . $apellido_soc . "','" . $username . "','" . $cargo . "','" . $empresa . ", '".$pass."'";
         $usuario = new Modelo();
         $condicion = "ced_socio='" . $ced_socio . "' AND nombre_soc='" . $nombre_soc . "' AND apellido_soc='" . $apellido_soc . "' AND username='" . $username . "' AND
-        cargo='" . $cargo . "' AND nombre_empresa='" . $empresa . "'";
+        cargo='" . $cargo . "' AND nombre_empresa='" . $empresa . "' AND password='.$pass.'";
 
         if ($usuario->validarUsuarioExistente("socio", "username='" . $username . "'", "cargo='" . $cargo . "'")) {
             header('location:' . 'index.php?n=paginaRegistroSocio');
@@ -90,6 +91,9 @@ class ModeloController
     static function calendarioAdmin()
     {
         require_once("views/views-admin/calendarioAdmin.php");
+    }
+    static function configuracionAdmin(){
+        require_once("views/views-admin/configuracionesAdmin.php");
     }
     //todo fin interfaz del admin
 

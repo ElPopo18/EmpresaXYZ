@@ -6,7 +6,7 @@
   font-family: "Hammersmith One";
 }
 body {
-  background-image: url(views/img/socios.jpg);
+  background-image: url("../../img/socios.jpg");
   min-height: 100vh;
   background-repeat: no-repeat;
   background-position: center;
@@ -68,9 +68,9 @@ i {
 }
 
 .form_container {
-  margin-top: 2em;
+  margin-top: 1em;
   display: grid;
-  gap: 2.5em;
+  gap: 2em;
 }
 
 .form_grupo {

@@ -85,12 +85,22 @@ a:is(:link, :active, :visited).active{
 #navbar{
     flex-basis: 6%;
     background-color: #00106b;
-    margin-top: 1.5%;
+    margin-top: 1%;
     margin-bottom: 15px;
     display: flex;
-justify-content: space-between;
+    justify-content: space-between;
+    align-items: center;
 }
 
+.seccion{
+    background-image: radial-gradient(#0c2176 0.5px, transparent 0.5px),radial-gradient(#0c2176 0.5px, #e5e5f7 0.5px);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+    border-radius: 10px;
+    padding: 0.5rem;
+    font-size: 32px;
+    color: #00106b;
+    }
 #navbar > ul{
     display: flex;
     flex-direction: row;
@@ -142,81 +152,112 @@ justify-content: space-between;
     position: relative;
     top: 5px;
 }
-#navbar .navbar__registro{
-    background-image: radial-gradient(#0c2176 0.5px, transparent 0.5px),radial-gradient(#0c2176 0.5px, #e5e5f7 0.5px);
-    background-size: 20px 20px;
-    background-position: 0 0, 10px 10px;
-    border-radius: 10px;
-    align-self: center;
-}
-.navbar__r{
-    color: #00106b;
-    padding: .5rem;
-    font-size: 32px;
-}
+
 /*? fin barra superior*/
 
 /*? inicio contenido de la pagina*/
 .contenido__pagina{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    flex-basis: 94%;
-
-}
-
-.registro{
-    flex-basis: 40%;
-    margin: 40px;
-    border: 1px solid #ccc;
+    padding: 22px 50px;
     opacity: 0.9;
     background-image: radial-gradient(#0c2176 0.5px, transparent 0.5px),radial-gradient(#0c2176 0.5px, #e5e5f7 0.5px);
     background-size: 20px 20px;
     background-position: 0 0, 10px 10px;
     border-radius: 10px;
-}
-
-.registro__titulos{
     color: #0c2176;
-    font-size: 25px;
+    width: 50%;
+    max-height: 600px;
+    margin: auto;
+}
+.configuracion__titulo{
+    font-size: 28px;
+    text-align: center;
+}
+.form{
+    font-size: 20px;
+    display: flex;
+    flex-flow: column;
+}
+.form-link {
+    font-weight: 400;
+  }
+  
+  .form_container {
+    display: grid;
+    gap: 1.5em;
+    margin-bottom: 2rem;
+  }
+  
+  .form_grupo {
+    position: relative;
+  }
+  
+  .form_input {
+    width: 100%;
+    background: none;
+    color: #0c2176;
+    font-size: 1rem;
+    padding: 0.6em 0.3em;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #0c2176;
     font-family: "Hammersmith One";
-    text-align: center;
-    padding: 30px 0px;
-}
-h3{
-    text-align: center;
+  }
+  .form_input:focus + .form_label,
+  .form_input:not(:placeholder-shown) + .form_label {
+    transform: translateY(-12px) scale(0.7);
+    transform-origin: left top;
     color: #0c2176;
-    margin-bottom: 30px;
-}
-
-.registro__lista{
-    font-size: 19px;
-    margin: 0px 16%;
-    color:#0c2176;
-    margin-bottom: 30px;
-}
-
-.registro__btn__container {
-    height: 40px;
-    width: 150px;
-
-}
-
-.registro__btn{
-    display: block;
-    background-color: #00106b;
-    margin: 30px auto;
-    text-align: center;
-    border-radius: 10px;
-    transition: all 0.3s;
-    height: 40px;
-    width: 150px;
-    line-height: 40px;
+  }
+  .form_label {
+    color: #948f8f;
+    position: absolute;
+    top: 0px;
+    left: 5px;
+    transform: translateY(10px);
+    transition: transform 0.5s, color 0.3s;
+    font-size: 18px;
+  }
+  
+  .form_submit {
+    background-color: #0c2176;
     color: #fff;
-    text-decoration: none;
-}
-.registro__btn:hover {
-    background-color: #02082d;
-}
+    font-size: 1rem;
+    padding: 0.8em 0;
+    border: none;
+    border-radius: 0.5em;
+    transition: all 0.4s;
+    cursor: pointer;
+  }
+  
+  .form_submit:hover {
+    background-color: #0c2176cf;
+  }
+  
+  .form_line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #0c2176;
+    transform: scale(0);
+    transform-origin: left bottom;
+    transition: transform 0.4s;
+  }
+  .form_input:focus ~ .form_line,
+  .form_input:not(:placeholder-shown) ~ .form_line {
+    transform: scale(1);
+  }
 
+  .archivo{
+    text-align: center;
+  }
+  .mensaje{
+    text-align: center;
+    font-size: 40px;
+  }
+  .subir_archivo{
+    margin-bottom: 2rem;
+    text-align: center;
+  }
 /*? fin contenido de la pagina*/

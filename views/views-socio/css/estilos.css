@@ -88,7 +88,28 @@ a:is(:link, :active, :visited).active{
     margin-top: 1%;
     margin-bottom: 15px;
 }
+#navbar{
+    flex-basis: 6%;
+    background-color: #00106b;
+    margin-top: 1%;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+#navbar .buscar{
+    width: 65%;
+}
 
+#navbar .buscar__label{
+    color: #fff;
+    font-size: 20px;
+}
+#navbar .buscar__input{
+    width: 74%;
+    font-size: 20px;
+    padding: 15px;
+    color: #00106b;
+}
 #navbar > ul{
     display: flex;
     flex-direction: row;
