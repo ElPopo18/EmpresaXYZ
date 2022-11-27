@@ -64,7 +64,7 @@ if (empty($_SESSION['username'])) {
                                 <th>Cedula</th>
                                 <th>Empresa</th>
                                 <th>Cargo</th>
-                                <th colspan="2">Opciones</th>
+                                <th>Opcion</th>
                             </tr>
                         </thead>
                         <tbody id="socio">
