@@ -1,13 +1,13 @@
 $(buscar_datos());
 function buscar_datos(consulta){
     $.ajax({
-        url: "views/views-admin/buscarReunion.php",
+        url: "index.php?n=buscarSocioAdmin",
         type: "POST",
         dataType: "HTML",
         data: {consulta: consulta},
     })
     .done(function(respuesta) {
-        $("#reuniones").html(respuesta);
+        $("#socio").html(respuesta);
     })
     .fail(function() {
         console.log("error");

@@ -3,7 +3,7 @@ session_start();
 if (empty($_SESSION['username'])) {
     header('location: index.php?n=paginaLogin');
 }
-include("config.php");
+include("config/conexion.php");
 
 $SqlReunions   = ("SELECT * FROM reunion");
 $resulReunions = mysqli_query($conexion, $SqlReunions);
@@ -66,115 +66,14 @@ $resulReunions = mysqli_query($conexion, $SqlReunions);
                     </div>
                 </div>
                 <div id="calendar"></div>
-                <?php
-                include('modalNuevoReunion.php');
-                ?>
+                <?php include('modalNuevaReunion.php');?>
                 <script src="js/jquery-3.0.0.min.js"> </script>
                 <script src="js/popper.min.js"></script>
                 <script src="js/bootstrap.min.js"></script>
                 <script type="text/javascript" src="js/moment.min.js"></script>
                 <script type="text/javascript" src="js/fullcalendar.min.js"></script>
                 <script src="js/es.js"></script>
-                <script type="text/javascript">
-                    $(document).ready(function() {
-                        $("#calendar").fullCalendar({
-                            header: {
-                                left: "prev,next today",
-                                center: "title",
-                                right: "month,agendaWeek,agendaDay"
-                            },
-
-                            locale: 'es',
-
-                            defaultView: "month",
-                            navLinks: true,
-                            editable: true,
-                            eventLimit: true,
-                            selectable: true,
-                            selectHelper: false,
-
-                            //Nuevo Reunion
-                            select: function(start, end) {
-                                $("#nuevaReunion").modal();
-                                $("input[name=fecha_inicio]").val(start.format('DD-MM-YYYY'));
-
-                                var valorFechaFin = end.format("DD-MM-YYYY");
-                                var F_final = moment(valorFechaFin, "DD-MM-YYYY").subtract(1, 'days').format('DD-MM-YYYY'); //Le resto 1 dia
-                                $('input[name=fecha_fin').val(F_final);
-
-                            },
-
-                            events: [
-                                <?php
-                                while ($dataReunion = mysqli_fetch_array($resulReunions)) { ?> {
-                                        _id_reunion: '<?php echo $dataReunion['id_reunion'] ?>',
-                                        title: '<?php echo $dataReunion['nombre_empresa']; ?>',
-                                        start: '<?php echo $dataReunion['fecha_inicio']; ?>',
-                                        end: '<?php echo $dataReunion['fecha_fin']; ?>',
-                                        color: '<?php echo $dataReunion['color_reunion']; ?>'
-                                    },
-                                <?php } ?>
-                            ],
-
-
-                            //Eliminar Reunion
-                            eventRender: function(event, element) {
-                                element
-                                    .find(".fc-content")
-                                    .prepend("<span id='btnCerrar'; class='closeon material-icons'>&#xe5cd;</span>");
-
-                                //Eliminar Reunion
-                                element.find(".closeon").on("click", function() {
-
-                                    var pregunta = confirm("¿ Desea Borrar esta Reunion ?");
-                                    if (pregunta) {
-
-                                        $("#calendar").fullCalendar("removeEvents", event._id_reunion);
-
-                                        $.ajax({
-                                            type: "POST",
-                                            url: 'views/views-admin/deleteReunion.php',
-                                            data: {
-                                                id_reunion: event._id_reunion
-                                            },
-                                            success: function(datos) {
-                                                $(".alert-danger").show();
-
-                                                setTimeout(function() {
-                                                    $(".alert-danger").slideUp(500);
-                                                }, 3000);
-
-                                            }
-                                        });
-                                    }
-                                });
-                            },
-
-
-                            //Moviendo Reunion Drag - Drop
-                            eventDrop: function(event, delta) {
-                                var id_reunion = event._id_reunion;
-                                var start = (event.start.format('DD-MM-YYYY'));
-                                var end = (event.end.format("DD-MM-YYYY"));
-
-                                $.ajax({
-                                    url: 'views/views-admin/drag_drop_Reunion.php',
-                                    data: 'start=' + start + '&end=' + end + '&id_reunion=' + id_reunion,
-                                    type: "POST",
-                                    success: function(response) {
-                                        // $("#respuesta").html(response);
-                                    }
-                                });
-                            },
-                        });
-                        //Oculta mensajes de Notificacion
-                        setTimeout(function() {
-                            $(".alert").slideUp(300);
-                        }, 3000);
-
-
-                    });
-                </script>
+                <?php include('controllers/mostrarCalendarioAdmin.php')?>
             </div>
         </div>
     </div>

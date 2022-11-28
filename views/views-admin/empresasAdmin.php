@@ -71,32 +71,6 @@ if (empty($_SESSION['username'])) {
             </div>
         </div>
     </div>
-    <script type="text/javascript">
-        $(buscar_datos());
-        function buscar_datos(consulta){
-            $.ajax({
-                url: "views/views-admin/buscarEmpresa.php",
-                type: "POST",
-                dataType: "HTML",
-                data: {consulta: consulta},
-            })
-            .done(function(respuesta) {
-                $("#empresas").html(respuesta);
-            })
-            .fail(function() {
-                console.log("error");
-            })
-        }
-
-        $(document).on("keyup", "#buscar", function(){
-            var valor = $(this).val();
-            if (valor != "") {
-                buscar_datos(valor);
-            }else{
-                buscar_datos();
-            }
-        });
-    </script>
+    <script src="js/buscarEmpresaAdmin.js"></script>
 </body>
-
 </html>
