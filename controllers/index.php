@@ -12,10 +12,6 @@ class ModeloController
     {
         require_once("views/principal.php");
     }
-    static function inactividad()
-    {
-        require_once("views/tiempoInactivo.php");
-    }
     //todo apartir de aqui es funciones de registro
     // va a la pagina de registrar socio
     static function paginaRegistroSocio()
@@ -66,6 +62,8 @@ class ModeloController
             header('location:' . 'index.php?n=inicioAdmin');
         }
     }
+
+    //todo fin de funciones de registro
     //va a la pagina de login
     static function paginaLogin()
     {
@@ -285,8 +283,8 @@ class ModeloController
             $result2 = mysqli_query($conexion, $UpdateProd);
         }
     }
-
     //todo fin funciones del calendario del admin
+
     //? fin de admin
 
     //? Inicio Socio

@@ -1,5 +1,5 @@
 <?php
-require('config.php');
+require('config/conexion.php');
 $consulta = "SELECT *  FROM empresa";
 $resultado = mysqli_query($conexion, $consulta);
 

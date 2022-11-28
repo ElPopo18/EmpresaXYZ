@@ -48,7 +48,7 @@ if (empty($_SESSION['username'])) {
             <div class="contenido__pagina">
                 <div class="configuracion">
                     <?php
-                    require 'config.php';
+                    require '../../config/conexion.php';
                     $usuario = $_SESSION['username'];
                     $nombre = $conexion->real_escape_string($_POST['nombre_soc']);
                     $apellido = $conexion->real_escape_string($_POST['apellido_soc']);
