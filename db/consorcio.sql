@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-11-2022 a las 17:27:20
+-- Tiempo de generación: 28-11-2022 a las 05:32:21
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -100,7 +100,7 @@ CREATE TABLE `reunion` (
 --
 
 INSERT INTO `reunion` (`id_reunion`, `nombre_empresa`, `descripcion`, `color_reunion`, `fecha_inicio`, `fecha_fin`) VALUES
-(14, 'Consorcio', 'Sexo', '#DC143C', '2022-11-04', '2022-11-05');
+(15, 'Sexo', 'Anal', '#8BC34A', '2022-11-10', '2022-11-11');
 
 -- --------------------------------------------------------
 
@@ -134,7 +134,8 @@ INSERT INTO `reuniones` (`id_reunion`, `nombre_empresa`, `descripcion`, `color_r
 (10, 'Hgc', '', '#8BC34A', '2022-11-09', '2022-11-10'),
 (11, 'Liu', '', '#FF5722', '2022-11-15', '2022-11-16'),
 (12, 'Jh', '', '#FF5722', '2022-11-23', '2022-11-24'),
-(13, 'Consorcio', 'Sexo', '#DC143C', '2022-11-04', '2022-11-05');
+(13, 'Consorcio', 'Sexo', '#DC143C', '2022-11-04', '2022-11-05'),
+(14, 'Sexo', 'Anal', '#8BC34A', '2022-11-10', '2022-11-11');
 
 -- --------------------------------------------------------
 
@@ -143,22 +144,23 @@ INSERT INTO `reuniones` (`id_reunion`, `nombre_empresa`, `descripcion`, `color_r
 --
 
 CREATE TABLE `socio` (
-  `ced_socio` int(10) NOT NULL,
+  `username` varchar(25) NOT NULL,
   `nombre_soc` varchar(25) NOT NULL,
   `apellido_soc` varchar(25) NOT NULL,
-  `username` varchar(25) NOT NULL,
+  `ced_socio` int(10) NOT NULL,
   `password` varchar(250) NOT NULL,
   `cargo` varchar(25) NOT NULL,
-  `nombre_empresa` varchar(25) NOT NULL
+  `nombre_empresa` varchar(25) NOT NULL,
+  `foto` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `socio`
 --
 
-INSERT INTO `socio` (`ced_socio`, `nombre_soc`, `apellido_soc`, `username`, `password`, `cargo`, `nombre_empresa`) VALUES
-(1234, 'admin', 'admin', 'admin', 'admin', 'Administrador', ''),
-(28518451, 'Anibal', 'Lopez', 'Anibal Lopez', 'morocho78', 'Socio', 'Consorcio');
+INSERT INTO `socio` (`username`, `nombre_soc`, `apellido_soc`, `ced_socio`, `password`, `cargo`, `nombre_empresa`, `foto`) VALUES
+('Admin', 'Admin', 'Admin', 1234, 'root', 'Administrador', '', 'Petardas-amateur-desnudas-8-500x620.jpg'),
+('Anibal Lopez', 'Anibal', 'Lopez', 28518451, '7', 'Socio', 'Consorcio', '');
 
 -- --------------------------------------------------------
 
@@ -217,7 +219,7 @@ ALTER TABLE `reuniones`
 -- Indices de la tabla `socio`
 --
 ALTER TABLE `socio`
-  ADD PRIMARY KEY (`ced_socio`),
+  ADD PRIMARY KEY (`username`),
   ADD KEY `nombre_empresa` (`nombre_empresa`);
 
 --
@@ -246,13 +248,13 @@ ALTER TABLE `puntos`
 -- AUTO_INCREMENT de la tabla `reunion`
 --
 ALTER TABLE `reunion`
-  MODIFY `id_reunion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_reunion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `reuniones`
 --
 ALTER TABLE `reuniones`
-  MODIFY `id_reunion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_reunion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
