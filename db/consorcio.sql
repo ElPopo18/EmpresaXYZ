@@ -3,11 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
-<<<<<<< Updated upstream
--- Tiempo de generación: 28-11-2022 a las 19:33:18
-=======
--- Tiempo de generación: 28-11-2022 a las 05:32:21
->>>>>>> Stashed changes
+-- Tiempo de generación: 29-11-2022 a las 07:59:58
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -44,7 +40,8 @@ INSERT INTO `empresa` (`id_empresa`, `nombre_empresa`) VALUES
 (0, 'Empresa XYZ'),
 (1, 'Consorcio'),
 (4, 'Arturos'),
-(5, 'Macdonals');
+(5, 'Macdonals'),
+(8, 'Efe');
 
 -- --------------------------------------------------------
 
@@ -57,12 +54,18 @@ CREATE TABLE `punto` (
   `descripcion` varchar(250) NOT NULL,
   `archivo` varchar(25) NOT NULL,
   `nombre_empresa` varchar(25) NOT NULL,
-  `decision` varchar(25) NOT NULL,
   `id_reunion` int(11) NOT NULL,
-  `fecha_inicio` date NOT NULL,
-  `fecha_fin` date NOT NULL,
-  `color_reunion` varchar(20) NOT NULL
+  `fecha_inicio` text NOT NULL,
+  `fecha_fin` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `punto`
+--
+
+INSERT INTO `punto` (`id_punto`, `descripcion`, `archivo`, `nombre_empresa`, `id_reunion`, `fecha_inicio`, `fecha_fin`) VALUES
+(9, 'l', '', 'Consorcio', 17, '08-11-2022', '09-11-2022'),
+(10, 'hgfhg', '', 'Consorcio', 17, '08-11-2022', '09-11-2022');
 
 -- --------------------------------------------------------
 
@@ -75,12 +78,18 @@ CREATE TABLE `puntos` (
   `descripcion` varchar(250) NOT NULL,
   `archivo` varchar(25) NOT NULL,
   `nombre_empresa` varchar(25) NOT NULL,
-  `decision` varchar(25) NOT NULL,
   `id_reunion` int(11) NOT NULL,
-  `fecha_inicio` date NOT NULL,
-  `fecha_fin` date NOT NULL,
-  `color_reunion` varchar(20) NOT NULL
+  `fecha_inicio` text NOT NULL,
+  `fecha_fin` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `puntos`
+--
+
+INSERT INTO `puntos` (`id_punto`, `descripcion`, `archivo`, `nombre_empresa`, `id_reunion`, `fecha_inicio`, `fecha_fin`) VALUES
+(9, 'l', '', 'Consorcio', 17, '08-11-2022', '09-11-2022'),
+(10, 'hgfhg', '', 'Consorcio', 17, '08-11-2022', '09-11-2022');
 
 -- --------------------------------------------------------
 
@@ -102,13 +111,9 @@ CREATE TABLE `reunion` (
 --
 
 INSERT INTO `reunion` (`id_reunion`, `nombre_empresa`, `descripcion`, `color_reunion`, `fecha_inicio`, `fecha_fin`) VALUES
-<<<<<<< Updated upstream
 (17, 'Consorcio', 'Temas', '#DC143C', '2022-11-08', '2022-11-09'),
 (19, 'Empresa XYZ', 'Temas', '#8BC34A', '2022-11-17', '2022-11-18'),
 (22, 'Arturos', 'pollo', '#FF5722', '2022-11-12', '2022-11-13');
-=======
-(15, 'Sexo', 'Anal', '#8BC34A', '2022-11-10', '2022-11-11');
->>>>>>> Stashed changes
 
 -- --------------------------------------------------------
 
@@ -132,29 +137,15 @@ CREATE TABLE `reuniones` (
 INSERT INTO `reuniones` (`id_reunion`, `nombre_empresa`, `descripcion`, `color_reunion`, `fecha_inicio`, `fecha_fin`) VALUES
 (1, 'Empresa XYZ', '', '#9c27b0', '2022-11-09', '2022-11-10'),
 (2, 'Empresa XYZ', '', '#2196F3', '2022-11-16', '2022-11-17'),
-(3, 'L', '', '#FF5722', '2022-11-17', '2022-11-18'),
-(4, 'X', '', '#2196F3', '2022-11-11', '2022-11-12'),
 (5, 'Consorcio', '', '#FFC107', '2022-11-08', '2022-11-09'),
 (6, 'Consorcio', '', '#FFC107', '2022-11-08', '2022-11-09'),
 (7, 'Consorcio', '', '#8BC34A', '1970-01-01', '1970-01-02'),
-(8, 'Kjhg', '', '#FF5722', '1970-01-01', '1970-01-02'),
-(9, 'Kjhg', '', '#2196F3', '1970-01-01', '1970-01-02'),
-(10, 'Hgc', '', '#8BC34A', '2022-11-09', '2022-11-10'),
-(11, 'Liu', '', '#FF5722', '2022-11-15', '2022-11-16'),
-(12, 'Jh', '', '#FF5722', '2022-11-23', '2022-11-24'),
 (13, 'Consorcio', 'Sexo', '#DC143C', '2022-11-04', '2022-11-05'),
-<<<<<<< Updated upstream
-(14, 'Sexo', 'Anal', '#8BC34A', '2022-11-10', '2022-11-11'),
 (15, 'Consorcio', 'Temas', '#8BC34A', '2022-11-03', '2022-11-04'),
 (16, 'Consorcio', 'Temas', '#DC143C', '2022-11-03', '2022-11-04'),
 (17, 'Empresa XYZ', 'Temas', '#009688', '2022-11-03', '2022-11-04'),
 (18, 'Empresa XYZ', 'Temas', '#8BC34A', '2022-11-10', '2022-11-11'),
-(19, 'Ewr', 'qew', '#FFC107', '2022-11-17', '2022-11-18'),
-(20, 'R', 'wef', '#8BC34A', '2022-11-11', '2022-11-12'),
 (21, 'Arturos', 'pollo', '#FF5722', '2022-11-12', '2022-11-13');
-=======
-(14, 'Sexo', 'Anal', '#8BC34A', '2022-11-10', '2022-11-11');
->>>>>>> Stashed changes
 
 -- --------------------------------------------------------
 
@@ -170,7 +161,7 @@ CREATE TABLE `socio` (
   `password` varchar(250) NOT NULL,
   `cargo` varchar(25) NOT NULL,
   `nombre_empresa` varchar(25) NOT NULL,
-  `foto` text NOT NULL
+  `foto` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -178,11 +169,8 @@ CREATE TABLE `socio` (
 --
 
 INSERT INTO `socio` (`username`, `nombre_soc`, `apellido_soc`, `ced_socio`, `password`, `cargo`, `nombre_empresa`, `foto`) VALUES
-<<<<<<< Updated upstream
+('a', 'a', 'a', 12, '12', 'Socio', 'Consorcio', ''),
 ('Admin', 'Admin', 'Admin', 1234, 'root', 'Administrador', '', '496352447507254886605446890404531050381312n.jpg'),
-=======
-('Admin', 'Admin', 'Admin', 1234, 'root', 'Administrador', '', 'Petardas-amateur-desnudas-8-500x620.jpg'),
->>>>>>> Stashed changes
 ('Anibal Lopez', 'Anibal', 'Lopez', 28518451, '7', 'Socio', 'Consorcio', '');
 
 -- --------------------------------------------------------
@@ -253,39 +241,31 @@ ALTER TABLE `socio`
 -- AUTO_INCREMENT de la tabla `empresa`
 --
 ALTER TABLE `empresa`
-  MODIFY `id_empresa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_empresa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `punto`
 --
 ALTER TABLE `punto`
-  MODIFY `id_punto` int(65) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_punto` int(65) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `puntos`
 --
 ALTER TABLE `puntos`
-  MODIFY `id_punto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_punto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `reunion`
 --
 ALTER TABLE `reunion`
-<<<<<<< Updated upstream
   MODIFY `id_reunion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
-=======
-  MODIFY `id_reunion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
->>>>>>> Stashed changes
 
 --
 -- AUTO_INCREMENT de la tabla `reuniones`
 --
 ALTER TABLE `reuniones`
-<<<<<<< Updated upstream
   MODIFY `id_reunion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
-=======
-  MODIFY `id_reunion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
->>>>>>> Stashed changes
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
