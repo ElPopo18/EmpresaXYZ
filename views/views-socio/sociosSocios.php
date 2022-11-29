@@ -22,6 +22,7 @@ if (empty($_SESSION['username'])) {
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
     <script defer src="js/activarPagina.js"></script>
+    <script src="js/jquery-3.0.0.min.js"></script>
 </head>
 
 <body>
@@ -39,10 +40,13 @@ if (empty($_SESSION['username'])) {
         </header>
         <div id="contenido">
             <nav id="navbar">
+                <form class="buscar" method="post">
+                    <label class="buscar__label" for="buscar">Buscar: </label>
+                    <input type="text" id="buscar" name="buscar" class="socio" placeholder="Usuario/Nombre/Apellido/Cedula que desea buscar">
+                </form>
                 <ul>
-                    <li><a href="index.php?n=principal"><i class="fi fi-rr-settings"></i></a></li>
+                    <li><a href="index.php?n=configuracionSocio"><i class="fi fi-rr-settings"></i></a></li>
                     <li class="margin-right"><a href="controllers/controladorCerrarSesion.php"><i class="fi fi-sr-exit"></i></a></li>
-
                     <li class="ajustar"><img src="<?php echo $_SESSION['foto']?>"><span class="username"><?php echo $_SESSION['username'] ?><p class="cargo"><?php echo $_SESSION['cargo'] ?></p></span></li>
                 </ul>
             </nav>
@@ -58,46 +62,11 @@ if (empty($_SESSION['username'])) {
                                 <th>Cedula</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <?php
-                            while ($row = $resultado->fetch_array()) { ?>
-                                <tr>
-                                    <td><?php echo $row['username']; ?></td>
-                                    <td><?php echo $row['nombre_soc'] ?></td>
-                                    <td><?php echo $row['apellido_soc'] ?></td>
-                                    <td><?php echo $row['ced_socio'] ?></td>
-                                </tr>
-    
-                            <?php         } ?>
+                        <tbody id="socio">
                         </tbody>
                     </table>
                 </div>
             </div>
 </body>
-<script type="text/javascript">
-        $(buscar_datos());
-        function buscar_datos(consulta){
-            $.ajax({
-                url: "views/views-socio/buscarSocio.php",
-                type: "POST",
-                dataType: "HTML",
-                data: {consulta: consulta},
-            })
-            .done(function(respuesta) {
-                $("#reuniones").html(respuesta);
-            })
-            .fail(function() {
-                console.log("error");
-            })
-        }
-
-        $(document).on("keyup", "#buscar", function(){
-            var valor = $(this).val();
-            if (valor != "") {
-                buscar_datos(valor);
-            }else{
-                buscar_datos();
-            }
-        });
-    </script>
+<script src="js/buscarSocio.js"></script>
 </html>

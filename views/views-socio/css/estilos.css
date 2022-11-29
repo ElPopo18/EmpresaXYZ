@@ -104,8 +104,20 @@ a:is(:link, :active, :visited).active{
     color: #fff;
     font-size: 20px;
 }
-#navbar .buscar__input{
+#navbar .puntos{
+    width: 80%;
+    font-size: 20px;
+    padding: 15px;
+    color: #00106b;
+}
+#navbar .reuniones{
     width: 74%;
+    font-size: 20px;
+    padding: 15px;
+    color: #00106b;
+}
+#navbar .socio{
+    width: 66%;
     font-size: 20px;
     padding: 15px;
     color: #00106b;
@@ -199,6 +211,9 @@ a:is(:link, :active, :visited).active{
 th{
 	color: #ffffff;
 	padding: 20px;;
+}
+td{
+    padding: 10px;
 }
 .registro__btn{
     display: block;

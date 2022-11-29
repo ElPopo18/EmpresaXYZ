@@ -22,6 +22,7 @@ if ($incluir) {
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
     <script defer src="js/activarPagina.js"></script>
+    <script src="js/jquery-3.0.0.min.js"></script>
 </head>
 
 <body>
@@ -39,11 +40,14 @@ if ($incluir) {
         </header>
         <div id="contenido">
             <nav id="navbar">
+                <form class="buscar" method="post">
+                    <label class="buscar__label" for="buscar">Buscar: </label>
+                    <input type="text" id="buscar" name="buscar" class="puntos" placeholder="Id punto/Id reunion/Descripcion/Documento que desea buscar">
+                </form>
                 <ul>
-                    <li><a href="index.php?n=principal"><i class="fi fi-rr-settings"></i></a></li>
+                    <li><a href="index.php?n=configuracionSocio"><i class="fi fi-rr-settings"></i></a></li>
                     <li class="margin-right"><a href="controllers/controladorCerrarSesion.php"><i class="fi fi-sr-exit"></i></a></li>
-
-                    <li class="ajustar"><img src="<?php echo $_SESSION['foto']?>"><span class="username"><?php echo $_SESSION['username'] ?><p class="cargo"><?php echo $_SESSION['cargo'] ?></p></span></li>
+                    <li class="ajustar"><img src="<?php echo $_SESSION['foto'] ?>"><span class="username"><?php echo $_SESSION['username'] ?><p class="cargo"><?php echo $_SESSION['cargo'] ?></p></span></li>
                 </ul>
             </nav>
             <div class="contenido__pagina">
@@ -56,22 +60,15 @@ if ($incluir) {
                                 <th>Id reunion</th>
                                 <th>Descripcion</th>
                                 <th>Documento</th>
+                                <th>Fecha de inicio</th>
+                                <th>Fecha de fin</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <?php
-                            while ($row = $resultado->fetch_array()) { ?>
-                                <tr>
-                                    <td><?php echo $row['id_punto']; ?></td>
-                                    <td><?php echo $row['id_reunion']; ?></td>
-                                    <td><?php echo $row['descripcion'] ?></td>
-                                    <td><?php echo $row['archivo'] ?></td>
-                                </tr>
-                            <?php         } ?>
+                        <tbody id="puntos">
                         </tbody>
                     </table>
                 </div>
             </div>
 </body>
-
+<script src="js/buscarPuntos.js"></script>
 </html>

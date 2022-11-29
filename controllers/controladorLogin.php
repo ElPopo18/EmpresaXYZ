@@ -11,7 +11,7 @@ if (!empty($_POST['btn_ingresar'])) {
             $_SESSION['empresa'] = $datos->nombre_empresa;
             $_SESSION['foto'] = $datos->foto;
             if ($datos->foto == NULL) {
-                $_SESSION['foto'] = "https://i.scdn.co/image/ab67616d00001e0249d694203245f241a1bcaa72";
+                $_SESSION['foto'] = "img-perfil/verano-sin-ti.jpg";
             }
             if ($datos->cargo == 'Administrador') {
                 header('location: index.php?n=inicioAdmin');

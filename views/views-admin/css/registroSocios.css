@@ -137,3 +137,8 @@ i {
 .cargo {
   margin: 25px;
 }
+
+.subir_archivo{
+  margin-bottom: 2rem;
+  text-align: center;
+}

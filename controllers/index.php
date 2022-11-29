@@ -28,18 +28,22 @@ class ModeloController
     //?Admin
     static function registroSocio()
     {
-        $ced_socio = $_REQUEST['ced_socio'];
+        $username = $_REQUEST['username'];
         $nombre_soc = $_REQUEST['nombre_soc'];
         $apellido_soc = $_REQUEST['apellido_soc'];
+        $ced_socio = $_REQUEST['ced_socio'];
         $pass = $_REQUEST['password'];
-        $username = $_REQUEST['username'];
         $cargo = $_REQUEST['cargo'];
         $empresa = $_REQUEST['nombre_empresa'];
-        $data = "'" . $ced_socio . "','" . $nombre_soc . "','" . $apellido_soc . "','" . $username . "','" . $cargo . "','" . $empresa . ", '" . $pass . "'";
+        $foto = $_FILES['foto'];
+        $tmp_name = $foto['tmp_name'];
+        $img_file = $foto['name'];
+        $img_type = $foto['type'];
+        $directorio = "../../img-perfil";
+        $data = "'" . $username . "','" . $nombre_soc . "','" . $apellido_soc . "','" . $ced_socio . "','" . $pass . "','" . $cargo . "', '" . $empresa . "', '" . $img_file . "'";
         $usuario = new Modelo();
-        $condicion = "ced_socio='" . $ced_socio . "' AND nombre_soc='" . $nombre_soc . "' AND apellido_soc='" . $apellido_soc . "' AND username='" . $username . "' AND
-        cargo='" . $cargo . "' AND nombre_empresa='" . $empresa . "' AND password='.$pass.'";
-
+        $condicion = "username='" . $username . "' AND nombre_soc='" . $nombre_soc . "' AND apellido_soc='" . $apellido_soc . "' AND ced_socio='" . $ced_socio . "' AND
+        pass='" . $pass . "' AND cargo='" . $cargo . "' AND nombre_empresa='" . $empresa . "' AND foto = '" . $img_file . "'";
         if ($usuario->validarUsuarioExistente("socio", "username='" . $username . "'", "cargo='" . $cargo . "'")) {
             header('location:' . 'index.php?n=paginaRegistroSocio');
         } else {
@@ -306,5 +310,107 @@ class ModeloController
     {
         require_once("views/views-socio/puntos.php");
     }
+    static function configuracionSocio()
+    {
+        require_once("views/views-socio/configuracionesSocio.php");
+    }
     //todo fin interfaz del socio
+
+    //todo busquedas del socio
+
+    static function buscarSocio()
+    {
+        session_start();
+        require 'config/conexion.php';
+        $salida = "";
+        $consulta = "SELECT * FROM socio where nombre_empresa like '$_SESSION[empresa]'";
+        if (isset($_POST['consulta'])) {
+            $q = $conexion->real_escape_string($_POST['consulta']);
+            $consulta = "SELECT * FROM socio WHERE nombre_empresa like '$_SESSION[empresa]' and username LIKE '%" . $q . "%' OR ced_socio LIKE '%" . $q . "%' OR nombre_soc LIKE '%" . $q . "%' OR apellido_soc LIKE '%" . $q . "%'";
+        }
+
+        $resultado = $conexion->query($consulta);
+
+        if ($resultado->num_rows > 0) {
+            while ($row = $resultado->fetch_assoc()) {
+                $salida .= '<tr>';
+                $salida .= '<td>' . $row['username'] . '</td>';
+                $salida .= '<td>' . $row['nombre_soc'] . '</td>';
+                $salida .= '<td>' . $row['apellido_soc'] . '</td>';
+                $salida .= '<td>' . $row['ced_socio'] . '</td>';
+                $salida .= '</tr>';
+            }
+        } else {
+            $salida .= "No se encontraron resultados :(";
+        }
+
+        echo $salida;
+
+        $conexion->close();
+    }
+
+    static function buscarReunionSocio(){
+        session_start();
+        require 'config/conexion.php';
+        $salida = "";
+        $consulta   = ("SELECT * FROM reuniones WHERE nombre_empresa LIKE '$_SESSION[empresa]'");
+        if (isset($_POST['consulta'])) {
+            $q = $conexion->real_escape_string($_POST['consulta']);
+            $consulta = "SELECT * FROM reuniones WHERE nombre_empresa LIKE '$_SESSION[empresa]' and id_reunion LIKE '%".$q."%' OR color_reunion LIKE '%".$q."%' OR fecha_inicio LIKE '%".$q."%' OR fecha_fin LIKE '%".$q."%' OR descripcion LIKE '%".$q."%'";
+        }
+    
+        $resultado = $conexion->query($consulta);
+    
+        if ($resultado->num_rows > 0) {
+            while ($row = $resultado->fetch_assoc()) {
+                $salida .= '<tr>';
+                $salida .= '<td>'.$row['id_reunion'].'</td>';
+                $salida .= '<td>'.$row['descripcion'].'</td>';
+                $color = $row['color_reunion'];
+                $salida .= '<td style="background-color: '.$color.';">'.$row['color_reunion'].'</td>';
+                $salida .= '<td>'.$row['fecha_inicio'].'</td>';
+                $salida .= '<td>'.$row['fecha_fin'].'</td>';
+                $salida .= '</tr>';
+            }
+        }else {
+            $salida.= "No se encontraron resultados :(";
+        }
+    
+        echo $salida;
+    
+        $conexion->close();
+    }
+
+    static function buscarPunto(){
+        session_start();
+        require 'config/conexion.php';
+        $salida = "";
+        $consulta   = ("SELECT * FROM puntos WHERE nombre_empresa LIKE '$_SESSION[empresa]'");
+        if (isset($_POST['consulta'])) {
+            $q = $conexion->real_escape_string($_POST['consulta']);
+            $consulta = "SELECT * FROM puntos WHERE id_reunion LIKE '%".$q."%' OR id_punto LIKE '%".$q."%' OR fecha_inicio LIKE '%".$q."%' OR fecha_fin LIKE '%".$q."%' OR descripcion LIKE '%".$q."%' OR archivo LIKE '%".$q."%'";
+        }
+    
+        $resultado = $conexion->query($consulta);
+    
+        if ($resultado->num_rows > 0) {
+            while ($row = $resultado->fetch_assoc()) {
+                $salida .= '<tr>';
+                $salida .= '<td>'.$row['id_punto'].'</td>';
+                $salida .= '<td>'.$row['id_reunion'].'</td>';
+                $salida .= '<td>'.$row['descripcion'].'</td>';
+                $salida .= '<td>'.$row['archivo'].'</td>';
+                $salida .= '<td>'.$row['fecha_inicio'].'</td>';
+                $salida .= '<td>'.$row['fecha_fin'].'</td>';
+                $salida .= '</tr>';
+            }
+        }else {
+            $salida.= "No se encontraron resultados :(";
+        }
+    
+        echo $salida;
+    
+        $conexion->close();
+    }
+    //todo fin de busquedas del socio
 }

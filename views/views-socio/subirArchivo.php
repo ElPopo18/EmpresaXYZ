@@ -1,10 +1,10 @@
-<?php 
+<?php
 session_start();
 if (empty($_SESSION['username'])) {
     header('location: index.php?n=paginaLogin');
 }
 
-include('config.php');
+include('../../config/conexion.php');
 $SqlReunions   = ("SELECT * FROM empresa WHERE nombre_empresa LIKE '$_SESSION[empresa]'");
 
 $resulReunions = mysqli_query($conexion, $SqlReunions);
@@ -15,30 +15,27 @@ if ($_POST['subir']) {
     $extension = strtolower(end($arregloArchivo));
     if (in_array($extension, $permitidos)) {
         if (file_exists($_FILES['archivo']['tmp_name'])) {
-            if (move_uploaded_file($_FILES['archivo']['tmp_name'], '../../documents/'.$_FILES['archivo']['name'])) {
+            if (move_uploaded_file($_FILES['archivo']['tmp_name'], '../../documents/' . $_FILES['archivo']['name'])) {
                 $descripcion = $_POST['descripcion'];
                 $archivo = $_FILES['archivo']['name'];
                 $nombre_empresa = $_SESSION['empresa'];
                 $id_reunion = $_POST['id_reunion'];
                 $fecha_inicio = $_POST['fecha_inicio'];
                 $fecha_fin = $_POST['fecha_fin'];
-                $color = $_POST['color_reunion'];
                 $sql = $conexion->query("INSERT INTO punto (
                     descripcion,
                     archivo,
                     nombre_empresa,
                     id_reunion,
                     fecha_inicio,
-                    fecha_fin,
-                    color_reunion)                 
+                    fecha_fin)                 
                     VALUES (
-                        '".$descripcion."',
-                        '".$archivo."',
-                        '".$nombre_empresa."',
-                        '".$id_reunion."',
-                        '".$fecha_inicio."',
-                        '".$fecha_fin."',
-                        '".$color."'
+                        '" . $descripcion . "',
+                        '" . $archivo . "',
+                        '" . $nombre_empresa . "',
+                        '" . $id_reunion . "',
+                        '" . $fecha_inicio . "',
+                        '" . $fecha_fin . "'
                     )");
                 $sql = $conexion->query("INSERT INTO puntos (
                     descripcion,
@@ -46,22 +43,55 @@ if ($_POST['subir']) {
                     nombre_empresa,
                     id_reunion,
                     fecha_inicio,
-                    fecha_fin,
-                    color_reunion)                 
+                    fecha_fin)                 
                     VALUES (
-                        '".$descripcion."',
-                        '".$archivo."',
-                        '".$nombre_empresa."',
-                        '".$id_reunion."',
-                        '".$fecha_inicio."',
-                        '".$fecha_fin."',
-                        '".$color."'
+                        '" . $descripcion . "',
+                        '" . $archivo . "',
+                        '" . $nombre_empresa . "',
+                        '" . $id_reunion . "',
+                        '" . $fecha_inicio . "',
+                        '" . $fecha_fin . "'
                     )");
-                    header('Location: ../../index.php?n=calendarioSocio');
+                header('Location: ../../index.php?n=calendarioSocio');
             }
         }
-    }
-    else {
+    } else {
+        $descripcion = $_POST['descripcion'];
+        $archivo = $_FILES['archivo']['name'];
+        $nombre_empresa = $_SESSION['empresa'];
+        $id_reunion = $_POST['id_reunion'];
+        $fecha_inicio = $_POST['fecha_inicio'];
+        $fecha_fin = $_POST['fecha_fin'];
+        $sql = $conexion->query("INSERT INTO punto (
+            descripcion,
+            archivo,
+            nombre_empresa,
+            id_reunion,
+            fecha_inicio,
+            fecha_fin)                 
+            VALUES (
+                '" . $descripcion . "',
+                '" . $archivo . "',
+                '" . $nombre_empresa . "',
+                '" . $id_reunion . "',
+                '" . $fecha_inicio . "',
+                '" . $fecha_fin . "'
+            )");
+        $sql = $conexion->query("INSERT INTO puntos (
+            descripcion,
+            archivo,
+            nombre_empresa,
+            id_reunion,
+            fecha_inicio,
+            fecha_fin)                 
+            VALUES (
+                '" . $descripcion . "',
+                '" . $archivo . "',
+                '" . $nombre_empresa . "',
+                '" . $id_reunion . "',
+                '" . $fecha_inicio . "',
+                '" . $fecha_fin . "'
+            )");
         header('Location: ../../index.php?n=calendarioSocio');
     }
 }

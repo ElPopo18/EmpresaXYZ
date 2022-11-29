@@ -54,7 +54,7 @@ if ($incluir) {
                     <h2 class="nombre_empresa">Calendario de la empresa <?php echo $_SESSION['empresa']; ?></h2>
                 </div>
                 <ul>
-                    <li><a href="index.php?n=principal"><i class="fi fi-rr-settings"></i></a></li>
+                    <li><a href="index.php?n=configuracionSocio"><i class="fi fi-rr-settings"></i></a></li>
                     <li class="margin-right"><a href="controllers/controladorCerrarSesion.php"><i class="fi fi-sr-exit"></i></a></li>
                     <li class="ajustar"><img src="<?php echo $_SESSION['foto']?>"><span class="username"><?php echo $_SESSION['username'] ?><p class="cargo"><?php echo $_SESSION['cargo'] ?></p></span></li>
                 </ul>

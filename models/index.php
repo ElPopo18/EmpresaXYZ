@@ -11,7 +11,7 @@ class Modelo
         $this->Modelo = array();
         $this->db = new PDO('mysql:host=localhost;dbname=consorcio', "root", "");
     }
-        //insertar a la base de datos
+    //insertar a la base de datos
     public function insertar($tabla, $data)
     {
         $consulta = "insert into " . $tabla . " values(" . $data . ")";
@@ -26,28 +26,6 @@ class Modelo
     public function validarUsuarioExistente($tabla, $condicion)
     {
         $consul = "select * from " . $tabla . " where " . $condicion . ";";
-        $resul = $this->db->query($consul);
-        if ($resul) {
-            return $resul->fetchAll(PDO::FETCH_ASSOC);
-        } else {
-            return false;
-        }
-    }
-    /*cargo socio
-    public function cargoSocio($username)
-    {
-        $consul = "SELECT cargo FROM socio WHERE username = '$username' AND cargo = 'Socio'";
-        $resul = $this->db->query($consul);
-        if ($resul) {
-            return $resul->fetchAll(PDO::FETCH_ASSOC);
-        } else {
-            return false;
-        }
-    }*/
-    //cargo admin
-    public function cargoAdmin($username)
-    {
-        $consul = "SELECT cargo FROM socio WHERE username = '$username' AND cargo = 'Administrador'";
         $resul = $this->db->query($consul);
         if ($resul) {
             return $resul->fetchAll(PDO::FETCH_ASSOC);

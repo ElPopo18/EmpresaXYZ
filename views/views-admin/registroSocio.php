@@ -13,7 +13,7 @@
 
 <body>
 
-  <form class="form">
+  <form class="form" enctype="multipart/form-data">
     <div class="titulo-btn">
       <a class="btn" href="index.php?n=inicioAdmin"><i class="fa-solid fa-arrow-left"></i></a>
       <h2 class="titulo-form">Resgistrar Socio</h2>
@@ -22,11 +22,6 @@
       <div class="form_grupo">
         <input type="text" name="username" class="form_input" placeholder=" " required>
         <label for="name" class="form_label">Usuario:</label>
-        <span class="form_line"></span>
-      </div>
-      <div class="form_grupo">
-        <input type="password" name="password" class="form_input" placeholder=" " required>
-        <label for="password" class="form_label">Contraseña:</label>
         <span class="form_line"></span>
       </div>
       <div class="form_grupo">
@@ -45,6 +40,11 @@
         <span class="form_line"></span>
       </div>
       <div class="form_grupo">
+        <input type="password" name="password" class="form_input" placeholder=" " required>
+        <label for="password" class="form_label">Contraseña:</label>
+        <span class="form_line"></span>
+      </div>
+      <div class="form_grupo">
         <input type="text" name="nombre_empresa" class="form_input" placeholder=" " required>
         <label for="nombre_empresa" class="form_label">Nombre de la empresa:</label>
         <span class="form_line"></span>
@@ -60,6 +60,7 @@
           <input type="radio" name="cargo" value="Administrador">
         </span>
       </div>
+      <input class="subir_archivo"  type="file" name="foto">
       <input type="submit" class="form_submit" value="Registrar">
       <input type="hidden" name="n" value="registroSocio">
     </div>

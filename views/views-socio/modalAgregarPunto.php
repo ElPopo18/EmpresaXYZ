@@ -1,3 +1,7 @@
+<?php 
+session_start();
+
+?>
 <div class="modal" id="modalUpdateEvento" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -9,9 +13,9 @@
       </div>
       <form name="formEvento" id="formEvento" action="views/views-socio/subirArchivo.php" class="form-horizontal" method="POST" enctype="multipart/form-data">
         <div class="form-group">
-          <label for="evento" class="col-sm-12 control-label">Descripcion de la reunion</label>
+          <label for="evento" class="col-sm-12 control-label">Descripcion del punto</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" name="descripcion" id="descripcion" placeholder="Descripcion de la reunion" required />
+            <input type="text" class="form-control" name="descripcion" id="descripcion" placeholder="Descripcion del punto" required />
           </div>
         </div>
         <div class="form-group">
