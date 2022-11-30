@@ -24,7 +24,7 @@ if (!empty($_POST['btn_ingresar'])) {
             echo "<div class='alert alert-danger'>Acesso Denegado</div>";
         }
     } else {
-        echo "<div class='alert alert-danger'>Campos vacios</div>";
+        echo "<div class='alert alert-info'>Campos vacios</div>";
     }
 }
 ?>
