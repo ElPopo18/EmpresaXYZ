@@ -60,15 +60,6 @@ if ($incluir) {
                 </ul>
             </nav>
             <div class="contenido__pagina">
-                <div class="container">
-                    <div class="row">
-                        <div class="col msjs">
-                            <?php
-                            include('msjs.php');
-                            ?>
-                        </div>
-                    </div>
-                </div>
                 <div id="calendar"></div>
                 <?php
                 include('modalAgregarPunto.php');

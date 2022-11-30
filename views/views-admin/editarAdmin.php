@@ -68,6 +68,7 @@ if (empty($_SESSION['username'])) {
                         $actualizar = "UPDATE socio SET nombre_soc='$nombre', apellido_soc='$apellido', password='$password' WHERE username= '$usuario'";   
                         $resultado = $conexion->query($actualizar);
                         echo '<div class="mensaje">Usuario editado con exito</div>';
+                        header('refresh:3; url=../../index.php?n=configuracionAdmin');
                     }
                     else {
                         //si es una imagen
@@ -79,6 +80,7 @@ if (empty($_SESSION['username'])) {
                             $resultado = $conexion->query($actualizar);
                             if (move_uploaded_file($tmp_name, $destino)) {
                                 echo '<div class="mensaje">Usuario editado con exito</div>';
+                                header('refresh:3; url=../../index.php?n=configuracionAdmin');
                             }
                         }
                     }

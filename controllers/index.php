@@ -109,6 +109,10 @@ class ModeloController
     {
         require_once("views/views-admin/configuracionesAdmin.php");
     }
+
+    static function afterNuevaReunion(){
+        require_once("views/views-admin/afterNuevaReunion.php");
+    }
     //todo fin interfaz del admin
 
     //todo busquedas del admin
@@ -258,7 +262,7 @@ class ModeloController
       '" . $descripcion . "'
         )";
         $resultadoNuevoreunion2 = mysqli_query($conexion, $InsertNuevoReunion2);
-        header("Location: index.php?n=calendarioAdmin");
+        header("Location: index.php?n=afterNuevaReunion");
     }
     static function eliminarReunion()
     {
