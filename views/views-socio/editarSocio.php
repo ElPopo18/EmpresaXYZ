@@ -68,7 +68,7 @@ if (empty($_SESSION['username'])) {
                         $actualizar = "UPDATE socio SET nombre_soc='$nombre', apellido_soc='$apellido', password='$password' WHERE username= '$usuario'";   
                         $resultado = $conexion->query($actualizar);
                         echo '<div class="mensaje">Usuario editado con exito</div>';
-                        header('refresh:3; url=index.php?n=configuracionSocio');
+                        header('refresh:3; url=../../index.php?n=configuracionSocio');
                     }
                     else {
                         //si es una imagen
