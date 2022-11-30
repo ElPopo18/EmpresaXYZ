@@ -42,7 +42,7 @@ if (empty($_SESSION['username'])) {
                 <ul>
                     <li><a href="../../index.php?n=configuracionSocio"><i class="fi fi-rr-settings"></i></a></li>
                     <li class="margin-right"><a href="../../controllers/controladorCerrarSesion.php"><i class="fi fi-sr-exit"></i></a></li>
-                    <li class="ajustar"><img src="../../img-perfil/<?php echo $_SESSION['foto']?>"><span class="username"><?php echo $_SESSION['username'] ?><p class="cargo"><?php echo $_SESSION['cargo'] ?></p></span></li>
+                    <li class="ajustar"><img src="../../<?php echo $_SESSION['foto']?>"><span class="username"><?php echo $_SESSION['username'] ?><p class="cargo"><?php echo $_SESSION['cargo'] ?></p></span></li>
                 </ul>
             </nav>
             <div class="contenido__pagina">
@@ -68,6 +68,7 @@ if (empty($_SESSION['username'])) {
                         $actualizar = "UPDATE socio SET nombre_soc='$nombre', apellido_soc='$apellido', password='$password' WHERE username= '$usuario'";   
                         $resultado = $conexion->query($actualizar);
                         echo '<div class="mensaje">Usuario editado con exito</div>';
+                        header('refresh:3; url=index.php?n=configuracionSocio');
                     }
                     else {
                         //si es una imagen
@@ -79,6 +80,7 @@ if (empty($_SESSION['username'])) {
                             $resultado = $conexion->query($actualizar);
                             if (move_uploaded_file($tmp_name, $destino)) {
                                 echo '<div class="mensaje">Usuario editado con exito</div>';
+                                header('refresh:3; url=index.php?n=configuracionSocio');
                             }
                         }
                     }
