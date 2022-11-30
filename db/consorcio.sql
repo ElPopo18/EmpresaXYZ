@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-11-2022 a las 07:59:58
+-- Tiempo de generación: 30-11-2022 a las 02:52:55
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -58,38 +58,6 @@ CREATE TABLE `punto` (
   `fecha_inicio` text NOT NULL,
   `fecha_fin` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `punto`
---
-
-INSERT INTO `punto` (`id_punto`, `descripcion`, `archivo`, `nombre_empresa`, `id_reunion`, `fecha_inicio`, `fecha_fin`) VALUES
-(9, 'l', '', 'Consorcio', 17, '08-11-2022', '09-11-2022'),
-(10, 'hgfhg', '', 'Consorcio', 17, '08-11-2022', '09-11-2022');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `puntos`
---
-
-CREATE TABLE `puntos` (
-  `id_punto` int(11) NOT NULL,
-  `descripcion` varchar(250) NOT NULL,
-  `archivo` varchar(25) NOT NULL,
-  `nombre_empresa` varchar(25) NOT NULL,
-  `id_reunion` int(11) NOT NULL,
-  `fecha_inicio` text NOT NULL,
-  `fecha_fin` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `puntos`
---
-
-INSERT INTO `puntos` (`id_punto`, `descripcion`, `archivo`, `nombre_empresa`, `id_reunion`, `fecha_inicio`, `fecha_fin`) VALUES
-(9, 'l', '', 'Consorcio', 17, '08-11-2022', '09-11-2022'),
-(10, 'hgfhg', '', 'Consorcio', 17, '08-11-2022', '09-11-2022');
 
 -- --------------------------------------------------------
 
@@ -204,14 +172,6 @@ ALTER TABLE `punto`
   ADD KEY `id_reunion` (`id_reunion`);
 
 --
--- Indices de la tabla `puntos`
---
-ALTER TABLE `puntos`
-  ADD PRIMARY KEY (`id_punto`),
-  ADD KEY `nombre_empresa` (`nombre_empresa`),
-  ADD KEY `id_reunion` (`id_reunion`);
-
---
 -- Indices de la tabla `reunion`
 --
 ALTER TABLE `reunion`
@@ -247,13 +207,7 @@ ALTER TABLE `empresa`
 -- AUTO_INCREMENT de la tabla `punto`
 --
 ALTER TABLE `punto`
-  MODIFY `id_punto` int(65) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT de la tabla `puntos`
---
-ALTER TABLE `puntos`
-  MODIFY `id_punto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_punto` int(65) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `reunion`

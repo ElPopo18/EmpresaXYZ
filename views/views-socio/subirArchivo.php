@@ -37,21 +37,6 @@ if ($_POST['subir']) {
                         '" . $fecha_inicio . "',
                         '" . $fecha_fin . "'
                     )");
-                $sql = $conexion->query("INSERT INTO puntos (
-                    descripcion,
-                    archivo,
-                    nombre_empresa,
-                    id_reunion,
-                    fecha_inicio,
-                    fecha_fin)                 
-                    VALUES (
-                        '" . $descripcion . "',
-                        '" . $archivo . "',
-                        '" . $nombre_empresa . "',
-                        '" . $id_reunion . "',
-                        '" . $fecha_inicio . "',
-                        '" . $fecha_fin . "'
-                    )");
                 header('Location: ../../index.php?n=calendarioSocio');
             }
         }
@@ -63,21 +48,6 @@ if ($_POST['subir']) {
         $fecha_inicio = $_POST['fecha_inicio'];
         $fecha_fin = $_POST['fecha_fin'];
         $sql = $conexion->query("INSERT INTO punto (
-            descripcion,
-            archivo,
-            nombre_empresa,
-            id_reunion,
-            fecha_inicio,
-            fecha_fin)                 
-            VALUES (
-                '" . $descripcion . "',
-                '" . $archivo . "',
-                '" . $nombre_empresa . "',
-                '" . $id_reunion . "',
-                '" . $fecha_inicio . "',
-                '" . $fecha_fin . "'
-            )");
-        $sql = $conexion->query("INSERT INTO puntos (
             descripcion,
             archivo,
             nombre_empresa,
