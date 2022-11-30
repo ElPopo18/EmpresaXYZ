@@ -90,10 +90,6 @@
                 });
             },
         });
-        //Oculta mensajes de Notificacion
-        setTimeout(function() {
-            $(".alert").slideUp(300);
-        }, 3000);
 
 
     });

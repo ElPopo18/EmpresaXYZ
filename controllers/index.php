@@ -48,7 +48,7 @@ class ModeloController
             header('location:' . 'index.php?n=paginaRegistroSocio');
         } else {
             $dato = $usuario->insertar("socio", $data);
-            header('location:' . 'index.php?n=inicioAdmin');
+            header('location:' . 'index.php?n=afterRegistroSocio');
         }
     }
     //registrar una empresa
@@ -61,9 +61,11 @@ class ModeloController
         $condicion = "id_empresa='" . $id_empresa . "' AND nombre_empresa='" . $nombre_empresa . "'";
         if ($empresa->validarUsuarioExistente("empresa", "nombre_empresa='" . $nombre_empresa . "'")) {
             header('location: index.php?n=paginaRegistroEmpresa');
-        } else {
+        } 
+        else 
+        {
             $dato = $empresa->insertar("empresa", $data);
-            header('location:' . 'index.php?n=inicioAdmin');
+            header('location:' . 'index.php?n=afterRegistroEmpresa');
         }
     }
 
@@ -77,6 +79,12 @@ class ModeloController
     static function inicioAdmin()
     {
         require_once("views/views-admin/indexAdmin.php");
+    }
+    static function afterRegistroSocio(){
+        require_once("views/views-admin/afterRegistroSocio.php");
+    }
+    static function afterRegistroEmpresa(){
+        require_once("views/views-admin/afterRegistroEmpresa.php");
     }
     //empresas
     static function empresasAdmin()
@@ -248,9 +256,8 @@ class ModeloController
       '" . $fecha_fin . "',
       '" . $color_reunion . "',
       '" . $descripcion . "'
-  )";
+        )";
         $resultadoNuevoreunion2 = mysqli_query($conexion, $InsertNuevoReunion2);
-
         header("Location: index.php?n=calendarioAdmin");
     }
     static function eliminarReunion()
