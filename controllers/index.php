@@ -113,6 +113,10 @@ class ModeloController
     static function afterNuevaReunion(){
         require_once("views/views-admin/afterNuevaReunion.php");
     }
+
+    static function afterNuevoPunto(){
+        require_once("views/views-socio/afterNuevoPunto.php");
+    }
     //todo fin interfaz del admin
 
     //todo busquedas del admin
