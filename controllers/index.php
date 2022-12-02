@@ -61,9 +61,7 @@ class ModeloController
         $condicion = "id_empresa='" . $id_empresa . "' AND nombre_empresa='" . $nombre_empresa . "'";
         if ($empresa->validarUsuarioExistente("empresa", "nombre_empresa='" . $nombre_empresa . "'")) {
             header('location: index.php?n=paginaRegistroEmpresa');
-        } 
-        else 
-        {
+        } else {
             $dato = $empresa->insertar("empresa", $data);
             header('location:' . 'index.php?n=afterRegistroEmpresa');
         }
@@ -75,49 +73,84 @@ class ModeloController
     {
         require_once("views/login.php");
     }
-    //todo interfaz del admin
-    static function inicioAdmin()
+
+    //todo funciones del calendario del admin
+    static function nuevaReunion()
     {
-        require_once("views/views-admin/indexAdmin.php");
+        require('config/conexion.php');
+        $nombre_empresa = ucwords($_REQUEST['nombre_empresa']);
+        $f_inicio = $_REQUEST['fecha_inicio'];
+        $fecha_inicio = date('Y-m-d', strtotime($f_inicio));
+
+        $f_fin = $_REQUEST['fecha_fin'];
+        $seteando_f_final = date('Y-m-d', strtotime($f_fin));
+        $fecha_fin1 = strtotime($seteando_f_final . "+ 1 days");
+        $fecha_fin = date('Y-m-d', ($fecha_fin1));
+        $color_reunion = $_REQUEST['color_reunion'];
+        $InsertNuevoReunion = "INSERT INTO reunion(
+      nombre_empresa,
+      fecha_inicio,
+      fecha_fin,
+      color_reunion
+      )
+    VALUES (
+      '" . $nombre_empresa . "',
+      '" . $fecha_inicio . "',
+      '" . $fecha_fin . "',
+      '" . $color_reunion . "'
+  )";
+        $resultadoNuevoReunion = mysqli_query($conexion, $InsertNuevoReunion);
+
+        $InsertNuevoReunion2 = "INSERT INTO reuniones(
+      nombre_empresa,
+      fecha_inicio,
+      fecha_fin,
+      color_reunion
+      )
+    VALUES (
+      '" . $nombre_empresa . "',
+      '" . $fecha_inicio . "',
+      '" . $fecha_fin . "',
+      '" . $color_reunion . "'
+        )";
+        $resultadoNuevoreunion2 = mysqli_query($conexion, $InsertNuevoReunion2);
+        header("Location: index.php?n=afterNuevaReunion");
     }
-    static function afterRegistroSocio(){
-        require_once("views/views-admin/afterRegistroSocio.php");
-    }
-    static function afterRegistroEmpresa(){
-        require_once("views/views-admin/afterRegistroEmpresa.php");
-    }
-    //empresas
-    static function empresasAdmin()
+    static function eliminarReunion()
     {
-        require_once("views/views-admin/empresasAdmin.php");
-    }
-    //reuniones
-    static function reunionesAdmin()
-    {
-        require_once("views/views-admin/reunionesAdmin.php");
-    }
-    //reuniones
-    static function sociosAdmin()
-    {
-        require_once("views/views-admin/sociosAdmin.php");
-    }
-    static function calendarioAdmin()
-    {
-        require_once("views/views-admin/calendarioAdmin.php");
-    }
-    static function configuracionAdmin()
-    {
-        require_once("views/views-admin/configuracionesAdmin.php");
+        require 'config/conexion.php';
+        $id_reunion = $_REQUEST['id_reunion'];
+        $sqlDeleteEvento = ("DELETE FROM reunion WHERE id_reunion='" . $id_reunion . "'");
+        $resultProd = mysqli_query($conexion, $sqlDeleteEvento);
     }
 
-    static function afterNuevaReunion(){
-        require_once("views/views-admin/afterNuevaReunion.php");
-    }
+    static function moverReunion()
+    {
+        require 'config/conexion.php';
+        $id_reunion = $_POST['id_reunion'];
+        $start = $_REQUEST['start'];
+        $fecha_inicio = date('Y-m-d', strtotime($start));
+        $end = $_REQUEST['end'];
+        $fecha_fin = date('Y-m-d', strtotime($end));
+        $UpdateProd = ("UPDATE reunion 
+    SET 
+        fecha_inicio ='$fecha_inicio',
+        fecha_fin ='$fecha_fin'
 
-    static function afterNuevoPunto(){
-        require_once("views/views-socio/afterNuevoPunto.php");
+    WHERE id_reunion='" . $id_reunion . "' ");
+        $result = mysqli_query($conexion, $UpdateProd);
+
+        if ($result) {
+            $UpdateProd = "UPDATE reuniones 
+    SET 
+        fecha_inicio ='$fecha_inicio',
+        fecha_fin ='$fecha_fin'
+
+    WHERE id_reunion='" . $id_reunion . "'";
+            $result2 = mysqli_query($conexion, $UpdateProd);
+        }
     }
-    //todo fin interfaz del admin
+    //todo fin funciones del calendario del admin
 
     //todo busquedas del admin
 
@@ -221,116 +254,57 @@ class ModeloController
     }
     // todo fin de busquedas del admin
 
-    //todo funciones del calendario del admin
-    static function nuevaReunion()
+    //todo interfaz del admin
+    static function inicioAdmin()
     {
-        require('config/conexion.php');
-        $nombre_empresa = ucwords($_REQUEST['nombre_empresa']);
-        $f_inicio = $_REQUEST['fecha_inicio'];
-        $fecha_inicio = date('Y-m-d', strtotime($f_inicio));
-
-        $f_fin = $_REQUEST['fecha_fin'];
-        $seteando_f_final = date('Y-m-d', strtotime($f_fin));
-        $fecha_fin1 = strtotime($seteando_f_final . "+ 1 days");
-        $fecha_fin = date('Y-m-d', ($fecha_fin1));
-        $color_reunion = $_REQUEST['color_reunion'];
-        $descripcion = $_REQUEST['descripcion'];
-        $InsertNuevoReunion = "INSERT INTO reunion(
-      nombre_empresa,
-      fecha_inicio,
-      fecha_fin,
-      color_reunion,
-      descripcion
-      )
-    VALUES (
-      '" . $nombre_empresa . "',
-      '" . $fecha_inicio . "',
-      '" . $fecha_fin . "',
-      '" . $color_reunion . "',
-      '" . $descripcion . "'
-  )";
-        $resultadoNuevoReunion = mysqli_query($conexion, $InsertNuevoReunion);
-
-        $InsertNuevoReunion2 = "INSERT INTO reuniones(
-      nombre_empresa,
-      fecha_inicio,
-      fecha_fin,
-      color_reunion,
-      descripcion
-      )
-    VALUES (
-      '" . $nombre_empresa . "',
-      '" . $fecha_inicio . "',
-      '" . $fecha_fin . "',
-      '" . $color_reunion . "',
-      '" . $descripcion . "'
-        )";
-        $resultadoNuevoreunion2 = mysqli_query($conexion, $InsertNuevoReunion2);
-        header("Location: index.php?n=afterNuevaReunion");
+        require_once("views/views-admin/indexAdmin.php");
     }
-    static function eliminarReunion()
+    static function afterRegistroSocio()
     {
-        require 'config/conexion.php';
-        $id_reunion = $_REQUEST['id_reunion'];
-        $sqlDeleteEvento = ("DELETE FROM reunion WHERE id_reunion='" . $id_reunion . "'");
-        $resultProd = mysqli_query($conexion, $sqlDeleteEvento);
+        require_once("views/views-admin/afterRegistroSocio.php");
+    }
+    static function afterRegistroEmpresa()
+    {
+        require_once("views/views-admin/afterRegistroEmpresa.php");
+    }
+    //empresas
+    static function empresasAdmin()
+    {
+        require_once("views/views-admin/empresasAdmin.php");
+    }
+    //reuniones
+    static function reunionesAdmin()
+    {
+        require_once("views/views-admin/reunionesAdmin.php");
+    }
+    //reuniones
+    static function sociosAdmin()
+    {
+        require_once("views/views-admin/sociosAdmin.php");
+    }
+    static function calendarioAdmin()
+    {
+        require_once("views/views-admin/calendarioAdmin.php");
+    }
+    static function configuracionAdmin()
+    {
+        require_once("views/views-admin/configuracionesAdmin.php");
     }
 
-    static function moverReunion()
+    static function afterNuevaReunion()
     {
-        require 'config/conexion.php';
-        $id_reunion = $_POST['id_reunion'];
-        $start = $_REQUEST['start'];
-        $fecha_inicio = date('Y-m-d', strtotime($start));
-        $end = $_REQUEST['end'];
-        $fecha_fin = date('Y-m-d', strtotime($end));
-        $UpdateProd = ("UPDATE reunion 
-    SET 
-        fecha_inicio ='$fecha_inicio',
-        fecha_fin ='$fecha_fin'
-
-    WHERE id_reunion='" . $id_reunion . "' ");
-        $result = mysqli_query($conexion, $UpdateProd);
-
-        if ($result) {
-            $UpdateProd = "UPDATE reuniones 
-    SET 
-        fecha_inicio ='$fecha_inicio',
-        fecha_fin ='$fecha_fin'
-
-    WHERE id_reunion='" . $id_reunion . "'";
-            $result2 = mysqli_query($conexion, $UpdateProd);
-        }
+        require_once("views/views-admin/afterNuevaReunion.php");
     }
-    //todo fin funciones del calendario del admin
+
+    static function afterNuevoPunto()
+    {
+        require_once("views/views-socio/afterNuevoPunto.php");
+    }
+    //todo fin interfaz del admin
 
     //? fin de admin
 
     //? Inicio Socio
-    //todo interfaz del socio
-
-    static function calendarioSocio()
-    {
-        require_once("views/views-socio/calendarioSocios.php");
-    }
-    static function reunionesSocio()
-    {
-        require_once("views/views-socio/reunionesSocios.php");
-    }
-    static function sociosSocio()
-    {
-        require_once("views/views-socio/sociosSocios.php");
-    }
-    static function puntos()
-    {
-        require_once("views/views-socio/puntos.php");
-    }
-    static function configuracionSocio()
-    {
-        require_once("views/views-socio/configuracionesSocio.php");
-    }
-    //todo fin interfaz del socio
-
     //todo busquedas del socio
 
     static function buscarSocio()
@@ -364,68 +338,97 @@ class ModeloController
         $conexion->close();
     }
 
-    static function buscarReunionSocio(){
+    static function buscarReunionSocio()
+    {
         session_start();
         require 'config/conexion.php';
         $salida = "";
         $consulta   = ("SELECT * FROM reuniones WHERE nombre_empresa LIKE '$_SESSION[empresa]'");
         if (isset($_POST['consulta'])) {
             $q = $conexion->real_escape_string($_POST['consulta']);
-            $consulta = "SELECT * FROM reuniones WHERE nombre_empresa LIKE '$_SESSION[empresa]' and id_reunion LIKE '%".$q."%' OR color_reunion LIKE '%".$q."%' OR fecha_inicio LIKE '%".$q."%' OR fecha_fin LIKE '%".$q."%' OR descripcion LIKE '%".$q."%'";
+            $consulta = "SELECT * FROM reuniones WHERE nombre_empresa LIKE '$_SESSION[empresa]' and id_reunion LIKE '%" . $q . "%' OR color_reunion LIKE '%" . $q . "%' OR fecha_inicio LIKE '%" . $q . "%' OR fecha_fin LIKE '%" . $q . "%' OR descripcion LIKE '%" . $q . "%'";
         }
-    
+
         $resultado = $conexion->query($consulta);
-    
+
         if ($resultado->num_rows > 0) {
             while ($row = $resultado->fetch_assoc()) {
                 $salida .= '<tr>';
-                $salida .= '<td>'.$row['id_reunion'].'</td>';
-                $salida .= '<td>'.$row['descripcion'].'</td>';
+                $salida .= '<td>' . $row['id_reunion'] . '</td>';
                 $color = $row['color_reunion'];
-                $salida .= '<td style="background-color: '.$color.';">'.$row['color_reunion'].'</td>';
-                $salida .= '<td>'.$row['fecha_inicio'].'</td>';
-                $salida .= '<td>'.$row['fecha_fin'].'</td>';
+                $salida .= '<td style="background-color: ' . $color . ';">' . $row['color_reunion'] . '</td>';
+                $salida .= '<td>' . $row['fecha_inicio'] . '</td>';
+                $salida .= '<td>' . $row['fecha_fin'] . '</td>';
                 $salida .= '</tr>';
             }
-        }else {
-            $salida.= "No se encontraron resultados :(";
+        } else {
+            $salida .= "No se encontraron resultados :(";
         }
-    
+
         echo $salida;
-    
+
         $conexion->close();
     }
 
-    static function buscarPunto(){
+    static function buscarPunto()
+    {
         session_start();
         require 'config/conexion.php';
         $salida = "";
-        $consulta   = ("SELECT * FROM puntos WHERE nombre_empresa LIKE '$_SESSION[empresa]'");
+        $consulta   = ("SELECT * FROM punto WHERE nombre_empresa LIKE '$_SESSION[empresa]'");
         if (isset($_POST['consulta'])) {
             $q = $conexion->real_escape_string($_POST['consulta']);
-            $consulta = "SELECT * FROM puntos WHERE id_reunion LIKE '%".$q."%' OR id_punto LIKE '%".$q."%' OR fecha_inicio LIKE '%".$q."%' OR fecha_fin LIKE '%".$q."%' OR descripcion LIKE '%".$q."%' OR archivo LIKE '%".$q."%'";
+            $consulta = "SELECT * FROM puntos WHERE id_reunion LIKE '%" . $q . "%' OR id_punto LIKE '%" . $q . "%' OR fecha_inicio LIKE '%" . $q . "%' OR fecha_fin LIKE '%" . $q . "%' OR descripcion LIKE '%" . $q . "%' OR archivo LIKE '%" . $q . "%'";
         }
-    
+
         $resultado = $conexion->query($consulta);
-    
+
         if ($resultado->num_rows > 0) {
             while ($row = $resultado->fetch_assoc()) {
                 $salida .= '<tr>';
-                $salida .= '<td>'.$row['id_punto'].'</td>';
-                $salida .= '<td>'.$row['id_reunion'].'</td>';
-                $salida .= '<td>'.$row['descripcion'].'</td>';
-                $salida .= '<td>'.$row['archivo'].'</td>';
-                $salida .= '<td>'.$row['fecha_inicio'].'</td>';
-                $salida .= '<td>'.$row['fecha_fin'].'</td>';
+                $salida .= '<td>' . $row['id_punto'] . '</td>';
+                $salida .= '<td>' . $row['id_reunion'] . '</td>';
+                $salida .= '<td>' . $row['username'] . '</td>';
+                $salida .= '<td>' . $row['descripcion'] . '</td>';
+                $salida .= '<td><a href="documents/'. $row['archivo'] .'" class="pdf" TARGET="BLANK">' . $row['archivo'] . '</a></td>';
+                $salida .= '<td>' . $row['fecha_inicio'] . '</td>';
                 $salida .= '</tr>';
             }
-        }else {
-            $salida.= "No se encontraron resultados :(";
+        } else {
+            $salida .= "No se encontraron resultados :(";
         }
-    
+
         echo $salida;
-    
+
         $conexion->close();
     }
     //todo fin de busquedas del socio
+
+    //todo interfaz del socio
+
+    static function calendarioSocio()
+    {
+        require_once("views/views-socio/calendarioSocios.php");
+    }
+    static function reunionesSocio()
+    {
+        require_once("views/views-socio/reunionesSocios.php");
+    }
+    static function sociosSocio()
+    {
+        require_once("views/views-socio/sociosSocios.php");
+    }
+    static function puntos()
+    {
+        require_once("views/views-socio/puntos.php");
+    }
+    static function configuracionSocio()
+    {
+        require_once("views/views-socio/configuracionesSocio.php");
+    }
+    static function votacionesSocio()
+    {
+        require_once("views/views-socio//votacionesSocios.php");
+    }
+    //todo fin interfaz del socio
 }

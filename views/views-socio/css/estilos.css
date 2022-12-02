@@ -215,6 +215,15 @@ th{
 td{
     padding: 10px;
 }
+
+.pdf{
+    text-decoration: none;
+    color: #fff;
+    background-color: #0c2176;
+    width: 100%;
+    display: block;
+    border-radius: 10px;
+}
 .registro__btn{
     display: block;
     background-color: #00106b;
@@ -231,5 +240,10 @@ td{
 
 .registro__btn:hover {
     background-color: #02082d;
+}
+
+.card{
+    display: flex;
+    flex-direction: column-reverse;
 }
 /*? fin contenido de la pagina*/

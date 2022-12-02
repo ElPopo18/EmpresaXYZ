@@ -45,6 +45,7 @@ if ($incluir) {
                     <li><a href="index.php?n=puntos">Puntos</a></li>
                     <li><a href="index.php?n=reunionesSocio">Reuniones</a></li>
                     <li><a href="index.php?n=sociosSocio">Socios</a></li>
+                    <li><a href="index.php?n=votacionesSocio">Votaciones</a></li>
                 </ul>
             </aside>
         </header>

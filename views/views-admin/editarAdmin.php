@@ -12,7 +12,7 @@ if (empty($_SESSION['username'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Configuracion</title>
-    <link rel="icon" href="views/img/calendario.png">
+    <link rel="icon" href="../img/calendario.png">
     <link rel="stylesheet" href="../css/configuracionesUsuario.css">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>

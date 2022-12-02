@@ -14,13 +14,6 @@
             <input type="text" class="form-control" name="nombre_empresa" id="nombre_empresa" placeholder="Nombre de la empresa" required />
           </div>
         </div>
-        
-        <div class="form-group">
-          <label for="descripcion" class="col-sm-12 control-label">Descripcion</label>
-          <div class="col-sm-10">
-            <textarea type="text" class="form-control" name="descripcion" id="descripcion" placeholder="Descripcion de la reunion" row="3" required></textarea>
-          </div>
-        </div>
         <div class="form-group d-none">
           <label for="fecha_inicio" class="col-sm-12 control-label">Fecha Inicio</label>
           <div class="col-sm-10">

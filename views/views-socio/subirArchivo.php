@@ -18,24 +18,26 @@ if ($_POST['subir']) {
             if (move_uploaded_file($_FILES['archivo']['tmp_name'], '../../documents/' . $_FILES['archivo']['name'])) {
                 $descripcion = $_POST['descripcion'];
                 $archivo = $_FILES['archivo']['name'];
+                $username = $_SESSION['username'];
                 $nombre_empresa = $_SESSION['empresa'];
                 $id_reunion = $_POST['id_reunion'];
                 $fecha_inicio = $_POST['fecha_inicio'];
                 $fecha_fin = $_POST['fecha_fin'];
                 $sql = $conexion->query("INSERT INTO punto (
+                    username,
                     descripcion,
                     archivo,
                     nombre_empresa,
                     id_reunion,
-                    fecha_inicio,
-                    fecha_fin)                 
+                    fecha_inicio
+                    )                 
                     VALUES (
+                        '" . $username. "',
                         '" . $descripcion . "',
                         '" . $archivo . "',
                         '" . $nombre_empresa . "',
                         '" . $id_reunion . "',
-                        '" . $fecha_inicio . "',
-                        '" . $fecha_fin . "'
+                        '" . $fecha_inicio . "'
                     )");
                 header('Location: ../../index.php?n=afterNuevoPunto');
             }
@@ -43,24 +45,25 @@ if ($_POST['subir']) {
     } else {
         $descripcion = $_POST['descripcion'];
         $archivo = $_FILES['archivo']['name'];
+        $username = $_SESSION['username'];
         $nombre_empresa = $_SESSION['empresa'];
         $id_reunion = $_POST['id_reunion'];
         $fecha_inicio = $_POST['fecha_inicio'];
-        $fecha_fin = $_POST['fecha_fin'];
         $sql = $conexion->query("INSERT INTO punto (
+            username,
             descripcion,
             archivo,
             nombre_empresa,
             id_reunion,
-            fecha_inicio,
-            fecha_fin)                 
+            fecha_inicio
+            )                 
             VALUES (
+                '" . $username. "',
                 '" . $descripcion . "',
                 '" . $archivo . "',
                 '" . $nombre_empresa . "',
                 '" . $id_reunion . "',
                 '" . $fecha_inicio . "',
-                '" . $fecha_fin . "'
             )");
         header('Location: ../../index.php?n=afterNuevoPunto');
     }

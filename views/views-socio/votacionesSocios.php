@@ -16,7 +16,7 @@ if ($incluir) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Puntos</title>
+    <title>Votaciones</title>
     <link rel="icon" href="views/img/calendario.png">
     <link rel="stylesheet" href="views/views-socio/css/estilos.css">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
@@ -32,10 +32,10 @@ if ($incluir) {
             <aside class="lateral">
                 <ul>
                     <li><a href="index.php?n=calendarioSocio">Calendario</a></li>
-                    <li><a href="index.php?n=puntos" class="active">Puntos</a></li>
+                    <li><a href="index.php?n=puntos">Puntos</a></li>
                     <li><a href="index.php?n=reunionesSocio">Reuniones</a></li>
                     <li><a href="index.php?n=sociosSocio">Socios</a></li>
-                    <li><a href="index.php?n=votacionesSocio">Votaciones</a></li>
+                    <li><a href="index.php?n=votacionesSocio" class="active">Votaciones</a></li>
                 </ul>
             </aside>
         </header>
@@ -52,24 +52,38 @@ if ($incluir) {
                 </ul>
             </nav>
             <div class="contenido__pagina">
-                <h2 class="tabla__titulo">Puntos de reuniones de la Empresa <?php echo $_SESSION['empresa'] ?></h2>
+                <h2 class="tabla__titulo">Votaciones de la Empresa <?php echo $_SESSION['empresa'] ?></h2>
+                <?php
+                while ($row = $resultado->fetch_array()) { ?>
+                    <div class="card">
+                        <h3><?php echo $row['username']; ?></h3>
+                        <h4><?php echo $row['descripcion'] ?></h4>
+                    </div>
+                <?php         } ?>
+                <!--
                 <div class="tabla_scroll">
                     <table border="1" class="tabla">
                         <thead>
                             <tr>
-                                <th>Id punto</th>
-                                <th>Id reunion</th>
                                 <th>Usuario</th>
                                 <th>Tema a tratar</th>
-                                <th>Nombre del Documento</th>
-                                <th>Fecha de subida</th>
+                                <th>Votacion</th>
                             </tr>
                         </thead>
-                        <tbody id="puntos">
+                        <tbody>
+                            <?php
+                            while ($row = $resultado->fetch_array()) { ?>
+                                <tr>
+                                    <td><?php echo $row['username']; ?></td>
+                                    <td><?php echo $row['descripcion'] ?></td>
+                                </tr>
+                            <?php         } ?>
                         </tbody>
                     </table>
                 </div>
+                            -->
             </div>
 </body>
 <script src="js/buscarPuntos.js"></script>
+
 </html>

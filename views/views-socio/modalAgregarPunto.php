@@ -1,7 +1,3 @@
-<?php 
-session_start();
-
-?>
 <div class="modal" id="modalUpdateEvento" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -11,7 +7,7 @@ session_start();
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form name="formEvento" id="formEvento" action="views/views-socio/subirArchivo.php" class="form-horizontal" method="POST" enctype="multipart/form-data">
+      <form name="formEvento" id="formEvento" action="views/views-socio/subirArchivo.php" class="form-horizontal" method="POST" enctype="multipart/form-data" style="width: 100%;">
         <div class="form-group">
           <label for="evento" class="col-sm-12 control-label">Descripcion del punto</label>
           <div class="col-sm-10">

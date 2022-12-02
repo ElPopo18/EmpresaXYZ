@@ -35,6 +35,7 @@ $row = $resultadoS->fetch_assoc();
                     <li><a href="index.php?n=reunionesSocio">Reuniones</a></li>
                     <li><a href="index.php?n=empresasSocio">Empresas</a></li>
                     <li><a href="index.php?n=sociosSocio">Socios</a></li>
+                    <li><a href="index.php?n=votacionesSocio">Votaciones</a></li>
                     <li><a href="index.php?n=configuracionUsuario" class="active">Configuracion</a></li>
                 </ul>
             </aside>

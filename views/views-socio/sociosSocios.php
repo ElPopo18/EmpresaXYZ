@@ -35,6 +35,7 @@ if (empty($_SESSION['username'])) {
                     <li><a href="index.php?n=puntos">Puntos</a></li>
                     <li><a href="index.php?n=reunionesSocio">Reuniones</a></li>
                     <li><a href="index.php?n=sociosSocio" class="active">Socios</a></li>
+                    <li><a href="index.php?n=votacionesSocio">Votaciones</a></li>
                 </ul>
             </aside>
         </header>

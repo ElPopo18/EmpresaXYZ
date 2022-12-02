@@ -35,6 +35,7 @@ if ($incluir) {
                     <li><a href="index.php?n=puntos">Puntos</a></li>
                     <li><a href="index.php?n=reunionesSocio" class="active">Reuniones</a></li>
                     <li><a href="index.php?n=sociosSocio">Socios</a></li>
+                    <li><a href="index.php?n=votacionesSocio">Votaciones</a></li>
                 </ul>
             </aside>
         </header>
@@ -58,7 +59,6 @@ if ($incluir) {
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Descripcion</th>
                                 <th>color</th>
                                 <th>Fecha de inicio</th>
                                 <th>Fecha de fin</th>
