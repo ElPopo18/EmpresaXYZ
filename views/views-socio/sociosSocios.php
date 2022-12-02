@@ -48,26 +48,25 @@ if (empty($_SESSION['username'])) {
                 <ul>
                     <li><a href="index.php?n=configuracionSocio"><i class="fi fi-rr-settings"></i></a></li>
                     <li class="margin-right"><a href="controllers/controladorCerrarSesion.php"><i class="fi fi-sr-exit"></i></a></li>
-                    <li class="ajustar"><img src="<?php echo $_SESSION['foto']?>"><span class="username"><?php echo $_SESSION['username'] ?><p class="cargo"><?php echo $_SESSION['cargo'] ?></p></span></li>
+                    <li class="ajustar"><img src="<?php echo $_SESSION['foto'] ?>"><span class="username"><?php echo $_SESSION['username'] ?><p class="cargo"><?php echo $_SESSION['cargo'] ?></p></span></li>
                 </ul>
             </nav>
             <div class="contenido__pagina">
                 <h2 class="tabla__titulo">Socios de la Empresa <?php echo $_SESSION['empresa'] ?></h2>
-                <div class="tabla_scroll">
-                    <table border="1" class="tabla">
-                        <thead>
-                            <tr>
-                                <th>Usuario</th>
-                                <th>Nombre</th>
-                                <th>Apellido</th>
-                                <th>Cedula</th>
-                            </tr>
-                        </thead>
-                        <tbody id="socio">
-                        </tbody>
-                    </table>
-                </div>
+                <table border="1" class="tabla">
+                    <thead>
+                        <tr>
+                            <th>Usuario</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Cedula</th>
+                        </tr>
+                    </thead>
+                    <tbody id="socio">
+                    </tbody>
+                </table>
             </div>
 </body>
 <script src="js/buscarSocio.js"></script>
+
 </html>

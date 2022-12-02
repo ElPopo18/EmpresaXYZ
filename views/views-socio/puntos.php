@@ -53,23 +53,22 @@ if ($incluir) {
             </nav>
             <div class="contenido__pagina">
                 <h2 class="tabla__titulo">Puntos de reuniones de la Empresa <?php echo $_SESSION['empresa'] ?></h2>
-                <div class="tabla_scroll">
-                    <table border="1" class="tabla">
-                        <thead>
-                            <tr>
-                                <th>Id punto</th>
-                                <th>Id reunion</th>
-                                <th>Usuario</th>
-                                <th>Tema a tratar</th>
-                                <th>Nombre del Documento</th>
-                                <th>Fecha de subida</th>
-                            </tr>
-                        </thead>
-                        <tbody id="puntos">
-                        </tbody>
-                    </table>
-                </div>
+                <table border="1" class="tabla">
+                    <thead>
+                        <tr>
+                            <th>Id punto</th>
+                            <th>Id reunion</th>
+                            <th>Usuario</th>
+                            <th>Tema a tratar</th>
+                            <th>Nombre del Documento</th>
+                            <th>Fecha de subida</th>
+                        </tr>
+                    </thead>
+                    <tbody id="puntos">
+                    </tbody>
+                </table>
             </div>
 </body>
 <script src="js/buscarPuntos.js"></script>
+
 </html>

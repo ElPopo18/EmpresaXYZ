@@ -41,7 +41,7 @@ if ($incluir) {
         </header>
         <div id="contenido">
             <nav id="navbar">
-            <form class="buscar" method="post">
+                <form class="buscar" method="post">
                     <label class="buscar__label" for="buscar">Buscar: </label>
                     <input type="text" id="buscar" name="buscar" class="reuniones" placeholder="Id de la reunion/Empresa/Color/Fechas que desea buscar">
                 </form>
@@ -49,26 +49,25 @@ if ($incluir) {
                     <li><a href="index.php?n=configuracionSocio"><i class="fi fi-rr-settings"></i></a></li>
                     <li class="margin-right"><a href="controllers/controladorCerrarSesion.php"><i class="fi fi-sr-exit"></i></a></li>
 
-                    <li class="ajustar"><img src="<?php echo $_SESSION['foto']?>"><span class="username"><?php echo $_SESSION['username'] ?><p class="cargo"><?php echo $_SESSION['cargo'] ?></p></span></li>
+                    <li class="ajustar"><img src="<?php echo $_SESSION['foto'] ?>"><span class="username"><?php echo $_SESSION['username'] ?><p class="cargo"><?php echo $_SESSION['cargo'] ?></p></span></li>
                 </ul>
             </nav>
             <div class="contenido__pagina">
-            <h2 class="tabla__titulo">Reuniones de la Empresa <?php echo $_SESSION['empresa'] ?></h2>
-                <div class="tabla_scroll">
-                    <table border="1" class="tabla">
-                        <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>color</th>
-                                <th>Fecha de inicio</th>
-                                <th>Fecha de fin</th>
-                            </tr>
-                        </thead>
-                        <tbody id="reuniones">
-                        </tbody>
-                    </table>
-                </div>
+                <h2 class="tabla__titulo">Reuniones de la Empresa <?php echo $_SESSION['empresa'] ?></h2>
+                <table border="1" class="tabla">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>color</th>
+                            <th>Fecha de inicio</th>
+                            <th>Fecha de fin</th>
+                        </tr>
+                    </thead>
+                    <tbody id="reuniones">
+                    </tbody>
+                </table>
             </div>
 </body>
 <script src="js/buscarReunionSocio.js"></script>
+
 </html>
