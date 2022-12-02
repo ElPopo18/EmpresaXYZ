@@ -47,30 +47,29 @@ if (empty($_SESSION['username'])) {
                 <ul>
                     <li><a href="index.php?n=configuracionAdmin"><i class="fi fi-rr-settings"></i></a></li>
                     <li class="margin-right"><a href="controllers/controladorCerrarSesion.php"><i class="fi fi-sr-exit"></i></a></li>
-                    <li class="ajustar"><img src="img-perfil/<?php echo $_SESSION['foto']?>"><span class="username"><?php echo $_SESSION['username'] ?><p class="cargo">
-                    <?php echo $_SESSION['cargo'] ?></p></span></li>
+                    <li class="ajustar"><img src="img-perfil/<?php echo $_SESSION['foto'] ?>"><span class="username"><?php echo $_SESSION['username'] ?><p class="cargo">
+                                <?php echo $_SESSION['cargo'] ?></p></span></li>
                 </ul>
             </nav>
             <div class="contenido__pagina">
                 <h2 class="tabla__titulo">Empresas Registradas</h2>
-                <div class="tabla_scroll">
-                    <table border="1" class="tabla">
-                        <thead>
-                            <tr>
-                                <th>Id de la empresa</th>
-                                <th>Nombre de la empresa</th>
-                                <th colspan="2">Opciones</th>
-                            </tr>
-                        </thead>
-                        <tbody id="empresas">
-                        </tbody>
-                    </table>
-                    <a href="index.php?n=paginaRegistroEmpresa" class="registro__btn">&iquest; Desea registrar una
-                        Empresa ?</a>
-                </div>
+                <table border="1" class="tabla">
+                    <thead>
+                        <tr>
+                            <th>Id de la empresa</th>
+                            <th>Nombre de la empresa</th>
+                            <th colspan="2">Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="empresas">
+                    </tbody>
+                </table>
+                <a href="index.php?n=paginaRegistroEmpresa" class="registro__btn">&iquest; Desea registrar una
+                    Empresa ?</a>
             </div>
         </div>
     </div>
     <script src="js/buscarEmpresaAdmin.js"></script>
 </body>
+
 </html>

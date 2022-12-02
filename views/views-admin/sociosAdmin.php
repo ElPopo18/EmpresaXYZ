@@ -49,28 +49,26 @@ if (empty($_SESSION['username'])) {
                     <li><a href="index.php?n=configuracionAdmin"><i class="fi fi-rr-settings"></i></a></li>
                     <li class="margin-right"><a href="controllers/controladorCerrarSesion.php"><i class="fi fi-sr-exit"></i></a></li>
 
-                    <li class="ajustar"><img src="img-perfil/<?php echo $_SESSION['foto']?>"><span class="username"><?php echo $_SESSION['username'] ?><p class="cargo"><?php echo $_SESSION['cargo'] ?></p></span></li>
+                    <li class="ajustar"><img src="img-perfil/<?php echo $_SESSION['foto'] ?>"><span class="username"><?php echo $_SESSION['username'] ?><p class="cargo"><?php echo $_SESSION['cargo'] ?></p></span></li>
                 </ul>
             </nav>
             <div class="contenido__pagina">
                 <h2 class="tabla__titulo">Socios Registrados</h2>
-                <div class="tabla_scroll">
-                    <table border="1" class="tabla">
-                        <thead>
-                            <tr>
-                                <th>Usuario</th>
-                                <th>Nombre</th>
-                                <th>Apellido</th>
-                                <th>Cedula</th>
-                                <th>Empresa</th>
-                                <th>Cargo</th>
-                                <th>Opcion</th>
-                            </tr>
-                        </thead>
-                        <tbody id="socio">
-                        </tbody>
-                    </table>
-                </div>
+                <table border="1" class="tabla">
+                    <thead>
+                        <tr>
+                            <th>Usuario</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Cedula</th>
+                            <th>Empresa</th>
+                            <th>Cargo</th>
+                            <th>Opcion</th>
+                        </tr>
+                    </thead>
+                    <tbody id="socio">
+                    </tbody>
+                </table>
                 <a href="index.php?n=paginaRegistroSocio" class="registro__btn">&iquest; Desea registrar un Socio ?</a>
             </div>
         </div>
