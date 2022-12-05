@@ -49,7 +49,7 @@
         <label for="nombre_empresa" class="form_label">Nombre de la empresa:</label>
         <span class="form_line"></span>
       </div>
-      <div class="form_grupo">
+      <div class="form_grupo block">
         <label>Cargo: </label>
         <span class="cargo">
           <label>Socio</label>
@@ -60,7 +60,7 @@
           <input type="radio" name="cargo" value="Administrador">
         </span>
       </div>
-      <input class="subir_archivo"  type="file" name="foto">
+      <input class="subir_archivo block"  type="file" name="foto">
       <input type="submit" class="form_submit" value="Registrar">
       <input type="hidden" name="n" value="registroSocio">
     </div>

@@ -1,13 +1,13 @@
 @font-face {
     font-family: 'Hammersmith One';
-    src: url("font/HammersmithOne-Regular.ttf") format("truetype");
+    src: url("../../../font/HammersmithOne-Regular.ttf") format("truetype");
     font-style: normal;
-  }
+}
 *{
     padding: 0px;
     margin: 0px;
+    font-family: "Hammersmith One";
 }
-
 #container{
     width: 100%;
     min-height: 100vh;
