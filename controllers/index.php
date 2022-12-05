@@ -172,7 +172,6 @@ class ModeloController
                 $salida .= '<tr>';
                 $salida .= '<td>' . $row['id_reunion'] . '</td>';
                 $salida .= '<td>' . $row['nombre_empresa'] . '</td>';
-                $salida .= '<td>' . $row['descripcion'] . '</td>';
                 $color = $row['color_reunion'];
                 $salida .= '<td style="background-color: ' . $color . ';">' . $row['color_reunion'] . '</td>';
                 $salida .= '<td>' . $row['fecha_inicio'] . '</td>';

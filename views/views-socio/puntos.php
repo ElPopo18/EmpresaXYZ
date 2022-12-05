@@ -68,6 +68,7 @@ if ($incluir) {
                     </tbody>
                 </table>
             </div>
+        </div>
 </body>
 <script src="js/buscarPuntos.js"></script>
 
