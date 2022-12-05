@@ -1,12 +1,13 @@
 @font-face {
-    font-family: 'Hammersmith One';
     src: url("font/HammersmithOne-Regular.ttf") format("truetype");
+    font-family: 'Hammersmith One';
     font-style: normal;
   }
 *{
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
+    font-family: 'Hammersmith One';
 }
 
 #container{
