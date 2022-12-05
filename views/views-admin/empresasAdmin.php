@@ -53,17 +53,19 @@ if (empty($_SESSION['username'])) {
             </nav>
             <div class="contenido__pagina">
                 <h2 class="tabla__titulo">Empresas Registradas</h2>
-                <table border="1" class="tabla">
-                    <thead>
-                        <tr>
-                            <th>Id de la empresa</th>
-                            <th>Nombre de la empresa</th>
-                            <th colspan="2">Opciones</th>
-                        </tr>
-                    </thead>
-                    <tbody id="empresas">
-                    </tbody>
-                </table>
+                <div class="tabla_scroll">
+                    <table border="1" class="tabla">
+                        <thead>
+                            <tr>
+                                <th>Id de la empresa</th>
+                                <th>Nombre de la empresa</th>
+                                <th colspan="2">Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="empresas">
+                        </tbody>
+                    </table>
+                </div>
                 <a href="index.php?n=paginaRegistroEmpresa" class="registro__btn">&iquest; Desea registrar una
                     Empresa ?</a>
             </div>

@@ -54,21 +54,23 @@ if (empty($_SESSION['username'])) {
             </nav>
             <div class="contenido__pagina">
                 <h2 class="tabla__titulo">Socios Registrados</h2>
-                <table border="1" class="tabla">
-                    <thead>
-                        <tr>
-                            <th>Usuario</th>
-                            <th>Nombre</th>
-                            <th>Apellido</th>
-                            <th>Cedula</th>
-                            <th>Empresa</th>
-                            <th>Cargo</th>
-                            <th>Opcion</th>
-                        </tr>
-                    </thead>
-                    <tbody id="socio">
-                    </tbody>
-                </table>
+                <div class="tabla_scroll">
+                    <table border="1" class="tabla">
+                        <thead>
+                            <tr>
+                                <th>Usuario</th>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Cedula</th>
+                                <th>Empresa</th>
+                                <th>Cargo</th>
+                                <th>Opcion</th>
+                            </tr>
+                        </thead>
+                        <tbody id="socio">
+                        </tbody>
+                    </table>
+                </div>
                 <a href="index.php?n=paginaRegistroSocio" class="registro__btn">&iquest; Desea registrar un Socio ?</a>
             </div>
         </div>

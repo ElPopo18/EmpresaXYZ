@@ -174,15 +174,9 @@ a:is(:link, :active, :visited).active{
     width: 100%;
     max-height: 600px;
 }
-
-.tabla__titulo{
-    display: block;
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 22px;
-}
 .tabla_scroll{
     overflow-y: scroll;
+    max-height: 400px;
 }
 .tabla{
     text-align: center;

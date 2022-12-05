@@ -52,19 +52,21 @@ $resultado = mysqli_query($conexion, $consulta);
             </nav>
             <div class="contenido__pagina">
                 <h2 class="tabla__titulo">Reuniones Registradas</h2>
-                <table border="1" class="tabla">
-                    <thead>
-                        <tr>
-                            <th>Id Reunion</th>
-                            <th>Nombre Empresa</th>
-                            <th>Color</th>
-                            <th>Fecha de inicio</th>
-                            <th>Fecha de fin</th>
-                        </tr>
-                    </thead>
-                    <tbody id="reuniones">
-                    </tbody>
-                </table>
+                <div class="tabla_scroll">
+                    <table border="1" class="tabla">
+                        <thead>
+                            <tr>
+                                <th>Id Reunion</th>
+                                <th>Nombre Empresa</th>
+                                <th>Color</th>
+                                <th>Fecha de inicio</th>
+                                <th>Fecha de fin</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reuniones">
+                        </tbody>
+                    </table>
+                </div>
                 <a href="index.php?n=calendarioAdmin" class="registro__btn">&iquest; Ir al calendario para registrar reuniones ?</a>
             </div>
         </div>

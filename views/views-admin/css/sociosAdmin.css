@@ -183,6 +183,7 @@ a:is(:link, :active, :visited).active{
 }
 .tabla_scroll{
     overflow-y: scroll;
+    max-height: 400px;
 }
 .tabla{
     text-align: center;
