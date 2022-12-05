@@ -29,39 +29,53 @@ class ModeloController
     static function registroSocio()
     {
         $username = $_REQUEST['username'];
-        $nombre_soc = $_REQUEST['nombre_soc'];
-        $apellido_soc = $_REQUEST['apellido_soc'];
-        $ced_socio = $_REQUEST['ced_socio'];
-        $pass = $_REQUEST['password'];
-        $cargo = $_REQUEST['cargo'];
-        $empresa = $_REQUEST['nombre_empresa'];
-        $foto = $_FILES['foto'];
-        $tmp_name = $foto['tmp_name'];
-        $img_file = $foto['name'];
-        $img_type = $foto['type'];
-        $directorio = "../../img-perfil";
-        $data = "'" . $username . "','" . $nombre_soc . "','" . $apellido_soc . "','" . $ced_socio . "','" . $pass . "','" . $cargo . "', '" . $empresa . "', '" . $img_file . "'";
-        $usuario = new Modelo();
-        $condicion = "username='" . $username . "' AND nombre_soc='" . $nombre_soc . "' AND apellido_soc='" . $apellido_soc . "' AND ced_socio='" . $ced_socio . "' AND
-        pass='" . $pass . "' AND cargo='" . $cargo . "' AND nombre_empresa='" . $empresa . "' AND foto = '" . $img_file . "'";
-        if ($usuario->validarUsuarioExistente("socio", "username='" . $username . "'", "cargo='" . $cargo . "'")) {
+        $socio = new Modelo();
+        if ($socio->validarUsuarioExistente("socio", "username='" .$username. "'")) {
             header('location:' . 'index.php?n=paginaRegistroSocio');
-        } else {
-            $dato = $usuario->insertar("socio", $data);
-            header('location:' . 'index.php?n=afterRegistroSocio');
+        }
+        else {   
+            $nombre_soc = $_REQUEST['nombre_soc'];
+            $apellido_soc = $_REQUEST['apellido_soc'];
+            $ced_socio = $_REQUEST['ced_socio'];
+            if ($socio->validarUsuarioExistente("socio", "ced_socio='" .$ced_socio. "'")) {
+                header('location:' . 'index.php?n=paginaRegistroSocio');
+            }
+            else {
+                $pass = $_REQUEST['password'];
+                $cargo = $_REQUEST['cargo'];
+                $empresa = $_REQUEST['nombre_empresa'];
+                if ($socio->validarUsuarioExistente("empresa", "nombre_empresa='" . $empresa . "'")) {
+                    $foto = $_FILES['foto'];
+                    $tmp_name = $foto['tmp_name'];
+                    $img_file = $foto['name'];
+                    $img_type = $foto['type'];
+                    $directorio = "../../img-perfil";
+                    $data = "'" . $username . "','" . $nombre_soc . "','" . $apellido_soc . "','" . $ced_socio . "','" . $pass . "','" . $cargo . "', '" . $empresa . "', '" . $img_file . "'";
+                    $condicion = "username='" . $username . "' AND nombre_soc='" . $nombre_soc . "' AND apellido_soc='" . $apellido_soc . "' AND ced_socio='" . $ced_socio . "' AND
+                    pass='" . $pass . "' AND cargo='" . $cargo . "' AND nombre_empresa='" . $empresa . "' AND foto = '" . $img_file . "'";
+                    $dato = $socio->insertar("socio", $data);
+                    header('location:' . 'index.php?n=afterRegistroSocio');       
+                }
+                else {
+                    header('location:' . 'index.php?n=paginaRegistroSocio');
+                }
+            }
         }
     }
     //registrar una empresa
     static function registroEmpresa()
     {
-        $id_empresa = $_REQUEST['id_empresa'];
-        $nombre_empresa = $_REQUEST['nombre_empresa'];
-        $data = "'" . $id_empresa . "','" . $nombre_empresa . "'";
         $empresa = new Modelo();
-        $condicion = "id_empresa='" . $id_empresa . "' AND nombre_empresa='" . $nombre_empresa . "'";
+        $nombre_empresa = ucwords($_REQUEST['nombre_empresa']);
         if ($empresa->validarUsuarioExistente("empresa", "nombre_empresa='" . $nombre_empresa . "'")) {
             header('location: index.php?n=paginaRegistroEmpresa');
-        } else {
+        }
+        else {
+            $id_empresa = $_REQUEST['id_empresa'];
+            $nombre_empresa = $_REQUEST['nombre_empresa'];
+            $data = "'" . $id_empresa . "','" . $nombre_empresa . "'";
+            $empresa = new Modelo();
+            $condicion = "id_empresa='" . $id_empresa . "' AND nombre_empresa='" . $nombre_empresa . "'";
             $dato = $empresa->insertar("empresa", $data);
             header('location:' . 'index.php?n=afterRegistroEmpresa');
         }
@@ -78,43 +92,50 @@ class ModeloController
     static function nuevaReunion()
     {
         require('config/conexion.php');
+        $empresa = new Modelo();
         $nombre_empresa = ucwords($_REQUEST['nombre_empresa']);
-        $f_inicio = $_REQUEST['fecha_inicio'];
-        $fecha_inicio = date('Y-m-d', strtotime($f_inicio));
+        if ($empresa->validarUsuarioExistente("empresa", "nombre_empresa='" . $nombre_empresa . "'")) {
+            $nombre_empresa = ucwords($_REQUEST['nombre_empresa']);
+            $f_inicio = $_REQUEST['fecha_inicio'];
+            $fecha_inicio = date('Y-m-d', strtotime($f_inicio));
 
-        $f_fin = $_REQUEST['fecha_fin'];
-        $seteando_f_final = date('Y-m-d', strtotime($f_fin));
-        $fecha_fin1 = strtotime($seteando_f_final . "+ 1 days");
-        $fecha_fin = date('Y-m-d', ($fecha_fin1));
-        $color_reunion = $_REQUEST['color_reunion'];
-        $InsertNuevoReunion = "INSERT INTO reunion(
-      nombre_empresa,
-      fecha_inicio,
-      fecha_fin,
-      color_reunion
-      )
-    VALUES (
-      '" . $nombre_empresa . "',
-      '" . $fecha_inicio . "',
-      '" . $fecha_fin . "',
-      '" . $color_reunion . "'
-  )";
-        $resultadoNuevoReunion = mysqli_query($conexion, $InsertNuevoReunion);
+            $f_fin = $_REQUEST['fecha_fin'];
+            $seteando_f_final = date('Y-m-d', strtotime($f_fin));
+            $fecha_fin1 = strtotime($seteando_f_final . "+ 1 days");
+            $fecha_fin = date('Y-m-d', ($fecha_fin1));
+            $color_reunion = $_REQUEST['color_reunion'];
+            $InsertNuevoReunion = "INSERT INTO reunion(
+              nombre_empresa,
+              fecha_inicio,
+              fecha_fin,
+              color_reunion
+              )
+            VALUES (
+              '" . $nombre_empresa . "',
+              '" . $fecha_inicio . "',
+              '" . $fecha_fin . "',
+              '" . $color_reunion . "'
+              )";
+            $resultadoNuevoReunion = mysqli_query($conexion, $InsertNuevoReunion);
 
-        $InsertNuevoReunion2 = "INSERT INTO reuniones(
-      nombre_empresa,
-      fecha_inicio,
-      fecha_fin,
-      color_reunion
-      )
-    VALUES (
-      '" . $nombre_empresa . "',
-      '" . $fecha_inicio . "',
-      '" . $fecha_fin . "',
-      '" . $color_reunion . "'
-        )";
-        $resultadoNuevoreunion2 = mysqli_query($conexion, $InsertNuevoReunion2);
-        header("Location: index.php?n=afterNuevaReunion");
+            $InsertNuevoReunion2 = "INSERT INTO reuniones(
+              nombre_empresa,
+              fecha_inicio,
+              fecha_fin,
+              color_reunion
+              )
+            VALUES (
+              '" . $nombre_empresa . "',
+              '" . $fecha_inicio . "',
+              '" . $fecha_fin . "',
+              '" . $color_reunion . "'
+                )";
+                $resultadoNuevoreunion2 = mysqli_query($conexion, $InsertNuevoReunion2);
+                header("Location: index.php?n=afterNuevaReunion");
+        }
+        else {
+            header("Location: index.php?n=calendarioAdmin");
+        }
     }
     static function eliminarReunion()
     {
@@ -389,7 +410,7 @@ class ModeloController
                 $salida .= '<td>' . $row['id_reunion'] . '</td>';
                 $salida .= '<td>' . $row['username'] . '</td>';
                 $salida .= '<td>' . $row['descripcion'] . '</td>';
-                $salida .= '<td><a href="documents/'. $row['archivo'] .'" class="pdf" TARGET="BLANK">' . $row['archivo'] . '</a></td>';
+                $salida .= '<td><a href="documents/' . $row['archivo'] . '" class="pdf" TARGET="BLANK">' . $row['archivo'] . '</a></td>';
                 $salida .= '<td>' . $row['fecha_inicio'] . '</td>';
                 $salida .= '</tr>';
             }
