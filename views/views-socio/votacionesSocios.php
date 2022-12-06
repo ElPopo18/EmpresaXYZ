@@ -41,10 +41,9 @@ if ($incluir) {
         </header>
         <div id="contenido">
             <nav id="navbar">
-                <form class="buscar" method="post">
-                    <label class="buscar__label" for="buscar">Buscar: </label>
-                    <input type="text" id="buscar" name="buscar" class="puntos" placeholder="Id punto/Id reunion/Descripcion/Documento que desea buscar">
-                </form>
+                <div class="navbar__titulo">
+                    <h2 class="navbar__r">Votaciones de Temas</h2>
+                </div>
                 <ul>
                     <li><a href="index.php?n=configuracionSocio"><i class="fi fi-rr-settings"></i></a></li>
                     <li class="margin-right"><a href="controllers/controladorCerrarSesion.php"><i class="fi fi-sr-exit"></i></a></li>
@@ -53,35 +52,19 @@ if ($incluir) {
             </nav>
             <div class="contenido__pagina">
                 <h2 class="tabla__titulo">Votaciones de la Empresa <?php echo $_SESSION['empresa'] ?></h2>
-                <?php
-                while ($row = $resultado->fetch_array()) { ?>
-                    <div class="card">
-                        <h3><?php echo $row['username']; ?></h3>
-                        <h4><?php echo $row['descripcion'] ?></h4>
-                    </div>
-                <?php         } ?>
-                <!--
-                <div class="tabla_scroll">
-                    <table border="1" class="tabla">
-                        <thead>
-                            <tr>
-                                <th>Usuario</th>
-                                <th>Tema a tratar</th>
-                                <th>Votacion</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            while ($row = $resultado->fetch_array()) { ?>
-                                <tr>
-                                    <td><?php echo $row['username']; ?></td>
-                                    <td><?php echo $row['descripcion'] ?></td>
-                                </tr>
-                            <?php         } ?>
-                        </tbody>
-                    </table>
+                <div class="espacio_card">
+                    <?php
+                    while ($row = $resultado->fetch_array()) { ?>
+                        <div class="card">
+                            <p class="p">Tema:</p>
+                            <a class="pdf_voto" href="documents/<?php echo $row['archivo'] ?> " TARGET="BLANK"><?php echo $row['descripcion'] ?></a>
+                            <img src="views/img/pdf.png">
+                            <p class="p">Propuesto Por:</p>
+                            <h3 class="pdf_usuario"><?php echo $row['username'] ?></h3>
+                            <button class="boton_votar"><span>Votar por este punto</span></button>
+                        </div>
+                    <?php         } ?>
                 </div>
-                            -->
             </div>
 </body>
 <script src="js/buscarPuntos.js"></script>
