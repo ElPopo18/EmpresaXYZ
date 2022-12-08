@@ -49,8 +49,8 @@ $row = $resultadoS->fetch_assoc();
                     <h2 class="seccion">Configuraciones del Usuario</h2>
                 </div>
                 <ul>
-                    <li><a href="index.php?n=configuracionAdmin"><i class="fi fi-rr-settings"></i></a></li>
-                    <li class="margin-right"><a href="controllers/controladorCerrarSesion.php"><i class="fi fi-sr-exit"></i></a></li>
+                    <li><a href="index.php?n=configuracionAdmin">Configuracion</a></li>
+                    <li class="margin-right"><a href="controllers/controladorCerrarSesion.php">Cerrar Sesion</a></li>
                     <li class="ajustar"><img src="img-perfil/<?php echo $_SESSION['foto']?>"><span class="username"><?php echo $_SESSION['username'] ?><p class="cargo">
                                 <?php echo $_SESSION['cargo'] ?></p></span></li>
                 </ul>

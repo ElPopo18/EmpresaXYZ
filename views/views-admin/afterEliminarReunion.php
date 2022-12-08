@@ -11,7 +11,7 @@ if (empty($_SESSION['username'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro Socio</title>
+    <title>Eliminar Reunion</title>
     <link rel="icon" href="views/img/calendario.png">
     <link rel="stylesheet" href="views/css/configuracionesUsuario.css">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
@@ -25,8 +25,8 @@ if (empty($_SESSION['username'])) {
             <h1 class="titulo"><img src="views/img/calendario.png" class="logo">EmpresaXYZ</h1>
             <aside class="lateral">
                 <ul>
-                    <li><a href="index.php?n=inicioAdmin" class="active">Dashboard</a></li>
-                    <li><a href="index.php?n=calendarioAdmin">Calendario</a></li>
+                    <li><a href="index.php?n=inicioAdmin">Dashboard</a></li>
+                    <li><a href="index.php?n=calendarioAdmin" class="active">Calendario</a></li>
                     <li><a href="index.php?n=reunionesAdmin">Reuniones</a></li>
                     <li><a href="index.php?n=empresasAdmin">Empresas</a></li>
                     <li><a href="index.php?n=sociosAdmin">Socios</a></li>
@@ -37,7 +37,7 @@ if (empty($_SESSION['username'])) {
         <div id="contenido">
             <nav id="navbar">
                 <div class="navbar__seccion">
-                    <h2 class="seccion">Registrando Socio</h2>
+                    <h2 class="seccion">Eliminando Reunion</h2>
                 </div>
                 <ul>
                     <li><a href="index.php?n=configuracionSocio">Configuracion</a></li>
@@ -47,8 +47,8 @@ if (empty($_SESSION['username'])) {
             </nav>
             <div class="contenido__pagina">
                 <div class="configuracion">
-                    <?php echo '<div class="mensaje">Socio registrado con exito</div>';   
-                    header('refresh:5; url=index.php?n=inicioAdmin');
+                    <?php echo '<div class="mensaje">Reunion eliminada con exito</div>'; 
+                    header('refresh:3; url=index.php?n=calendarioAdmin');
                     ?>
                 </div>
             </div>

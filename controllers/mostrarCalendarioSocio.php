@@ -19,7 +19,7 @@
                                 <?php
                                 while ($dataReunion = mysqli_fetch_array($resulReunions)) { ?> {
                                         _id_reunion: '<?php echo $dataReunion['id_reunion'] ?>',
-                                        title: '<?php echo $dataReunion['nombre_empresa']; ?>',
+                                        title: '<?php echo $dataReunion['hora_inicio']; echo "AM - "; echo $dataReunion['hora_fin']; echo "PM" ?>',
                                         start: '<?php echo $dataReunion['fecha_inicio']; ?>',
                                         end: '<?php echo $dataReunion['fecha_fin']; ?>',
                                         color: '<?php echo $dataReunion['color_reunion']; ?>'

@@ -46,8 +46,8 @@ if (empty($_SESSION['username'])) {
                     <input type="text" id="buscar" name="buscar" class="buscar__input" placeholder="Usuario/Nombre/Apellido/Cedula/Empresa/Cargo">
                 </form>
                 <ul>
-                    <li><a href="index.php?n=configuracionAdmin"><i class="fi fi-rr-settings"></i></a></li>
-                    <li class="margin-right"><a href="controllers/controladorCerrarSesion.php"><i class="fi fi-sr-exit"></i></a></li>
+                    <li><a href="index.php?n=configuracionAdmin">Configuracion</a></li>
+                    <li class="margin-right"><a href="controllers/controladorCerrarSesion.php">Cerrar Sesion</a></li>
 
                     <li class="ajustar"><img src="img-perfil/<?php echo $_SESSION['foto'] ?>"><span class="username"><?php echo $_SESSION['username'] ?><p class="cargo"><?php echo $_SESSION['cargo'] ?></p></span></li>
                 </ul>
@@ -75,7 +75,7 @@ if (empty($_SESSION['username'])) {
             </div>
         </div>
     </div>
-    <script src="js/buscarSocioAdmin.js"></script>
 </body>
+<script src="js/buscarSocioAdmin.js"></script>
 
 </html>

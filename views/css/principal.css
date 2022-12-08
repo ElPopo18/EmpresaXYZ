@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap");
 @font-face {
   font-family: 'Hammersmith One';
   src: url("font/HammersmithOne-Regular.ttf") format("truetype");
@@ -7,6 +8,7 @@
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
+  font-family: 'Hammersmith One';
 }
 #contenedor-general {
   min-height: 100vh;

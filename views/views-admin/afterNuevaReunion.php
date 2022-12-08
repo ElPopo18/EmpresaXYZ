@@ -11,7 +11,7 @@ if (empty($_SESSION['username'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Configuracion</title>
+    <title>registro Reunion</title>
     <link rel="icon" href="views/img/calendario.png">
     <link rel="stylesheet" href="views/css/configuracionesUsuario.css">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
@@ -37,11 +37,11 @@ if (empty($_SESSION['username'])) {
         <div id="contenido">
             <nav id="navbar">
                 <div class="navbar__seccion">
-                    <h2 class="seccion">Configuraciones del adminitrador</h2>
+                    <h2 class="seccion">Creando Nueva Reunion</h2>
                 </div>
                 <ul>
-                    <li><a href="index.php?n=configuracionSocio"><i class="fi fi-rr-settings"></i></a></li>
-                    <li class="margin-right"><a href="controllers/controladorCerrarSesion.php"><i class="fi fi-sr-exit"></i></a></li>
+                    <li><a href="index.php?n=configuracionSocio">Configuracion</a></li>
+                    <li class="margin-right"><a href="controllers/controladorCerrarSesion.php">Cerrar Sesion</a></li>
                     <li class="ajustar"><img src="img-perfil/<?php echo $_SESSION['foto']?>"><span class="username"><?php echo $_SESSION['username'] ?><p class="cargo"><?php echo $_SESSION['cargo'] ?></p></span></li>
                 </ul>
             </nav>

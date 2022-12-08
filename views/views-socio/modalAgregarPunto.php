@@ -14,6 +14,17 @@
             <input type="text" class="form-control" name="descripcion" id="descripcion" placeholder="Descripcion del punto" required />
           </div>
         </div>
+        <div class="form_grupo block" style="display: grid;text-align: center;grid-template-columns: repeat(3, 1fr);margin-bottom: 1rem;">
+          <label>Tipo: </label>
+          <span class="tipo">
+            <label>De desicion</label>
+            <input type="radio" name="tipo" value="desicion" style="visibility: initial;">
+          </span>
+          <span class="tipo">
+            <label>De informacion</label>
+            <input type="radio" name="tipo" value="desicion" style="visibility: initial;">
+          </span>
+        </div>
         <div class="form-group">
           <input type="hidden" class="form-control" name="id_reunion" id="id_reunion">
           <input type="hidden" class="form-control" name="id_punto" id="id_punto">

@@ -1,7 +1,7 @@
 $(buscar_datos());
 function buscar_datos(consulta){
     $.ajax({
-        url: "index.php?n=buscarSocioAdmin",
+        url: "index.php?n=buscarSocioAd",
         type: "POST",
         dataType: "HTML",
         data: {consulta: consulta},

@@ -32,7 +32,7 @@ if ($incluir) {
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="views/views-socio/css/bootstrap.min.css">
-    <link rel="stylesheet" href="views/views-socio/css/estiloCalendario.css">
+    <link rel="stylesheet" href="views/views-socio/css/calendario.css">
 </head>
 
 <body>
@@ -55,9 +55,9 @@ if ($incluir) {
                     <h2 class="nombre_empresa">Calendario de la empresa <?php echo $_SESSION['empresa']; ?></h2>
                 </div>
                 <ul>
-                    <li><a href="index.php?n=configuracionSocio"><i class="fi fi-rr-settings"></i></a></li>
-                    <li class="margin-right"><a href="controllers/controladorCerrarSesion.php"><i class="fi fi-sr-exit"></i></a></li>
-                    <li class="ajustar"><img src="<?php echo $_SESSION['foto']?>"><span class="username"><?php echo $_SESSION['username'] ?><p class="cargo"><?php echo $_SESSION['cargo'] ?></p></span></li>
+                    <li><a href="index.php?n=configuracionSocio">Configuracion</a></li>
+                    <li class="margin-right"><a href="controllers/controladorCerrarSesion.php">Cerrar Sesion</a></li>
+                    <li class="ajustar"><img src="img-perfil/<?php echo $_SESSION['foto']?>"><span class="username"><?php echo $_SESSION['username'] ?><p class="cargo"><?php echo $_SESSION['cargo'] ?></p></span></li>
                 </ul>
             </nav>
             <div class="contenido__pagina">

@@ -23,13 +23,15 @@ if ($_POST['subir']) {
                 $id_reunion = $_POST['id_reunion'];
                 $fecha_inicio = $_POST['fecha_inicio'];
                 $fecha_fin = $_POST['fecha_fin'];
+                $tipo = $_POST['tipo'];
                 $sql = $conexion->query("INSERT INTO punto (
                     username,
                     descripcion,
                     archivo,
                     nombre_empresa,
                     id_reunion,
-                    fecha_inicio
+                    fecha_inicio,
+                    tipo
                     )                 
                     VALUES (
                         '" . $username. "',
@@ -37,7 +39,8 @@ if ($_POST['subir']) {
                         '" . $archivo . "',
                         '" . $nombre_empresa . "',
                         '" . $id_reunion . "',
-                        '" . $fecha_inicio . "'
+                        '" . $fecha_inicio . "',
+                        '" . $tipo . "'
                     )");
                 header('Location: ../../index.php?n=afterNuevoPunto');
             }
@@ -49,13 +52,15 @@ if ($_POST['subir']) {
         $nombre_empresa = $_SESSION['empresa'];
         $id_reunion = $_POST['id_reunion'];
         $fecha_inicio = $_POST['fecha_inicio'];
+        $tipo = $_POST['tipo'];
         $sql = $conexion->query("INSERT INTO punto (
             username,
             descripcion,
             archivo,
             nombre_empresa,
             id_reunion,
-            fecha_inicio
+            fecha_inicio,
+            tipo
             )                 
             VALUES (
                 '" . $username. "',
@@ -64,8 +69,8 @@ if ($_POST['subir']) {
                 '" . $nombre_empresa . "',
                 '" . $id_reunion . "',
                 '" . $fecha_inicio . "',
+                '" . $tipo . "'
             )");
         header('Location: ../../index.php?n=afterNuevoPunto');
     }
 }
-?>

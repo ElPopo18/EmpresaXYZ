@@ -45,9 +45,9 @@ if ($incluir) {
                     <h2 class="navbar__r">Votaciones de Temas</h2>
                 </div>
                 <ul>
-                    <li><a href="index.php?n=configuracionSocio"><i class="fi fi-rr-settings"></i></a></li>
-                    <li class="margin-right"><a href="controllers/controladorCerrarSesion.php"><i class="fi fi-sr-exit"></i></a></li>
-                    <li class="ajustar"><img src="<?php echo $_SESSION['foto'] ?>"><span class="username"><?php echo $_SESSION['username'] ?><p class="cargo"><?php echo $_SESSION['cargo'] ?></p></span></li>
+                    <li><a href="index.php?n=configuracionSocio">Configuracion</a></li>
+                    <li class="margin-right"><a href="controllers/controladorCerrarSesion.php">Cerrar Sesion</a></li>
+                    <li class="ajustar"><img src="img-perfil/<?php echo $_SESSION['foto'] ?>"><span class="username"><?php echo $_SESSION['username'] ?><p class="cargo"><?php echo $_SESSION['cargo'] ?></p></span></li>
                 </ul>
             </nav>
             <div class="contenido__pagina">
@@ -61,7 +61,7 @@ if ($incluir) {
                             <img src="views/img/pdf.png">
                             <p class="p">Propuesto Por:</p>
                             <h3 class="pdf_usuario"><?php echo $row['username'] ?></h3>
-                            <button class="boton_votar"><span>Votar por este punto</span></button>
+                            <p class="p"><?php echo $row['tipo']?></p>
                         </div>
                     <?php         } ?>
                 </div>

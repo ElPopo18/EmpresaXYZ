@@ -98,23 +98,28 @@ class ModeloController
             $nombre_empresa = ucwords($_REQUEST['nombre_empresa']);
             $f_inicio = $_REQUEST['fecha_inicio'];
             $fecha_inicio = date('Y-m-d', strtotime($f_inicio));
-
             $f_fin = $_REQUEST['fecha_fin'];
             $seteando_f_final = date('Y-m-d', strtotime($f_fin));
             $fecha_fin1 = strtotime($seteando_f_final . "+ 1 days");
             $fecha_fin = date('Y-m-d', ($fecha_fin1));
             $color_reunion = $_REQUEST['color_reunion'];
+            $hora_inicio = $_REQUEST['hora_inicio'];
+            $hora_fin = $_REQUEST['hora_fin'];
             $InsertNuevoReunion = "INSERT INTO reunion(
               nombre_empresa,
               fecha_inicio,
               fecha_fin,
-              color_reunion
+              color_reunion,
+              hora_inicio,
+              hora_fin
               )
             VALUES (
               '" . $nombre_empresa . "',
               '" . $fecha_inicio . "',
               '" . $fecha_fin . "',
-              '" . $color_reunion . "'
+              '" . $color_reunion . "',
+              '" . $hora_inicio . "',
+              '" . $hora_fin . "'
               )";
             $resultadoNuevoReunion = mysqli_query($conexion, $InsertNuevoReunion);
 
@@ -122,13 +127,17 @@ class ModeloController
               nombre_empresa,
               fecha_inicio,
               fecha_fin,
-              color_reunion
+              color_reunion,
+              hora_inicio,
+              hora_fin
               )
             VALUES (
               '" . $nombre_empresa . "',
               '" . $fecha_inicio . "',
               '" . $fecha_fin . "',
-              '" . $color_reunion . "'
+              '" . $color_reunion . "',
+              '" . $hora_inicio . "',
+              '" . $hora_fin . "'
                 )";
                 $resultadoNuevoreunion2 = mysqli_query($conexion, $InsertNuevoReunion2);
                 header("Location: index.php?n=afterNuevaReunion");
@@ -239,7 +248,7 @@ class ModeloController
         $conexion->close();
     }
 
-    static function buscarSocioAdmin()
+    static function buscarSocioAd()
     {
         require 'config/conexion.php';
         $salida = "";
@@ -315,7 +324,9 @@ class ModeloController
     {
         require_once("views/views-admin/afterNuevaReunion.php");
     }
-
+    static function afterEliminarReunion(){
+        require_once("views/views-admin/afterEliminarReunion.php");
+    }
     static function afterNuevoPunto()
     {
         require_once("views/views-socio/afterNuevoPunto.php");
@@ -411,6 +422,7 @@ class ModeloController
                 $salida .= '<td>' . $row['username'] . '</td>';
                 $salida .= '<td>' . $row['descripcion'] . '</td>';
                 $salida .= '<td><a href="documents/' . $row['archivo'] . '" class="pdf" TARGET="BLANK">' . $row['archivo'] . '</a></td>';
+                $salida .= '<td>' . $row['tipo'] . '</td>';
                 $salida .= '<td>' . $row['fecha_inicio'] . '</td>';
                 $salida .= '</tr>';
             }

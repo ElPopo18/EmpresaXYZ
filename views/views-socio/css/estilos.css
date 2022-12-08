@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap");
 @font-face {
     font-family: 'Hammersmith One';
     src: url("../../../font/HammersmithOne-Regular.ttf") format("truetype");
@@ -100,7 +101,7 @@ a:is(:link, :active, :visited).active{
     justify-content: space-between;
 }
 #navbar .buscar{
-    width: 65%;
+width: 47%;
 }
 
 #navbar .buscar__label{
@@ -302,5 +303,13 @@ img{
 }
 .boton_votar:hover{
     background-color: #02082d;
+    display: grid;
+    text-align: center;
+    grid-template-columns: repeat(3, 1fr);
+    margin-bottom: 1rem;
 }
+.tipo {
+    margin: 25px;
+  }
+
 /*? fin contenido de la pagina*/

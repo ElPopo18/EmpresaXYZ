@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap");
 @font-face {
     font-family: 'Hammersmith One';
     src: url("../../../font/HammersmithOne-Regular.ttf") format("truetype");
@@ -94,7 +95,7 @@ a:is(:link, :active, :visited).active{
     justify-content: space-between;
 }
 #navbar .buscar{
-    width: 65%;
+    width: 45%;
 }
 
 #navbar .buscar__label{
